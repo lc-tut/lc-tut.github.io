@@ -262,4 +262,7 @@ a:active {text-decoration: none}	/* 选定的链接 */
     .banner h1{
         font-size: 36px;
     }
+    p.navbar-text {
+        display: none;
+    }
 }
