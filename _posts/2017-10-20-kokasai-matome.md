@@ -54,7 +54,7 @@ Arduinoには次の回路を実装しました。
 
 <img src="https://raw.githubusercontent.com/tomoyk/kokasai17/master/proc_testVisualizer/images/architecture.jpg" width="500">
 
-次にArduinoにArduinoへ以下のプログラムを書き込みます。このプログラムではdigital 7番ピンに接続されたセンサーの値を取得してシリアルに書き出す処理を行っています。`delay(100)`によって遅延処理を行っています。
+次にArduinoへ以下のプログラムを書き込みます。このプログラムではdigital 7番ピンに接続されたセンサーの値を取得してシリアルに書き出す処理を行っています。`delay(100)`によって遅延処理を行っています。
 
 	#define SENSOR_PIN 7
 
@@ -170,7 +170,7 @@ PyConの日に作りました。
 
 <script src="https://gist.github.com/homirun/035f39415f9d976f9da86ffe2632519f.js"></script>
 
-### 5. 声でツイートできるプログラム
+### 5. 声でツイートできるプログラム [panakuma]
 
 　音声認識で録音した音声をテキストに起こして、ツイッターにポストするプログラムです。言語はPythonで、音声認識はGoogle Cloud APIを使いました。
 
@@ -217,7 +217,7 @@ CPU使用率をリアルタイムで表示するGUIアプリ。16コアまで対
 
 LinuxClubの歴史は長いらしく、古くはLinux研究所という名前だったそうです。
 
-学祭で社会人OBが集まるということが恒例になっているようです。
+学祭で社会人OBが集まるということが恒例になっているようです。OBと現役生の交流の場になっていました。
 
 ## 2日目から始まったライブ中継
 
