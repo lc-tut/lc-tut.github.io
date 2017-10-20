@@ -23,6 +23,8 @@
 	# ブラウザからlocalhost:4000へアクセス
 	w3m http://localhost:4000/
 
+	# ブログ記事を書いたらslackのblogチャンネルで教えてください.
+
 ## このブログについて(環境)
 
 **Jekyll + Github Pages**で構築してあります。
