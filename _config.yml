@@ -28,7 +28,7 @@ defaults:
 title: "LinuxClub BLOG"
 email: "linuxclub.tut@gmail.com"
 description: "東京工科大公認サークル LinuxClub のブログです."
-github_username:  "lc_tut"
+github_username:  "lc-tut"
 swiftype_searchId: ""
 disqus_shortname: ""
 
