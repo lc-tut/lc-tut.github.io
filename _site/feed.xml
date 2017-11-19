@@ -5,26 +5,25 @@
     <description>東京工科大公認サークル LinuxClub のブログです.</description>
     <link>http://0.0.0.0:4000/</link>
     <atom:link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 18 Nov 2017 22:01:26 -0600</pubDate>
-    <lastBuildDate>Sat, 18 Nov 2017 22:01:26 -0600</lastBuildDate>
+    <pubDate>Sun, 19 Nov 2017 00:25:11 -0600</pubDate>
+    <lastBuildDate>Sun, 19 Nov 2017 00:25:11 -0600</lastBuildDate>
     <generator>Jekyll v3.6.2</generator>
     
       <item>
         <title>VMware Workstation Pro 14がLinux Kernel4.13で動くようにする</title>
-        <description>&lt;h1 id=&quot;vmware-workstation-pro-14がlinux-kernel413で動くようにする&quot;&gt;VMware Workstation Pro 14がLinux Kernel4.13で動くようにする&lt;/h1&gt;
-
-&lt;h2 id=&quot;linux-kernal-413がやっと動いた&quot;&gt;Linux Kernal 4.13がやっと動いた&lt;/h2&gt;
+        <description>&lt;p&gt;Author: &lt;a href=&quot;https://github.com/kumapana/&quot;&gt;panakuma&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;linux-kernal-413がやっと動いたが&quot;&gt;Linux Kernal 4.13がやっと動いたが…&lt;/h2&gt;
 &lt;p&gt;私のマシンでは長らくLinux kernel 4.4系しか動かなかったのですが、Oracle VirtualBoxの関連コンポーネントを根こそぎ削除したところ4.13系が動作しました。ですが…&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;VMware Workstation Pro 14上の仮想マシンが起動しなくなりました&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;具体的には次のようなエラーメッセージが表示されます。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;images/vmware/img01.png&quot; alt=&quot;unable to reserve memory&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/vmware/img01.png&quot; alt=&quot;unable to reserve memory&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;images/vmware/img02.png&quot; alt=&quot;could not lock memory&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/vmware/img02.png&quot; alt=&quot;could not lock memory&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;images/vmware/img03.png&quot; alt=&quot;failed to switch to 64bit mode&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/vmware/img03.png&quot; alt=&quot;failed to switch to 64bit mode&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;VMware Workstation がkernel4.13に対応していないことが原因のようです。Kernelに対する命令である&lt;code class=&quot;highlighter-rouge&quot;&gt;global_page_state&lt;/code&gt;が4.13以降で&lt;code class=&quot;highlighter-rouge&quot;&gt;global_zone_page_state&lt;/code&gt;に変わったことが原因です。有志の方がこれに対応するパッチを作成していたので、これを用いて対処していきます。&lt;/p&gt;
 
@@ -57,7 +56,7 @@
         <category>Linux_Tips</category>
         
         
-        <category>poem</category>
+        <category>Linux</category>
         
       </item>
     

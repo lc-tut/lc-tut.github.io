@@ -1,13 +1,12 @@
 ---
 title: VMware Workstation Pro 14がLinux Kernel4.13で動くようにする
 tags: Linux_Tips
-categories: poem
+categories: Linux
 ---
 
 
-# VMware Workstation Pro 14がLinux Kernel4.13で動くようにする
-
-## Linux Kernal 4.13がやっと動いた
+Author: [panakuma](https://github.com/kumapana/)
+## Linux Kernal 4.13がやっと動いたが...
 私のマシンでは長らくLinux kernel 4.4系しか動かなかったのですが、Oracle VirtualBoxの関連コンポーネントを根こそぎ削除したところ4.13系が動作しました。ですが...
 
 **VMware Workstation Pro 14上の仮想マシンが起動しなくなりました**
