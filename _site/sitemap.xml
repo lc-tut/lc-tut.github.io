@@ -5,31 +5,46 @@
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
     
     <url>
-        <loc>http://localhost:4000/2017-06-17/hello-blog/</loc>
-        <lastmod>2017-07-17T14:06:28+09:00</lastmod>
+        <loc>http://0.0.0.0:4000/2017-11-18/vmware-on-kernal-413/</loc>
+        <lastmod>2017-11-18T22:01:26-06:00</lastmod>
+        <changefreq>weekly</changefreq>
+    </url>
+    
+    <url>
+        <loc>http://0.0.0.0:4000/2017-10-20/kokasai-matome/</loc>
+        <lastmod>2017-11-18T22:01:26-06:00</lastmod>
+        <changefreq>weekly</changefreq>
+    </url>
+    
+    <url>
+        <loc>http://0.0.0.0:4000/2017-06-17/hello-blog/</loc>
+        <lastmod>2017-11-18T22:01:26-06:00</lastmod>
         <changefreq>weekly</changefreq>
     </url>
     
     
     <url>
-        <loc>http://localhost:4000/archive/</loc>
-        <lastmod>2017-07-17T14:06:28+09:00</lastmod>
+        <loc>http://0.0.0.0:4000/archive/</loc>
+        <lastmod>2017-11-18T22:01:26-06:00</lastmod>
         <changefreq>weekly</changefreq>
     </url>
     
     
     <url>
-        <loc>http://localhost:4000/category/</loc>
-        <lastmod>2017-07-17T14:06:28+09:00</lastmod>
+        <loc>http://0.0.0.0:4000/category/</loc>
+        <lastmod>2017-11-18T22:01:26-06:00</lastmod>
         <changefreq>weekly</changefreq>
     </url>
     
     
     <url>
-        <loc>http://localhost:4000/tags/</loc>
-        <lastmod>2017-07-17T14:06:28+09:00</lastmod>
+        <loc>http://0.0.0.0:4000/tags/</loc>
+        <lastmod>2017-11-18T22:01:26-06:00</lastmod>
         <changefreq>weekly</changefreq>
     </url>
+    
+    
+    
     
     
     

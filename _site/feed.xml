@@ -3,11 +3,321 @@
   <channel>
     <title>LinuxClub BLOG</title>
     <description>東京工科大公認サークル LinuxClub のブログです.</description>
-    <link>http://localhost:4000/</link>
-    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 17 Jul 2017 14:06:28 +0900</pubDate>
-    <lastBuildDate>Mon, 17 Jul 2017 14:06:28 +0900</lastBuildDate>
-    <generator>Jekyll v3.4.3</generator>
+    <link>http://0.0.0.0:4000/</link>
+    <atom:link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Sat, 18 Nov 2017 22:01:26 -0600</pubDate>
+    <lastBuildDate>Sat, 18 Nov 2017 22:01:26 -0600</lastBuildDate>
+    <generator>Jekyll v3.6.2</generator>
+    
+      <item>
+        <title>VMware Workstation Pro 14がLinux Kernel4.13で動くようにする</title>
+        <description>&lt;h1 id=&quot;vmware-workstation-pro-14がlinux-kernel413で動くようにする&quot;&gt;VMware Workstation Pro 14がLinux Kernel4.13で動くようにする&lt;/h1&gt;
+
+&lt;h2 id=&quot;linux-kernal-413がやっと動いた&quot;&gt;Linux Kernal 4.13がやっと動いた&lt;/h2&gt;
+&lt;p&gt;私のマシンでは長らくLinux kernel 4.4系しか動かなかったのですが、Oracle VirtualBoxの関連コンポーネントを根こそぎ削除したところ4.13系が動作しました。ですが…&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;VMware Workstation Pro 14上の仮想マシンが起動しなくなりました&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;具体的には次のようなエラーメッセージが表示されます。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;images/vmware/img01.png&quot; alt=&quot;unable to reserve memory&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;images/vmware/img02.png&quot; alt=&quot;could not lock memory&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;images/vmware/img03.png&quot; alt=&quot;failed to switch to 64bit mode&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;VMware Workstation がkernel4.13に対応していないことが原因のようです。Kernelに対する命令である&lt;code class=&quot;highlighter-rouge&quot;&gt;global_page_state&lt;/code&gt;が4.13以降で&lt;code class=&quot;highlighter-rouge&quot;&gt;global_zone_page_state&lt;/code&gt;に変わったことが原因です。有志の方がこれに対応するパッチを作成していたので、これを用いて対処していきます。&lt;/p&gt;
+
+&lt;p&gt;次のコマンドでパッチを当てることができます。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    sudo -i
+    cd /tmp
+    cp /usr/lib/vmware/modules/source/vmmon.tar .
+    tar xf vmmon.tar
+    rm vmmon.tar
+    wget https://raw.githubusercontent.com/mkubecek/vmware-host-modules/fadedd9c8a4dd23f74da2b448572df95666dfe12/vmmon-only/linux/hostif.c
+    mv -f hostif.c vmmon-only/linux/hostif.c 
+    tar cf vmmon.tar vmmon-only
+    rm -fr vmmon-only
+    mv -f vmmon.tar /usr/lib/vmware/modules/source/vmmon.tar 
+    vmware-modconfig --console --install-all
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;コマンド実行後に再起動を行うことで、VMware Workstationが正常に動作します。&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;参考文献&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://bbs.archlinux.org/viewtopic.php?id=230487&quot;&gt;Arch Linux User Forums VMWare Workstation 14.0 - not enough physical memory&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Sat, 18 Nov 2017 00:00:00 -0600</pubDate>
+        <link>http://0.0.0.0:4000/2017-11-18/vmware-on-kernal-413/</link>
+        <guid isPermaLink="true">http://0.0.0.0:4000/2017-11-18/vmware-on-kernal-413/</guid>
+        
+        <category>Linux_Tips</category>
+        
+        
+        <category>poem</category>
+        
+      </item>
+    
+      <item>
+        <title>紅華祭 2017を終えて</title>
+        <description>&lt;p&gt;LinuxClubの1年のKoyamaです。&lt;/p&gt;
+
+&lt;p&gt;今後、このブログを通じてサークルの活動の様子を積極的に発信していきたいと思います。この記事では2017年度 紅華祭を振り返ってみたいと思います。まず、部長から全体を通したコメントです。&lt;/p&gt;
+
+&lt;h2 id=&quot;全体を通じて&quot;&gt;全体を通じて&lt;/h2&gt;
+
+&lt;p&gt;前日に完成している展示物がなくて焦ったものですがみなさんいいものを作ってきてくれて驚きました。普段コンソールに向かっているので見栄えのいいものと言われても困ったとは思いますが良い作品を展示できてよかったです。&lt;/p&gt;
+
+&lt;h2 id=&quot;個人制作&quot;&gt;個人制作&lt;/h2&gt;
+
+&lt;p&gt;1,2年生を中心に個人作品を制作しました。&lt;code class=&quot;highlighter-rouge&quot;&gt;作品名 [作者]&lt;/code&gt;という形式で見出しをつけています。&lt;/p&gt;
+
+&lt;h3 id=&quot;1-空飛ぶ絨毯-koyama&quot;&gt;1. 空飛ぶ絨毯 [Koyama]&lt;/h3&gt;
+
+&lt;p&gt;Webカメラで取得した映像とあらかじめ用意した動画をクロマキー合成するプログラムを作成し、展示しました。使用した言語は&lt;code class=&quot;highlighter-rouge&quot;&gt;Python&lt;/code&gt;でライブラリは&lt;code class=&quot;highlighter-rouge&quot;&gt;OpenCV&lt;/code&gt;を使用しました。以下の記事を参考にしながらコードを書きました。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.blog.umentu.work/python-opencv3%E3%81%A7%E7%94%BB%E5%83%8F%E3%81%AE%E7%94%BB%E7%B4%A0%E5%80%A4%E3%82%92%E4%BA%8C%E5%80%A4%E5%8C%96%E3%81%97%E3%81%A6%E5%87%BA%E5%8A%9B/&quot;&gt;Python OpenCV3で画像の画素値を二値化して出力 | from umentu import stupid&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://make.kosakalab.com/rpi/opencv_3/&quot;&gt;RPi + Python + OpenCV その３「クロマキー」 | OpenCV | kosakalab&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_gui/py_video_display/py_video_display.html&quot;&gt;Getting Started with Videos — OpenCV-Python Tutorials 1 documentation&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;ソースコードは以下です。&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/tomoyk/698c6294637b16b140da404854e37389.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;途中でOpenCVのエラーで終了してしまうのでシェル芸で回避しました。パラメータを変えることで背景の動画を変更できる機能も実装してうまく連携させました。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;while true
+do
+  for foo in {1..3}
+  do
+    python3 origin.py $foo
+  done
+done
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;実際に動かすと以下のようになります。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://pbs.twimg.com/media/DLlmyHjUIAAnZ7c.jpg:large&quot; width=&quot;500&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/kokasai2017/koyama_screenshot.jpg&quot; width=&quot;300&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;2-移植版ドアセンサー-koyama&quot;&gt;2. 移植版ドアセンサー [Koyama]&lt;/h3&gt;
+
+&lt;p&gt;サークルの部室にドアが開くと音が鳴る謎のシステム(Raspi + スピーカ)を作りました。その移植版をArduino UNOとProcessingを使って作成しました。センサーは秋月電子で販売されているドア用センサーを使いました。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://akizukidenshi.com/catalog/g/gP-04025/&quot;&gt;ケース入りリードスイッチ（磁石付セット）ＭＣ－１４ＡＧ: センサ一般 秋月電子通商 電子部品 ネット通販&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Arduinoには次の回路を実装しました。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/tomoyk/kokasai17/master/proc_testVisualizer/images/architecture.jpg&quot; width=&quot;500&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;次にArduinoへ以下のプログラムを書き込みます。このプログラムではdigital 7番ピンに接続されたセンサーの値を取得してシリアルに書き出す処理を行っています。&lt;code class=&quot;highlighter-rouge&quot;&gt;delay(100)&lt;/code&gt;によって遅延処理を行っています。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#define SENSOR_PIN 7
+
+void setup(){
+  Serial.begin(9600);
+}
+
+void loop(){
+  int val = digitalRead(SENSOR_PIN);
+  Serial.write(val);
+  delay(100);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Arduinoにプログラムが書き込めているかシリアルモニタを使って確認します。&lt;/p&gt;
+
+&lt;p&gt;次にProcessingを起動します。そして、以下のプログラムを入力します。&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/tomoyk/f67947c7f7913bde2ec0db272487e5e8.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;プログラムの概要について説明します。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;プログラム先頭の&lt;code class=&quot;highlighter-rouge&quot;&gt;import processing.sound.*;&lt;/code&gt;ではあらかじめインストールしたサウンドを再生するライブラリを読み込んでいます。&lt;/li&gt;
+  &lt;li&gt;その後にある&lt;code class=&quot;highlighter-rouge&quot;&gt;boolean&lt;/code&gt;や&lt;code class=&quot;highlighter-rouge&quot;&gt;PImage&lt;/code&gt;や&lt;code class=&quot;highlighter-rouge&quot;&gt;Soundfile&lt;/code&gt;ではセンサーの状態、画像ファイル、音声ファイルを保持する変数を宣言しています。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;setup()&lt;/code&gt;ではシリアル、画像、音声の初期化を行っています。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;setBack()&lt;/code&gt;では背景を設定しています。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;draw()&lt;/code&gt;ではセンサーの値に応じてドアが開いているか、閉じているかを判断しています。また、その状況に応じて画像や音声を切り替えています。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;次に画像ファイルと音声ファイルを用意します。&lt;/p&gt;
+
+&lt;p&gt;画像はいらすとやから入手しました。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.irasutoya.com/2016/07/blog-post_832.html&quot;&gt;いろいろな状態のドアのイラスト | かわいいフリー素材集 いらすとや&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;ダウンロードした画像ファイルのドアが揃うようにGIMPで調整しました。そして、ファイル名を&lt;code class=&quot;highlighter-rouge&quot;&gt;door_close.png&lt;/code&gt;と&lt;code class=&quot;highlighter-rouge&quot;&gt;door_open.png&lt;/code&gt;にリネームします。&lt;/p&gt;
+
+&lt;p&gt;音声は音声合成システム&lt;strong&gt;Open JTalk&lt;/strong&gt;を使用して作成しました。今回は一時的な使用だった為、Dockerを使いました。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://hub.docker.com/r/yamamotofebc/open_jtalk/&quot;&gt;yamamotofebc/open_jtalk - Docker Hub&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;まず、イメージを入手します。&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;docker pull yamamotofebc/open_jtalk&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;次にリファレンスに従って生成したい文字列を設定してコマンドを実行します。単純な読み上げにしか対応していないので&lt;code class=&quot;highlighter-rouge&quot;&gt;こんにちは&lt;/code&gt;を&lt;code class=&quot;highlighter-rouge&quot;&gt;こんにちわ&lt;/code&gt;として設定しています。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;echo &quot;こんにちわ&quot; | docker run -i --rm yamamotofebc/open_jtalk &amp;gt; door_hello.wav
+echo &quot;ばいばいきん&quot; | docker run -i --rm yamamotofebc/open_jtalk &amp;gt; door_close.wav
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;これらの準備が終わったらProcessingのIDEに戻って実行ボタンを押下します。LinuxではIDEをroot権限で起動しないとシリアルデバイスにアクセスできないので注意が必要です。&lt;/p&gt;
+
+&lt;p&gt;うまく動作すればドアセンサーが離れたときに画面上にドアが開いている画像が表示され、「こんにちは」という音声が流れます。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/tomoyk/kokasai17/master/proc_testVisualizer/images/demoOpen.jpg&quot; width=&quot;300&quot; /&gt;
+&lt;img src=&quot;https://raw.githubusercontent.com/tomoyk/kokasai17/master/proc_testVisualizer/images/demoClose.jpg&quot; width=&quot;300&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;3-物体認識-部長&quot;&gt;3. 物体認識 [部長]&lt;/h3&gt;
+&lt;p&gt;DarkNetを使った物体認識ソフトウェアを作りました。
+基本的な構造としては&lt;code class=&quot;highlighter-rouge&quot;&gt;Docker&lt;/code&gt;を使い、&lt;code class=&quot;highlighter-rouge&quot;&gt;フロントエンド&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;バックエンド&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;静的ファイルの配信サーバー&lt;/code&gt;という形で構築し、AWS上で動作させていました。&lt;/p&gt;
+
+&lt;p&gt;※&lt;code class=&quot;highlighter-rouge&quot;&gt;DarkNet&lt;/code&gt;とはC言語で書かれた機械学習ライブラリです。学習済みデータが公開されているので画像をぶん投げるだけで解析してくれる優れものです。&lt;/p&gt;
+
+&lt;h4 id=&quot;フロントエンド&quot;&gt;フロントエンド&lt;/h4&gt;
+&lt;p&gt;使用ライブラリ&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;- React
+- Recompose
+- Material UI
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;フロントエンドではES6に&lt;code class=&quot;highlighter-rouge&quot;&gt;React&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Recompose&lt;/code&gt;を使いました。
+来場者にアクセスさせて写真をアップロード、解析した写真を表示する機能しか必要なかったのですが無駄にモダンな構成になっています。特筆することはないです。&lt;/p&gt;
+
+&lt;h4 id=&quot;バックエンド&quot;&gt;バックエンド&lt;/h4&gt;
+&lt;p&gt;使用ライブラリ&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;- PIL (画像処理)
+- falcon (APIサーバー)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;バックエンドはpythonで書きました。falconでルーティングしてDarkNetに投げるなどの役割を担っています。&lt;/p&gt;
+
+&lt;p&gt;PILはiphoneから投げられた画像に対して処理をしています。画像は主にEXIFと呼ばれる情報の格納部分があり、そこにOrientationという画像の向きを保持する情報があります。iphoneで撮影された画像はその部分が常にright-topという横向きの状態で保持されるらしく、PILを使って画像を縦向きに回転して保存する処理をしてます。&lt;/p&gt;
+
+&lt;p&gt;PILは&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;img&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Image&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filename&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;exif&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_getexif&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;orientation&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;exif&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x112&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;save&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;original_filename&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;とかするとexifをスッととってこれて楽でよかったです。&lt;/p&gt;
+
+&lt;h4 id=&quot;静的ファイルの配信サーバー&quot;&gt;静的ファイルの配信サーバー&lt;/h4&gt;
+&lt;p&gt;nginxでDarkNetで書き出された画像を配信してるだけです。特筆事項なし。&lt;/p&gt;
+
+&lt;h4 id=&quot;反省など&quot;&gt;反省など&lt;/h4&gt;
+&lt;p&gt;色々ばたついてて作り始めるのが遅かったせいで大したものが作れなかったのが心残りです。それとDarkNetをDockerの上に載せていたせいでレスポンスがだいぶ悪くなってしまいました。workerも4つしか動かしておらずお世辞にも十分だったとは言えない感じです。来年はGTX TITANとか買って望みたいです。嘘です。&lt;/p&gt;
+
+&lt;h3 id=&quot;4-opencvのチュートリアル-homirun&quot;&gt;4. OpenCVのチュートリアル [homirun]&lt;/h3&gt;
+
+&lt;p&gt;Webカメラで撮影された動画をリアルタイムでカスケード分類器を用い顔認識させてみました。
+顔を検出してその上に某氏の画像をオーバーレイしました。
+PyConの日に作りました。&lt;/p&gt;
+
+&lt;p&gt;使用ライブラリ&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;OpenCV&lt;/li&gt;
+  &lt;li&gt;numpy&lt;/li&gt;
+  &lt;li&gt;pyplot&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/kokasai2017/homirun_screenshot.png&quot; width=&quot;500&quot; /&gt;&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/homirun/035f39415f9d976f9da86ffe2632519f.js&quot;&gt;&lt;/script&gt;
+
+&lt;h3 id=&quot;5-声でツイートできるプログラム-panakuma&quot;&gt;5. 声でツイートできるプログラム [panakuma]&lt;/h3&gt;
+
+&lt;p&gt;　音声認識で録音した音声をテキストに起こして、ツイッターにポストするプログラムです。言語はPythonで、音声認識はGoogle Cloud APIを使いました。&lt;/p&gt;
+
+&lt;p&gt;ソースコードは以下です。&lt;/p&gt;
+
+&lt;h4 id=&quot;全体の実行スクリプト&quot;&gt;全体の実行スクリプト&lt;/h4&gt;
+
+&lt;script src=&quot;https://gist.github.com/kumapana/1f492a0cd948896eb090b28ac14c32a1.js&quot;&gt;&lt;/script&gt;
+
+&lt;h4 id=&quot;google-apiを叩くソース&quot;&gt;Google APIを叩くソース&lt;/h4&gt;
+
+&lt;script src=&quot;https://gist.github.com/kumapana/1f492a0cd948896eb090b28ac14c32a1.js&quot;&gt;&lt;/script&gt;
+
+&lt;h4 id=&quot;ツイッターに投げるソース&quot;&gt;ツイッターに投げるソース&lt;/h4&gt;
+
+&lt;script src=&quot;https://gist.github.com/kumapana/be3eb1e828384f427d00349dfe387117.js&quot;&gt;&lt;/script&gt;
+
+&lt;h4 id=&quot;ハマった点&quot;&gt;ハマった(?)点&lt;/h4&gt;
+
+&lt;p&gt;Google Cloud APIから吐かれるjsonファイルの取り扱いで1日ほどハマってました。(最終的にK氏に解決していただいた)&lt;/p&gt;
+
+&lt;p&gt;当初の予定では、京都大学 河原研究室が開発したJuliusという音声認識システムを使う予定でしたが、認識精度が低かったため、Google APIに投げることにしました。&lt;/p&gt;
+
+&lt;h3 id=&quot;6-cpu-use-rate-lapua&quot;&gt;6. CPU use rate [lapua]&lt;/h3&gt;
+
+&lt;p&gt;CPU使用率をリアルタイムで表示するGUIアプリ。16コアまで対応。使用ライブラリはQt5.0.0
+初めてのクラス設計に苦労しました。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/kokasai2017/lapua_screenshot.png&quot; width=&quot;500&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;7-数当てゲーム-ayu&quot;&gt;7. 数当てゲーム [ayu]&lt;/h3&gt;
+
+&lt;p&gt;コンソールから入力された数字に対して当ってるだの当ってないだの評価して返す簡単なゲーム．Javaで書きました．GUI化させていきたい．&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/kokasai2017/ayu_screenshot.png&quot; width=&quot;500&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;8-目覚まし-uwdd&quot;&gt;8. 目覚まし [uwdd]&lt;/h3&gt;
+
+&lt;p&gt;今回初めて&lt;del&gt;まともな&lt;/del&gt;プログラミング作品を作りました。朝起きれなくて遅刻が増えてきたので今回は目覚まし時計を作りました。まだいくつか不具合があったりデザインが簡素すぎたりするので暇があれば直していきたい。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/kokasai2017/uwdd_screenshot.png&quot; width=&quot;500&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;毎年恒例のlc-ob会&quot;&gt;毎年恒例?のLC OB会&lt;/h2&gt;
+
+&lt;p&gt;LinuxClubの歴史は長いらしく、古くはLinux研究所という名前だったそうです。&lt;/p&gt;
+
+&lt;p&gt;学祭で社会人OBが集まるということが恒例になっているようです。OBと現役生の交流の場になっていました。&lt;/p&gt;
+
+&lt;h2 id=&quot;2日目から始まったライブ中継&quot;&gt;2日目から始まったライブ中継&lt;/h2&gt;
+
+&lt;p&gt;2日目から先輩のカメラでライブ中継を行いました。&lt;/p&gt;
+
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/KyDryF34rFQ?rel=0&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+
+&lt;h2 id=&quot;大学からの取材&quot;&gt;大学からの取材&lt;/h2&gt;
+
+&lt;p&gt;大学の広報から取材を受けました。何かしらの映像で公開されるかと思われます。おそらく、紹介動画かと思われます。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.teu.ac.jp/student/006532.html&quot;&gt;学園祭（紅華祭・かまた祭）[2017年] | 学生生活 | 東京工科大学&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;来年に向けて&quot;&gt;来年に向けて&lt;/h2&gt;
+
+&lt;p&gt;展示品の数が少なかったので来年はもっと数を増やすべきだと思いました。来場された方が見て分かるよう説明を加えるなど「何を、どのように実現しているか」を明確にする必要があると感じました。&lt;/p&gt;
+
+&lt;p&gt;また、来場された方から「今年は冊子を作ってないんですか？」と聞かれることがあったので来年は部誌のような冊子を作成したいと思います。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;来場して頂きありがとうございました。ぜひ来年もお越しください!!&lt;/strong&gt;&lt;/p&gt;
+
+</description>
+        <pubDate>Fri, 20 Oct 2017 00:00:00 -0500</pubDate>
+        <link>http://0.0.0.0:4000/2017-10-20/kokasai-matome/</link>
+        <guid isPermaLink="true">http://0.0.0.0:4000/2017-10-20/kokasai-matome/</guid>
+        
+        <category>kokasai</category>
+        
+        <category>2017</category>
+        
+        <category>festival</category>
+        
+        
+        <category>poem</category>
+        
+      </item>
     
       <item>
         <title>LinuxClub Blogをはじめました.</title>
@@ -22,9 +332,9 @@
 &lt;p&gt;なお, ブログの構築に関しては別記事で書きたいと思います.&lt;/p&gt;
 
 </description>
-        <pubDate>Sat, 17 Jun 2017 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/2017-06-17/hello-blog/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017-06-17/hello-blog/</guid>
+        <pubDate>Sat, 17 Jun 2017 00:00:00 -0500</pubDate>
+        <link>http://0.0.0.0:4000/2017-06-17/hello-blog/</link>
+        <guid isPermaLink="true">http://0.0.0.0:4000/2017-06-17/hello-blog/</guid>
         
         <category>hello</category>
         

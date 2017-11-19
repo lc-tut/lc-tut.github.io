@@ -99,7 +99,7 @@ html{
     margin: 0px 0px 0px 0px;
 }
 body {
-    background-image: url(http://localhost:4000/static/bg.jpg);
+    background-image: url(http://0.0.0.0:4000/static/bg.jpg);
     height: 100%;
     padding: 0px 0px 0px 0px;
     margin: 0px 0px 0px 0px;
@@ -257,5 +257,8 @@ a:active {text-decoration: none}	/* 选定的链接 */
 @media screen and (max-width: 767px) {
     .banner h1{
         font-size: 36px;
+    }
+    p.navbar-text {
+        display: none;
     }
 }
