@@ -5,9 +5,62 @@
     <description>東京工科大公認サークル LinuxClub のブログです.</description>
     <link>http://0.0.0.0:4000/</link>
     <atom:link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 19 Nov 2017 00:25:11 -0600</pubDate>
-    <lastBuildDate>Sun, 19 Nov 2017 00:25:11 -0600</lastBuildDate>
-    <generator>Jekyll v3.6.2</generator>
+    <pubDate>Fri, 22 Dec 2017 08:46:39 -0600</pubDate>
+    <lastBuildDate>Fri, 22 Dec 2017 08:46:39 -0600</lastBuildDate>
+    <generator>Jekyll v3.5.2</generator>
+    
+      <item>
+        <title>中古のThinkpad X230を買った</title>
+        <description>&lt;p&gt;次期会計のKoyamaです。マイニングしているマシンで温まりたい季節ですね。&lt;/p&gt;
+
+&lt;p&gt;ちょうど1ヶ月前くらいになりますが秋葉原で中古のThinkpad X230を買いました。主なスペックはSSD 240GBでOSなし、メモリ8G、CPU Intel Core-i5(haswell)です。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/x230-keyboard/before-jis.jpg&quot; width=&quot;500&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;日本で流通しているラップトップのほとんどはキーボードが日本語配列ですが、個人的に好きなのは英字配列なのでキーボードを交換することにしました。Amazonに適合するキーボードが出品されていたの注文しました。出品者の所在地が中国だったので少し不安がありました..。&lt;/p&gt;
+
+&lt;p&gt;国際郵便なので追跡してみたところ、チャイナポストで輸送されていることが分かり少し安心しました。ただ、調べてみたところチャイナポストはかなり配送が遅いらしいことが分かり凹みました。&lt;/p&gt;
+
+&lt;p&gt;2週間ほど経った頃に日本郵便からキーボードが配送され、開封してみるとキレイな英字キーボードが入っていました（歓喜）&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/x230-keyboard/before-us.jpg&quot; width=&quot;500&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;キーボードの交換&quot;&gt;キーボードの交換&lt;/h3&gt;
+
+&lt;p&gt;Thinkpadのキーボード交換は2箇所のネジを外すだけで行えることが以下のサイトで分かりました。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://kankdkt.com/thinkpadx230keyboardchange/&quot;&gt;Thinkpad X230のキーボード交換方法は15分以下で完了。すごく簡単。&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;実際にキーボードを外してみます..。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/x230-keyboard/working.jpg&quot; width=&quot;500&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;新しいキーボードを取り付けました。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/x230-keyboard/after-us.jpg&quot; width=&quot;500&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;osのインストール&quot;&gt;OSのインストール&lt;/h3&gt;
+
+&lt;p&gt;買った時にgentooのインストールをしかけて中断したので年末に再挑戦したいと思います。&lt;/p&gt;
+
+&lt;p&gt;img&lt;/p&gt;
+
+&lt;p&gt;それではメリークリスマス &amp;amp;&amp;amp; 良いお年を&lt;/p&gt;
+</description>
+        <pubDate>Fri, 22 Dec 2017 00:00:00 -0600</pubDate>
+        <link>http://0.0.0.0:4000/2017-12-22/x230-us-keyboard/</link>
+        <guid isPermaLink="true">http://0.0.0.0:4000/2017-12-22/x230-us-keyboard/</guid>
+        
+        <category>thinkpad</category>
+        
+        <category>x230</category>
+        
+        <category>キーボード</category>
+        
+        
+        <category>hardware</category>
+        
+      </item>
     
       <item>
         <title>VMware Workstation Pro 14がLinux Kernel4.13で動くようにする</title>
@@ -29,7 +82,7 @@
 
 &lt;p&gt;次のコマンドでパッチを当てることができます。&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    sudo -i
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    sudo -i
     cd /tmp
     cp /usr/lib/vmware/modules/source/vmmon.tar .
     tar xf vmmon.tar
@@ -40,7 +93,8 @@
     rm -fr vmmon-only
     mv -f vmmon.tar /usr/lib/vmware/modules/source/vmmon.tar 
     vmware-modconfig --console --install-all
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;p&gt;コマンド実行後に再起動を行うことで、VMware Workstationが正常に動作します。&lt;/p&gt;
 
@@ -90,14 +144,15 @@
 
 &lt;p&gt;途中でOpenCVのエラーで終了してしまうのでシェル芸で回避しました。パラメータを変えることで背景の動画を変更できる機能も実装してうまく連携させました。&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;while true
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;while true
 do
   for foo in {1..3}
   do
     python3 origin.py $foo
   done
 done
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;p&gt;実際に動かすと以下のようになります。&lt;/p&gt;
 
@@ -117,7 +172,7 @@ done
 
 &lt;p&gt;次にArduinoへ以下のプログラムを書き込みます。このプログラムではdigital 7番ピンに接続されたセンサーの値を取得してシリアルに書き出す処理を行っています。&lt;code class=&quot;highlighter-rouge&quot;&gt;delay(100)&lt;/code&gt;によって遅延処理を行っています。&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#define SENSOR_PIN 7
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#define SENSOR_PIN 7
 
 void setup(){
   Serial.begin(9600);
@@ -128,7 +183,8 @@ void loop(){
   Serial.write(val);
   delay(100);
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;p&gt;Arduinoにプログラムが書き込めているかシリアルモニタを使って確認します。&lt;/p&gt;
 
@@ -164,9 +220,10 @@ void loop(){
 
 &lt;p&gt;次にリファレンスに従って生成したい文字列を設定してコマンドを実行します。単純な読み上げにしか対応していないので&lt;code class=&quot;highlighter-rouge&quot;&gt;こんにちは&lt;/code&gt;を&lt;code class=&quot;highlighter-rouge&quot;&gt;こんにちわ&lt;/code&gt;として設定しています。&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;echo &quot;こんにちわ&quot; | docker run -i --rm yamamotofebc/open_jtalk &amp;gt; door_hello.wav
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;echo &quot;こんにちわ&quot; | docker run -i --rm yamamotofebc/open_jtalk &amp;gt; door_hello.wav
 echo &quot;ばいばいきん&quot; | docker run -i --rm yamamotofebc/open_jtalk &amp;gt; door_close.wav
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;p&gt;これらの準備が終わったらProcessingのIDEに戻って実行ボタンを押下します。LinuxではIDEをroot権限で起動しないとシリアルデバイスにアクセスできないので注意が必要です。&lt;/p&gt;
 
@@ -183,31 +240,34 @@ echo &quot;ばいばいきん&quot; | docker run -i --rm yamamotofebc/open_jtalk
 
 &lt;h4 id=&quot;フロントエンド&quot;&gt;フロントエンド&lt;/h4&gt;
 &lt;p&gt;使用ライブラリ&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;- React
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;- React
 - Recompose
 - Material UI
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;p&gt;フロントエンドではES6に&lt;code class=&quot;highlighter-rouge&quot;&gt;React&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Recompose&lt;/code&gt;を使いました。
 来場者にアクセスさせて写真をアップロード、解析した写真を表示する機能しか必要なかったのですが無駄にモダンな構成になっています。特筆することはないです。&lt;/p&gt;
 
 &lt;h4 id=&quot;バックエンド&quot;&gt;バックエンド&lt;/h4&gt;
 &lt;p&gt;使用ライブラリ&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;- PIL (画像処理)
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;- PIL (画像処理)
 - falcon (APIサーバー)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;p&gt;バックエンドはpythonで書きました。falconでルーティングしてDarkNetに投げるなどの役割を担っています。&lt;/p&gt;
 
 &lt;p&gt;PILはiphoneから投げられた画像に対して処理をしています。画像は主にEXIFと呼ばれる情報の格納部分があり、そこにOrientationという画像の向きを保持する情報があります。iphoneで撮影された画像はその部分が常にright-topという横向きの状態で保持されるらしく、PILを使って画像を縦向きに回転して保存する処理をしてます。&lt;/p&gt;
 
 &lt;p&gt;PILは&lt;/p&gt;
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;img&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Image&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filename&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;img&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Image&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filename&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;exif&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_getexif&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;orientation&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;exif&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x112&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;save&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;original_filename&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 &lt;p&gt;とかするとexifをスッととってこれて楽でよかったです。&lt;/p&gt;
 
 &lt;h4 id=&quot;静的ファイルの配信サーバー&quot;&gt;静的ファイルの配信サーバー&lt;/h4&gt;

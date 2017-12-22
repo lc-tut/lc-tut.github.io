@@ -5,46 +5,49 @@
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
     
     <url>
+        <loc>http://0.0.0.0:4000/2017-12-22/x230-us-keyboard/</loc>
+        <lastmod>2017-12-22T08:46:39-06:00</lastmod>
+        <changefreq>weekly</changefreq>
+    </url>
+    
+    <url>
         <loc>http://0.0.0.0:4000/2017-11-18/vmware-on-kernal-413/</loc>
-        <lastmod>2017-11-19T00:25:11-06:00</lastmod>
+        <lastmod>2017-12-22T08:46:39-06:00</lastmod>
         <changefreq>weekly</changefreq>
     </url>
     
     <url>
         <loc>http://0.0.0.0:4000/2017-10-20/kokasai-matome/</loc>
-        <lastmod>2017-11-19T00:25:11-06:00</lastmod>
+        <lastmod>2017-12-22T08:46:39-06:00</lastmod>
         <changefreq>weekly</changefreq>
     </url>
     
     <url>
         <loc>http://0.0.0.0:4000/2017-06-17/hello-blog/</loc>
-        <lastmod>2017-11-19T00:25:11-06:00</lastmod>
+        <lastmod>2017-12-22T08:46:39-06:00</lastmod>
         <changefreq>weekly</changefreq>
     </url>
     
     
     <url>
         <loc>http://0.0.0.0:4000/archive/</loc>
-        <lastmod>2017-11-19T00:25:11-06:00</lastmod>
+        <lastmod>2017-12-22T08:46:39-06:00</lastmod>
         <changefreq>weekly</changefreq>
     </url>
     
     
     <url>
         <loc>http://0.0.0.0:4000/category/</loc>
-        <lastmod>2017-11-19T00:25:11-06:00</lastmod>
+        <lastmod>2017-12-22T08:46:39-06:00</lastmod>
         <changefreq>weekly</changefreq>
     </url>
     
     
     <url>
         <loc>http://0.0.0.0:4000/tags/</loc>
-        <lastmod>2017-11-19T00:25:11-06:00</lastmod>
+        <lastmod>2017-12-22T08:46:39-06:00</lastmod>
         <changefreq>weekly</changefreq>
     </url>
-    
-    
-    
     
     
     

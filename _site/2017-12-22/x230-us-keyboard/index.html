@@ -2,15 +2,15 @@
 <html>
 
 <head>
-    <title>VMware Workstation Pro 14がLinux Kernel4.13で動くようにする</title>
+    <title>中古のThinkpad X230を買った</title>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="keywords" content="VMware Workstation Pro 14がLinux Kernel4.13で動くようにする, Linux, Linux_Tips, LinuxClub BLOG" />
-    <meta name="description" content="VMware Workstation Pro 14がLinux Kernel4.13で動くようにする, Linux, Linux_Tips, Author: panakumaLinux Kernal 4.13がやっと動いたが…私のマシンでは長らくLinux kernel 4.4系しか動かなかったのですが、Oracle VirtualBoxの関連コンポーネントを根こそぎ削除したところ4.13系が動作しました。ですが…" />
+    <meta name="keywords" content="中古のThinkpad X230を買った, hardware, thinkpad,x230,キーボード, LinuxClub BLOG" />
+    <meta name="description" content="中古のThinkpad X230を買った, hardware, thinkpad,x230,キーボード, 次期会計のKoyamaです。マイニングしているマシンで温まりたい季節ですね。この記事はTUT 今年もTwitterしかしてません Advent Calendar 2017 - Adventarの22日目です。" />
     <meta name="theme-color" content="#2CA6CB"/>
     <link rel="shortcut icon" type="image/x-icon" media="screen" href="http://0.0.0.0:4000/static/img/favicon.ico" />
-    <link rel="canonical" href="http://0.0.0.0:4000/2017-11-18/vmware-on-kernal-413/" />
+    <link rel="canonical" href="http://0.0.0.0:4000/2017-12-22/x230-us-keyboard/" />
     <link rel="alternate" type="application/rss+xml" title="LinuxClub BLOG" href="http://0.0.0.0:4000/feed.xml"  />
 
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css"/>
@@ -84,58 +84,59 @@
     <div class="content col-lg-9">
         <div class="sheet post">
           <header>
-            <h2>VMware Workstation Pro 14がLinux Kernel4.13で動くようにする</h2>
+            <h2>中古のThinkpad X230を買った</h2>
             <p class="post-meta">
-                <span class="octicon octicon-clock"></span> Nov 18, 2017
+                <span class="octicon octicon-clock"></span> Dec 22, 2017
             </p>
             <p class="post-tag">
-                <span><a href="http://0.0.0.0:4000/category/#Linux"><span class="octicon octicon-list-unordered"></span>&nbsp;Linux</a></span>
+                <span><a href="http://0.0.0.0:4000/category/#hardware"><span class="octicon octicon-list-unordered"></span>&nbsp;hardware</a></span>
                 <span>
-                    <a class="word-keep" href="http://0.0.0.0:4000/tags/#Linux_Tips"><span class="octicon octicon-tag"></span>&nbsp;Linux_Tips</a>
+                    <a class="word-keep" href="http://0.0.0.0:4000/tags/#thinkpad"><span class="octicon octicon-tag"></span>&nbsp;thinkpad</a>
+                    
+                    <a class="word-keep" href="http://0.0.0.0:4000/tags/#x230"><span class="octicon octicon-tag"></span>&nbsp;x230</a>
+                    
+                    <a class="word-keep" href="http://0.0.0.0:4000/tags/#キーボード"><span class="octicon octicon-tag"></span>&nbsp;キーボード</a>
                     
                 </span>
             </p>
           </header>
           <hr class="boundary">
           <article>
-            <p>Author: <a href="https://github.com/kumapana/">panakuma</a></p>
-<h2 id="linux-kernal-413がやっと動いたが">Linux Kernal 4.13がやっと動いたが…</h2>
-<p>私のマシンでは長らくLinux kernel 4.4系しか動かなかったのですが、Oracle VirtualBoxの関連コンポーネントを根こそぎ削除したところ4.13系が動作しました。ですが…</p>
+            <p>次期会計のKoyamaです。マイニングしているマシンで温まりたい季節ですね。この記事は<a href="https://adventar.org/calendars/2266#list-2017-12-22">TUT 今年もTwitterしかしてません Advent Calendar 2017 - Adventar</a>の22日目です。</p>
 
-<p><strong>VMware Workstation Pro 14上の仮想マシンが起動しなくなりました</strong></p>
+<p>ちょうど1ヶ月前くらいになりますが秋葉原で中古のThinkpad X230を買いました。主なスペックはSSD 240GBでOSなし、メモリ8G、CPU Intel Core-i5(haswell)です。</p>
 
-<p>具体的には次のようなエラーメッセージが表示されます。</p>
+<p><img src="/images/x230-keyboard/before-jis.jpg" width="500" /></p>
 
-<p><img src="/images/vmware/img01.png" alt="unable to reserve memory" /></p>
+<p>日本で流通しているラップトップのほとんどはキーボードが日本語配列ですが、個人的に好きなのは英字配列なのでキーボードを交換することにしました。Amazonに適合するキーボードが出品されていたの注文しました。出品者の所在地が中国だったので少し不安がありました..。</p>
 
-<p><img src="/images/vmware/img02.png" alt="could not lock memory" /></p>
+<p>国際郵便なので追跡してみたところ、チャイナポストで輸送されていることが分かり少し安心しました。ただ、調べてみたところチャイナポストはかなり配送が遅いらしいことが分かり凹みました。</p>
 
-<p><img src="/images/vmware/img03.png" alt="failed to switch to 64bit mode" /></p>
+<p>2週間ほど経った頃に日本郵便からキーボードが配送され、開封してみるとキレイな英字キーボードが入っていました（歓喜）</p>
 
-<p>VMware Workstation がkernel4.13に対応していないことが原因のようです。Kernelに対する命令である<code class="highlighter-rouge">global_page_state</code>が4.13以降で<code class="highlighter-rouge">global_zone_page_state</code>に変わったことが原因です。有志の方がこれに対応するパッチを作成していたので、これを用いて対処していきます。</p>
+<p><img src="/images/x230-keyboard/before-us.jpg" width="500" /></p>
 
-<p>次のコマンドでパッチを当てることができます。</p>
+<h3 id="キーボードの交換">キーボードの交換</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>    sudo -i
-    cd /tmp
-    cp /usr/lib/vmware/modules/source/vmmon.tar .
-    tar xf vmmon.tar
-    rm vmmon.tar
-    wget https://raw.githubusercontent.com/mkubecek/vmware-host-modules/fadedd9c8a4dd23f74da2b448572df95666dfe12/vmmon-only/linux/hostif.c
-    mv -f hostif.c vmmon-only/linux/hostif.c 
-    tar cf vmmon.tar vmmon-only
-    rm -fr vmmon-only
-    mv -f vmmon.tar /usr/lib/vmware/modules/source/vmmon.tar 
-    vmware-modconfig --console --install-all
-</code></pre>
-</div>
+<p>Thinkpadのキーボード交換は2箇所のネジを外すだけで行えることが以下のサイトで分かりました。</p>
 
-<p>コマンド実行後に再起動を行うことで、VMware Workstationが正常に動作します。</p>
+<p><a href="http://kankdkt.com/thinkpadx230keyboardchange/">Thinkpad X230のキーボード交換方法は15分以下で完了。すごく簡単。</a></p>
 
-<hr />
-<p>参考文献</p>
+<p>実際にキーボードを外してみます..。</p>
 
-<p><a href="https://bbs.archlinux.org/viewtopic.php?id=230487">Arch Linux User Forums VMWare Workstation 14.0 - not enough physical memory</a></p>
+<p><img src="/images/x230-keyboard/working.jpg" width="500" /></p>
+
+<p>新しいキーボードを取り付けました。</p>
+
+<p><img src="/images/x230-keyboard/after-us.jpg" width="500" /></p>
+
+<h3 id="osのインストール">OSのインストール</h3>
+
+<p>買った時にgentooのインストールをしかけて中断したので年末に再挑戦したいと思います。</p>
+
+<p><img src="/images/x230-keyboard/gentoo.jpg" width="500" /></p>
+
+<p>それではメリークリスマス &amp;&amp; 良いお年を</p>
 
           </article>
           <hr class="boundary">
@@ -175,7 +176,15 @@
                 <ul>
                     
                     <li>
-                        <a href="http://0.0.0.0:4000/tags#Linux_Tips"><span class="octicon octicon-tag"></span>&nbsp;Linux_Tips</a>
+                        <a href="http://0.0.0.0:4000/tags#thinkpad"><span class="octicon octicon-tag"></span>&nbsp;thinkpad</a>
+                    </li>
+                    
+                    <li>
+                        <a href="http://0.0.0.0:4000/tags#x230"><span class="octicon octicon-tag"></span>&nbsp;x230</a>
+                    </li>
+                    
+                    <li>
+                        <a href="http://0.0.0.0:4000/tags#キーボード"><span class="octicon octicon-tag"></span>&nbsp;キーボード</a>
                     </li>
                     
                 </ul>
