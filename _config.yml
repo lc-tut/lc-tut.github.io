@@ -12,7 +12,6 @@ paginate_path: ":num"
 baseurl: ""
 
 
-
 defaults:
   -
     scope:
@@ -24,15 +23,12 @@ defaults:
       scripts : [post.js]
 
 
-
 title: "LinuxClub BLOG"
 email: "linuxclub.tut@gmail.com"
 description: "東京工科大公認サークル LinuxClub のブログです."
 github_username:  "lc-tut"
 swiftype_searchId: ""
 disqus_shortname: ""
-
-
 
 
 url: "https://lc-tut.github.io"
@@ -44,5 +40,8 @@ imgrepo: "https://lc-tut.github.io/static/img"
 
 
 # Added myself
-gems: 
-  - jekyll-paginate
+#gems: 
+#  - jekyll-paginate
+
+# Fixed 2018/02/04
+plugins: [jekyll-paginate]

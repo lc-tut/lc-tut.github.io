@@ -15,15 +15,17 @@
 	cd ..
 	
 	# Dockerコンテナでビルド
-	docker run --rm --volume=$(pwd):/srv/jekyll -it jekyll/jekyll:pages jekyll build
+	docker run --rm --volume=$(pwd):/srv/jekyll -it jekyll/jekyll:pages jekyll build --incremental --verbose
 	
-	# Dockerコンテナでサーバ起動
+	# Dockerコンテナでサーバ起動/ビルド
 	docker run --rm --volume=$(pwd):/srv/jekyll -it -p 4000:4000 jekyll/jekyll:pages jekyll serve --watch --incremental --force_polling --verbose
 	
 	# ブラウザからlocalhost:4000へアクセス
 	w3m http://localhost:4000/
 
 	# ブログ記事を書いたらslackのblogチャンネルで教えてください.
+
+**Note) Docker内の時刻がずれていると当日の日付で投稿を作成してもビルドでスキップされることがあります.**
 
 ## このブログについて(環境)
 
