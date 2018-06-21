@@ -7,7 +7,7 @@
 	cd lc-tut.github.io/
 	
 	# Dockerコンテナの取得
-	docker pull jekyll/jekyll
+	docker pull jekyll/jekyll:pages
 	
 	# 記事を書く
 	cd _posts/
@@ -15,7 +15,7 @@
 	cd ..
 	
 	# Dockerコンテナでビルド
-	docker run --rm --volume=$(pwd):/srv/jekyll -it jekyll/jekyll:pages jekyll build --incremental --verbose
+	docker run --rm --volume=$(pwd):/srv/jekyll -it jekyll/jekyll:pages jekyll build --verbose
 	
 	# Dockerコンテナでサーバ起動/ビルド
 	docker run --rm --volume=$(pwd):/srv/jekyll -it -p 4000:4000 jekyll/jekyll:pages jekyll serve --watch --incremental --force_polling --verbose

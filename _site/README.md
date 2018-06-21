@@ -7,7 +7,7 @@
 	cd lc-tut.github.io/
 	
 	# Dockerコンテナの取得
-	docker pull jekyll/jekyll
+	docker pull jekyll/jekyll:pages
 	
 	# 記事を書く
 	cd _posts/
@@ -15,7 +15,7 @@
 	cd ..
 	
 	# Dockerコンテナでビルド
-	docker run --rm --volume=$(pwd):/srv/jekyll -it jekyll/jekyll:pages jekyll build --incremental --verbose
+	docker run --rm --volume=$(pwd):/srv/jekyll -it jekyll/jekyll:pages jekyll build --verbose
 	
 	# Dockerコンテナでサーバ起動/ビルド
 	docker run --rm --volume=$(pwd):/srv/jekyll -it -p 4000:4000 jekyll/jekyll:pages jekyll serve --watch --incremental --force_polling --verbose
@@ -39,6 +39,12 @@
 - ruby : `ruby 2.0.0p648 (2015-12-16 revision 53162) [universal.x86_64-darwin16]`
 - bundle : `Bundler version 1.15.1`
 - gem : `2.0.14.1`
+
+## ノート
+
+修正や変更を加えたら追記してください.
+
+- 2018-02-04 _config.ymlで`gems`がエラーになっていたので`plugins`の形式に修正(Koyama)
 
 ### ローカル開発環境
 

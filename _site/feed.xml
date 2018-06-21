@@ -3,11 +3,213 @@
   <channel>
     <title>LinuxClub BLOG</title>
     <description>東京工科大公認サークル LinuxClub のブログです.</description>
-    <link>http://0.0.0.0:4000/</link>
-    <atom:link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 03 Feb 2018 23:14:15 -0600</pubDate>
-    <lastBuildDate>Sat, 03 Feb 2018 23:14:15 -0600</lastBuildDate>
+    <link>https://lc-tut.github.io/</link>
+    <atom:link href="https://lc-tut.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Wed, 20 Jun 2018 20:47:02 -0500</pubDate>
+    <lastBuildDate>Wed, 20 Jun 2018 20:47:02 -0500</lastBuildDate>
     <generator>Jekyll v3.5.2</generator>
+    
+      <item>
+        <title>スポーツ大会エントリサイトを支えた技術</title>
+        <description>&lt;h2 id=&quot;はじめに&quot;&gt;はじめに&lt;/h2&gt;
+
+&lt;p&gt;LinuxClubではスポーツ大会のエントリーサイトを運営しています。今年も体育会からの要請があり運営を行いました。この記事では運用に際し改善、改良を行った点を紹介します。&lt;/p&gt;
+
+&lt;h2 id=&quot;dns&quot;&gt;DNS&lt;/h2&gt;
+
+&lt;p&gt;従来は &lt;code class=&quot;highlighter-rouge&quot;&gt;www2.linux.it.teu.ac.jp/sports20xx/&lt;/code&gt; の下に設置していました。今年度のサイトはサブドメイン  &lt;code class=&quot;highlighter-rouge&quot;&gt;sports.linux.it.teu.ac.jp&lt;/code&gt; に設置しました。&lt;/p&gt;
+
+&lt;h2 id=&quot;nginx&quot;&gt;Nginx&lt;/h2&gt;
+
+&lt;p&gt;担当: panakuma&lt;/p&gt;
+
+&lt;p&gt;ページ読み込みの高速化によるユーザビリティとセキュリティの向上のためHTTP/2とTLSv1.3に対応させました。&lt;/p&gt;
+
+&lt;h3 id=&quot;tlsv13対応&quot;&gt;TLSv1.3対応&lt;/h3&gt;
+
+&lt;p&gt;TLSv1.3はまだドラフト段階の規格なので5月現在で最新であったdraft22/23に対応しました。&lt;/p&gt;
+
+&lt;p&gt;使用したプログラム&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Nginx 1.13.10&lt;/li&gt;
+  &lt;li&gt;OpenSSL 1.1.1-pre3&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;それぞれソースを公式サイトからダウンロードし、OpenSSLを組み込んでNginxをmakeしました。&lt;/p&gt;
+
+&lt;h3 id=&quot;レスポンスヘッダcookie属性の変更&quot;&gt;レスポンスヘッダ/Cookie属性の変更&lt;/h3&gt;
+
+&lt;p&gt;担当: koyama&lt;/p&gt;
+
+&lt;p&gt;セキュリティを高めるためにレスポンスヘッダへ以下を付与しました。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;strict-transport-security: max-age=15768000; includeSubdomains&lt;/li&gt;
+  &lt;li&gt;x-frame-options: SAMEORIGIN&lt;/li&gt;
+  &lt;li&gt;x-xss-protection: 1; mode=block&lt;/li&gt;
+  &lt;li&gt;x-content-type-options: nosniff&lt;/li&gt;
+  &lt;li&gt;cache-control: private, no-store&lt;/li&gt;
+  &lt;li&gt;pragma: no-cache&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/sportsfes2018/curl.png&quot; width=&quot;500&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;それぞれのヘッダの役割は以下です。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;strict-transport-security&lt;/code&gt; はhttpsへ強制リダイレクトを実現しています。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;x-frame-options&lt;/code&gt; はクリックジャッキング対策で付与しています。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;xss-protection&lt;/code&gt; はブラウザのXSSフィルターを強制的にONに設定します。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;x-content-type-options&lt;/code&gt; はContent-Typeの誤認識によるXSSを回避するために付与しています。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;cache-control&lt;/code&gt; はプロキシサーバなどで機密情報が保存されないために付与しています。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;program&lt;/code&gt; は古いブラウザでのキャッシュ保持を防ぎます。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;ブラウザのCookieに &lt;code class=&quot;highlighter-rouge&quot;&gt;secure&lt;/code&gt; 属性と &lt;code class=&quot;highlighter-rouge&quot;&gt;httponly&lt;/code&gt; 属性を付与しました。 &lt;code class=&quot;highlighter-rouge&quot;&gt;secure&lt;/code&gt; 属性はクッキーをhttpsでやり取りするために付与します。 &lt;code class=&quot;highlighter-rouge&quot;&gt;httponly&lt;/code&gt;　属性はJavaScriptからのCookieへのアクセスを禁止します。&lt;/p&gt;
+
+&lt;p&gt;セッションのタイムアウトを実装するためにCookieの &lt;code class=&quot;highlighter-rouge&quot;&gt;expires&lt;/code&gt; 属性へセッション期限を設定しています。&lt;/p&gt;
+
+&lt;p&gt;これらはフレームワークの機能を使っています。そのため、セッションタイムの実装などを直接書かずに実現しています。&lt;/p&gt;
+
+&lt;h2 id=&quot;ソースコードの修正サーバサイド&quot;&gt;ソースコードの修正(サーバサイド)&lt;/h2&gt;
+
+&lt;p&gt;担当: koyama&lt;/p&gt;
+
+&lt;p&gt;既存のPythonコードを修正することで、チーム数制限を実装しました。従来はエントリー可能なチーム数の上限を設定していなかった為、上限なくエントリーできてしまいました。今年度のシステムはエントリー済みチーム数を取得することによって、エントリー上限に達するとエントリができなくなる仕組みを作りました。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/sportsfes2018/basketball.png&quot; width=&quot;500&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;ソースコードの修正フロント&quot;&gt;ソースコードの修正(フロント)&lt;/h2&gt;
+
+&lt;p&gt;担当: homirun&lt;/p&gt;
+
+&lt;h3 id=&quot;デザインの変更&quot;&gt;デザインの変更&lt;/h3&gt;
+&lt;p&gt;例年ページのテーマカラーが変わっていたため今年も気分で変えてみました。
+また競技のルールを表示するページをアコーディオンボタンで開けるようにしました。&lt;/p&gt;
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;check&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'.expander'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;click&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;check&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+		&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;closest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'article'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;children&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'aside'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;300&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+		&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;children&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'i'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;removeClass&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'fa-angle-down'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+		&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;children&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'i'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addClass&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'fa-angle-up'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+		&lt;span class=&quot;nx&quot;&gt;check&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;closest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'article'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;children&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'aside'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;hide&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;300&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+		&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;children&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'i'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;removeClass&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'fa-angle-up'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+		&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;children&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'i'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addClass&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'fa-angle-down'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+		&lt;span class=&quot;nx&quot;&gt;check&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;checkで現在のメニューの開閉状態を保持しています。
+checkが0のときはarticleの子要素を表示させ、1のときは非表示にさせてます。&lt;/p&gt;
+
+&lt;p&gt;そのほか&lt;code class=&quot;highlighter-rouge&quot;&gt;Font Awesome&lt;/code&gt;を用いボタンのアイコンなどわかりやすいものに変更しました。&lt;/p&gt;
+
+&lt;p&gt;　&lt;/p&gt;
+&lt;h3 id=&quot;ui崩れ&quot;&gt;UI崩れ&lt;/h3&gt;
+&lt;p&gt;モバイル端末でトップページを開いた際に画像がはみ出してしまう事があったのでCSSの該当箇所に&lt;code class=&quot;highlighter-rouge&quot;&gt;max-width: 100%&lt;/code&gt;を追記し修正しました。&lt;/p&gt;
+
+&lt;h2 id=&quot;脆弱性診断を実施&quot;&gt;脆弱性診断を実施&lt;/h2&gt;
+
+&lt;p&gt;担当: koyama&lt;/p&gt;
+
+&lt;p&gt;オープンソースの脆弱性診断ツールである &lt;code class=&quot;highlighter-rouge&quot;&gt;OWASP ZAP&lt;/code&gt; と &lt;code class=&quot;highlighter-rouge&quot;&gt;BurpSuite(Community Edition)&lt;/code&gt;を使用しました。&lt;/p&gt;
+
+&lt;p&gt;まず、 &lt;code class=&quot;highlighter-rouge&quot;&gt;OWASP ZAP&lt;/code&gt; のスキャン機能を使って既知な脆弱性を探しました。指摘された事項としては、レスポンスヘッダに &lt;code class=&quot;highlighter-rouge&quot;&gt;Progma&lt;/code&gt; ヘッダが未付与であることだけでした。&lt;/p&gt;
+
+&lt;p&gt;次に、 &lt;code class=&quot;highlighter-rouge&quot;&gt;BurpSuite&lt;/code&gt; （ローカルプロキシ）を使って手動で診断します。ブラウザを起動してプロキシの設定を &lt;code class=&quot;highlighter-rouge&quot;&gt;localhost:8080&lt;/code&gt; に設定します。BurpSuiteのProxyタブ内からIntereptをOffにしておきます。診断は以下の手順で行います。&lt;/p&gt;
+
+&lt;p&gt;1.ブラウザを起動してWebサイトにアクセスします。
+2.Proxyタブ内から&lt;code class=&quot;highlighter-rouge&quot;&gt;HTTP Proxy&lt;/code&gt;を選ぶとリクエスト一覧が表示されます。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/sportsfes2018/burp-httpHistory.png&quot; width=&quot;500&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;3.リクエスト一覧から診断したいリクエストを見つけて、&lt;code class=&quot;highlighter-rouge&quot;&gt;右クリック -&amp;gt; Send to Repeater&lt;/code&gt; を実行します。
+4.Repeaterタブを開いてリクエストを書き換えて &lt;code class=&quot;highlighter-rouge&quot;&gt;Go&lt;/code&gt; をクリックします。右側にレスポンス結果が表示されるので、この結果から脆弱性の有無を判断します。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/sportsfes2018/burp-repeater.png&quot; width=&quot;500&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;以下は診断過程の一部です。クロスサイトスクリプティングの脆弱性がないか確認をしています。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/sportsfes2018/xss-check.png&quot; width=&quot;500&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;運用&quot;&gt;運用&lt;/h2&gt;
+
+&lt;p&gt;担当: koyama&lt;/p&gt;
+
+&lt;p&gt;問い合わせ先はGoogle Formを使用しました。また、Google Formが送信されるとSlackへ通知されるようプラグインを設定しました。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/sportsfes2018/google-form.png&quot; width=&quot;500&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;サイト監視用スクリプトを作成しました。スクリプトは実行されるとcurlコマンドを実行してステータスコードを確認します。ステータスコードが400未満であれば正常であると判断します。それ以外の場合は異常であると判断してSlackに通知を送信します。&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;https://github.com/tomoyk/misc/blob/master/siteChecker/main.bash&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-shellscript&quot;&gt;#!/bin/bash
+
+URL=&quot;https://sports.linux.it.teu.ac.jp/&quot;
+DEBUG=1
+DATE=$(date &quot;+%Y/%m/%d %H:%M:%S&quot;)
+
+# Send Req
+RESPONSE_CODE=$(curl -LI $URL -o /dev/null -w '%{http_code}\n' -s)
+
+# Handle ReqCode
+if [ $RESPONSE_CODE -lt 500 ] ; then # RESPONSE_CODE &amp;lt; 500
+
+  # SUCCESS
+  test $DEBUG -gt 0 &amp;amp;&amp;amp; echo &quot;[DEBUG] Successful access&quot;
+
+else
+  
+  # FAIL
+  test $DEBUG -gt 0 &amp;amp;&amp;amp; echo &quot;[DEBUG] Fail to access&quot;
+
+  ### Post to Slack
+  TOKEN=''
+  USER='SiteChecker'
+  CHANNEL='sportsfes'
+  MESSAGE=&quot;[Error:$RESPONSE_CODE] Fail to access $URL at $DATE&quot;
+
+  curl -s -XPOST -d &quot;token=$TOKEN&quot; \
+                 -d &quot;channel=#$CHANNEL&quot; \
+                 -d &quot;text=$MESSAGE&quot; \
+                 -d &quot;username=$USER&quot; \
+                 &quot;https://slack.com/api/chat.postMessage&quot; # &amp;gt;&amp;amp; /dev/null &amp;amp;
+
+fi
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/sportsfes2018/site-checker.png&quot; width=&quot;500&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Nginxのログ解析用のスクリプトをPythonで作成しました。&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/tomoyk/b7502d2f2a19e21291d8ad60eb2892b6.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/sportsfes2018/chart.png&quot; width=&quot;500&quot; /&gt;&lt;/p&gt;
+</description>
+        <pubDate>Wed, 20 Jun 2018 00:00:00 -0500</pubDate>
+        <link>https://lc-tut.github.io/2018-06-20/sports-fes-entry-site/</link>
+        <guid isPermaLink="true">https://lc-tut.github.io/2018-06-20/sports-fes-entry-site/</guid>
+        
+        <category>sportsfes</category>
+        
+        <category>web</category>
+        
+        <category>application</category>
+        
+        <category>server</category>
+        
+        <category>security</category>
+        
+        <category>develop</category>
+        
+        
+        <category>Web</category>
+        
+      </item>
     
       <item>
         <title>初心者向けハンズオンを行いました</title>
@@ -64,8 +266,6 @@ Pythonのコーディング経験は6ヶ月弱ぐらいですが、書きやす�
 from urllib import request
 from bs4 import BeautifulSoup as BS
 
-
-
 def main():
     url = &quot;http://imotosae.com/news/&quot;
     req = request.Request(url)
@@ -75,7 +275,6 @@ def main():
     topics = soup.find_all('h1', 'c-thumb-index__title')
     for i in range(len(topics)):
         print(topics[i].string, &quot;\n&quot;)
-
 
 if __name__ == '__main__':
     main()
@@ -100,30 +299,29 @@ if __name__ == '__main__':
 &lt;p&gt;C++の前提知識を必要としない内容ということなのでHello,wolrdから解説をしました。その後慣れてもらうためにFizzBuzzをアクティブラーニング形式で実施した。&lt;/p&gt;
 
 &lt;h4 id=&quot;2-とポインタ変数&quot;&gt;2. &amp;amp;とポインタ変数&lt;/h4&gt;
-&lt;p&gt;時間と難易度を考慮してメモリについての説明は簡易的に済ませ、コードを書いて実行してみてから理解することを狙いました。
-&lt;img src=&quot;https://i.imgur.com/B4HVwbx.png&quot; alt=&quot;&quot; /&gt;
-&lt;img src=&quot;https://i.imgur.com/AQB7G1C.png&quot; alt=&quot;&quot; /&gt;
-コードを実行結果を見比べて説明。変数の前に&amp;amp;をつけるとアドレスを取り出す。宣言時に*をつけるとポインタ変数というアドレスを格納する変数を宣言することができる。このように説明したがうまく理解してもらえただろうか…&lt;/p&gt;
+&lt;p&gt;時間と難易度を考慮してメモリについての説明は簡易的に済ませ、コードを書いて実行してみてから理解することを狙いました。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/B4HVwbx.png&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;https://i.imgur.com/AQB7G1C.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;コードを実行結果を見比べて説明。変数の前に&amp;amp;をつけるとアドレスを取り出す。宣言時に*をつけるとポインタ変数というアドレスを格納する変数を宣言することができる。このように説明したがうまく理解してもらえただろうか…&lt;/p&gt;
 
 &lt;h4 id=&quot;3-ポインタを使った少し実践的な内容&quot;&gt;3. ポインタを使った少し実践的な内容&lt;/h4&gt;
-&lt;p&gt;値渡しと参照渡しの有名なサンプルコードのひとつはこれでしょう。
-&lt;img src=&quot;https://i.imgur.com/EZWbIha.png&quot; alt=&quot;&quot; /&gt;
-変数を入れ替える関数を作るが、値渡しであるため実行しても入れ替えられていないというオチ。手を動かしてほしかったためswap関数の処理内容は考えてもらいました。
+&lt;p&gt;値渡しと参照渡しの有名なサンプルコードのひとつはこれでしょう。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/EZWbIha.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;変数を入れ替える関数を作るが、値渡しであるため実行しても入れ替えられていないというオチ。手を動かしてほしかったためswap関数の処理内容は考えてもらいました。
 ここで値渡しと参照渡しの違いを説明し、ネタばらしをしたのですがすんなりと理解というわけにはいきませんでした・・・。繰り返し説明しどこがわからないか質問を受けたりもしましたが難しかったです。
 説明を終えたところでポインタを使えば直接参照できるというヒントを与えてアクティブラーニング形式でコードを修正。ここでも説明に苦戦しましたが、なんとか理解してもらえたかな？ということころで終了。&lt;/p&gt;
 
 &lt;h3 id=&quot;ハンズオンを終えて&quot;&gt;ハンズオンを終えて&lt;/h3&gt;
 &lt;p&gt;やはり前提知識なしでいきなりポインタまで教えるのは難しかったです。しかし多少内容を省略しても混乱しないように心掛けたのは良かったかなと思います。今後も何か自分にできることを見つけ、サークル活動をしていきたいと思います。&lt;/p&gt;
 
-&lt;h2 id=&quot;プログラミングjavascript&quot;&gt;プログラミング(JavaScript)&lt;/h2&gt;
-
-&lt;p&gt;自己紹介、担当したテーマ、テーマの内容、サンプルソース、資料など。&lt;/p&gt;
-
-&lt;p&gt;作成で苦労したことや工夫点など。&lt;/p&gt;
 </description>
         <pubDate>Sat, 03 Feb 2018 00:00:00 -0600</pubDate>
-        <link>http://0.0.0.0:4000/2018-02-03/hands-on-for-beginners/</link>
-        <guid isPermaLink="true">http://0.0.0.0:4000/2018-02-03/hands-on-for-beginners/</guid>
+        <link>https://lc-tut.github.io/2018-02-03/hands-on-for-beginners/</link>
+        <guid isPermaLink="true">https://lc-tut.github.io/2018-02-03/hands-on-for-beginners/</guid>
         
         <category>beginner</category>
         
@@ -173,8 +371,8 @@ if __name__ == '__main__':
 &lt;p&gt;それではメリークリスマス &amp;amp;&amp;amp; 良いお年を&lt;/p&gt;
 </description>
         <pubDate>Fri, 22 Dec 2017 00:00:00 -0600</pubDate>
-        <link>http://0.0.0.0:4000/2017-12-22/x230-us-keyboard/</link>
-        <guid isPermaLink="true">http://0.0.0.0:4000/2017-12-22/x230-us-keyboard/</guid>
+        <link>https://lc-tut.github.io/2017-12-22/x230-us-keyboard/</link>
+        <guid isPermaLink="true">https://lc-tut.github.io/2017-12-22/x230-us-keyboard/</guid>
         
         <category>thinkpad</category>
         
@@ -229,8 +427,8 @@ if __name__ == '__main__':
 &lt;p&gt;&lt;a href=&quot;https://bbs.archlinux.org/viewtopic.php?id=230487&quot;&gt;Arch Linux User Forums VMWare Workstation 14.0 - not enough physical memory&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Sat, 18 Nov 2017 00:00:00 -0600</pubDate>
-        <link>http://0.0.0.0:4000/2017-11-18/vmware-on-kernal-413/</link>
-        <guid isPermaLink="true">http://0.0.0.0:4000/2017-11-18/vmware-on-kernal-413/</guid>
+        <link>https://lc-tut.github.io/2017-11-18/vmware-on-kernal-413/</link>
+        <guid isPermaLink="true">https://lc-tut.github.io/2017-11-18/vmware-on-kernal-413/</guid>
         
         <category>Linux_Tips</category>
         
@@ -489,8 +687,8 @@ PyConの日に作りました。&lt;/p&gt;
 
 </description>
         <pubDate>Fri, 20 Oct 2017 00:00:00 -0500</pubDate>
-        <link>http://0.0.0.0:4000/2017-10-20/kokasai-matome/</link>
-        <guid isPermaLink="true">http://0.0.0.0:4000/2017-10-20/kokasai-matome/</guid>
+        <link>https://lc-tut.github.io/2017-10-20/kokasai-matome/</link>
+        <guid isPermaLink="true">https://lc-tut.github.io/2017-10-20/kokasai-matome/</guid>
         
         <category>kokasai</category>
         
@@ -517,8 +715,8 @@ PyConの日に作りました。&lt;/p&gt;
 
 </description>
         <pubDate>Sat, 17 Jun 2017 00:00:00 -0500</pubDate>
-        <link>http://0.0.0.0:4000/2017-06-17/hello-blog/</link>
-        <guid isPermaLink="true">http://0.0.0.0:4000/2017-06-17/hello-blog/</guid>
+        <link>https://lc-tut.github.io/2017-06-17/hello-blog/</link>
+        <guid isPermaLink="true">https://lc-tut.github.io/2017-06-17/hello-blog/</guid>
         
         <category>hello</category>
         
