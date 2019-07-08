@@ -58,6 +58,10 @@ $ docker run --rm -it -v $PWD:/src -u hugo jguyomard/hugo-builder hugo
 執筆中...
 
 ```
+$ git checkout source
+$ git add -A
+$ git commit -m 'YOUR MESSAGE'
+$ git push origin HEAD
 $ git subtree push --prefix docs/ origin master
 ```
 
