@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Infra on LinuxClub BLOG</title>
-    <link>http://example.org/categories/infra/</link>
+    <link>https://lc-tut.github.io/categories/infra/</link>
     <description>Recent content in Infra on LinuxClub BLOG</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Wed, 20 Jun 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://example.org/categories/infra/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://lc-tut.github.io/categories/infra/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>スポーツ大会エントリサイトを支えた技術 2018</title>
-      <link>http://example.org/post/sports-fes-entry-site/</link>
+      <link>https://lc-tut.github.io/post/sports-fes-entry-site/</link>
       <pubDate>Wed, 20 Jun 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/post/sports-fes-entry-site/</guid>
+      <guid>https://lc-tut.github.io/post/sports-fes-entry-site/</guid>
       <description>はじめに LinuxClubではスポーツ大会のエントリーサイトを運営しています。今年も体育会からの要請があり運営を行いました。この記事では運用に際し改善、改良を行った点を紹介します。
 DNS 従来は www2.linux.it.teu.ac.jp/sports20xx/ の下に設置していました。今年度のサイトはサブドメイン sports.linux.it.teu.ac.jp に設置しました。
 Nginx 担当: panakuma

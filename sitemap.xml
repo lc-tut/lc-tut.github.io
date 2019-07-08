@@ -3,223 +3,223 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://example.org/categories/</loc>
+    <loc>https://lc-tut.github.io/categories/</loc>
     <lastmod>2018-06-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://example.org/categories/infra/</loc>
+    <loc>https://lc-tut.github.io/categories/infra/</loc>
     <lastmod>2018-06-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://example.org/</loc>
+    <loc>https://lc-tut.github.io/</loc>
     <lastmod>2018-06-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://example.org/tags/nginx/</loc>
+    <loc>https://lc-tut.github.io/tags/nginx/</loc>
     <lastmod>2018-06-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://example.org/post/</loc>
+    <loc>https://lc-tut.github.io/post/</loc>
     <lastmod>2018-06-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://example.org/tags/python/</loc>
+    <loc>https://lc-tut.github.io/tags/python/</loc>
     <lastmod>2018-06-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://example.org/tags/security/</loc>
+    <loc>https://lc-tut.github.io/tags/security/</loc>
     <lastmod>2018-06-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://example.org/tags/server/</loc>
+    <loc>https://lc-tut.github.io/tags/server/</loc>
     <lastmod>2018-06-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://example.org/tags/tls/</loc>
+    <loc>https://lc-tut.github.io/tags/tls/</loc>
     <lastmod>2018-06-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://example.org/tags/</loc>
+    <loc>https://lc-tut.github.io/tags/</loc>
     <lastmod>2018-06-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://example.org/tags/application/</loc>
+    <loc>https://lc-tut.github.io/tags/application/</loc>
     <lastmod>2018-06-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://example.org/tags/web/</loc>
+    <loc>https://lc-tut.github.io/tags/web/</loc>
     <lastmod>2018-06-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://example.org/post/sports-fes-entry-site/</loc>
+    <loc>https://lc-tut.github.io/post/sports-fes-entry-site/</loc>
     <lastmod>2018-06-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/categories/activity/</loc>
+    <loc>https://lc-tut.github.io/categories/activity/</loc>
     <lastmod>2018-02-03T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://example.org/tags/%E3%83%8F%E3%83%B3%E3%82%BA%E3%82%AA%E3%83%B3/</loc>
+    <loc>https://lc-tut.github.io/tags/%E3%83%8F%E3%83%B3%E3%82%BA%E3%82%AA%E3%83%B3/</loc>
     <lastmod>2018-02-03T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://example.org/tags/%E3%83%93%E3%82%AE%E3%83%8A%E3%83%BC/</loc>
+    <loc>https://lc-tut.github.io/tags/%E3%83%93%E3%82%AE%E3%83%8A%E3%83%BC/</loc>
     <lastmod>2018-02-03T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://example.org/post/hands-on-for-beginners/</loc>
+    <loc>https://lc-tut.github.io/post/hands-on-for-beginners/</loc>
     <lastmod>2018-02-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/tags/%E8%AC%9B%E7%BF%92%E4%BC%9A/</loc>
+    <loc>https://lc-tut.github.io/tags/%E8%AC%9B%E7%BF%92%E4%BC%9A/</loc>
     <lastmod>2018-02-03T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://example.org/categories/hardware/</loc>
+    <loc>https://lc-tut.github.io/categories/hardware/</loc>
     <lastmod>2017-12-22T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://example.org/tags/thinkpad/</loc>
+    <loc>https://lc-tut.github.io/tags/thinkpad/</loc>
     <lastmod>2017-12-22T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://example.org/tags/x230/</loc>
+    <loc>https://lc-tut.github.io/tags/x230/</loc>
     <lastmod>2017-12-22T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://example.org/tags/%E3%82%AD%E3%83%BC%E3%83%9C%E3%83%BC%E3%83%89/</loc>
+    <loc>https://lc-tut.github.io/tags/%E3%82%AD%E3%83%BC%E3%83%9C%E3%83%BC%E3%83%89/</loc>
     <lastmod>2017-12-22T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://example.org/post/x230-us-keyboard/</loc>
+    <loc>https://lc-tut.github.io/post/x230-us-keyboard/</loc>
     <lastmod>2017-12-22T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/tags/kernel-v4/</loc>
+    <loc>https://lc-tut.github.io/tags/kernel-v4/</loc>
     <lastmod>2017-11-18T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://example.org/tags/linux/</loc>
+    <loc>https://lc-tut.github.io/tags/linux/</loc>
     <lastmod>2017-11-18T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://example.org/categories/linuxtips/</loc>
+    <loc>https://lc-tut.github.io/categories/linuxtips/</loc>
     <lastmod>2017-11-18T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://example.org/tags/vmware/</loc>
+    <loc>https://lc-tut.github.io/tags/vmware/</loc>
     <lastmod>2017-11-18T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://example.org/post/vmware-on-kernal-413/</loc>
+    <loc>https://lc-tut.github.io/post/vmware-on-kernal-413/</loc>
     <lastmod>2017-11-18T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/tags/2017/</loc>
+    <loc>https://lc-tut.github.io/tags/2017/</loc>
     <lastmod>2017-10-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://example.org/tags/festival/</loc>
+    <loc>https://lc-tut.github.io/tags/festival/</loc>
     <lastmod>2017-10-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://example.org/tags/kokasai/</loc>
+    <loc>https://lc-tut.github.io/tags/kokasai/</loc>
     <lastmod>2017-10-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://example.org/categories/poem/</loc>
+    <loc>https://lc-tut.github.io/categories/poem/</loc>
     <lastmod>2017-10-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://example.org/post/kokasai-matome-2017/</loc>
+    <loc>https://lc-tut.github.io/post/kokasai-matome-2017/</loc>
     <lastmod>2017-10-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/post/hello-blog/</loc>
+    <loc>https://lc-tut.github.io/post/hello-blog/</loc>
     <lastmod>2017-06-17T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/tags/hello/</loc>
-    <lastmod>2017-06-17T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://example.org/tags/linuxclub/</loc>
+    <loc>https://lc-tut.github.io/tags/hello/</loc>
     <lastmod>2017-06-17T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://example.org/categories/uncategorized/</loc>
+    <loc>https://lc-tut.github.io/tags/linuxclub/</loc>
     <lastmod>2017-06-17T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://example.org/tags/world/</loc>
+    <loc>https://lc-tut.github.io/categories/uncategorized/</loc>
+    <lastmod>2017-06-17T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://lc-tut.github.io/tags/world/</loc>
     <lastmod>2017-06-17T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>

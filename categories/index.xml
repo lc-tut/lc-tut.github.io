@@ -2,66 +2,66 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on LinuxClub BLOG</title>
-    <link>http://example.org/categories/</link>
+    <link>https://lc-tut.github.io/categories/</link>
     <description>Recent content in Categories on LinuxClub BLOG</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Wed, 20 Jun 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://example.org/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://lc-tut.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Infra</title>
-      <link>http://example.org/categories/infra/</link>
+      <link>https://lc-tut.github.io/categories/infra/</link>
       <pubDate>Wed, 20 Jun 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/categories/infra/</guid>
+      <guid>https://lc-tut.github.io/categories/infra/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>activity</title>
-      <link>http://example.org/categories/activity/</link>
+      <title>Activity</title>
+      <link>https://lc-tut.github.io/categories/activity/</link>
       <pubDate>Sat, 03 Feb 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/categories/activity/</guid>
+      <guid>https://lc-tut.github.io/categories/activity/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Hardware</title>
-      <link>http://example.org/categories/hardware/</link>
+      <link>https://lc-tut.github.io/categories/hardware/</link>
       <pubDate>Fri, 22 Dec 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/categories/hardware/</guid>
+      <guid>https://lc-tut.github.io/categories/hardware/</guid>
       <description></description>
     </item>
     
     <item>
       <title>LinuxTips</title>
-      <link>http://example.org/categories/linuxtips/</link>
+      <link>https://lc-tut.github.io/categories/linuxtips/</link>
       <pubDate>Sat, 18 Nov 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/categories/linuxtips/</guid>
+      <guid>https://lc-tut.github.io/categories/linuxtips/</guid>
       <description></description>
     </item>
     
     <item>
       <title>poem</title>
-      <link>http://example.org/categories/poem/</link>
+      <link>https://lc-tut.github.io/categories/poem/</link>
       <pubDate>Fri, 20 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/categories/poem/</guid>
+      <guid>https://lc-tut.github.io/categories/poem/</guid>
       <description></description>
     </item>
     
     <item>
       <title>uncategorized</title>
-      <link>http://example.org/categories/uncategorized/</link>
+      <link>https://lc-tut.github.io/categories/uncategorized/</link>
       <pubDate>Sat, 17 Jun 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/categories/uncategorized/</guid>
+      <guid>https://lc-tut.github.io/categories/uncategorized/</guid>
       <description></description>
     </item>
     

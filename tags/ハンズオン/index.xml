@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ハンズオン on LinuxClub BLOG</title>
-    <link>http://example.org/tags/%E3%83%8F%E3%83%B3%E3%82%BA%E3%82%AA%E3%83%B3/</link>
+    <link>https://lc-tut.github.io/tags/%E3%83%8F%E3%83%B3%E3%82%BA%E3%82%AA%E3%83%B3/</link>
     <description>Recent content in ハンズオン on LinuxClub BLOG</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Sat, 03 Feb 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://example.org/tags/%E3%83%8F%E3%83%B3%E3%82%BA%E3%82%AA%E3%83%B3/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://lc-tut.github.io/tags/%E3%83%8F%E3%83%B3%E3%82%BA%E3%82%AA%E3%83%B3/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>初心者向けハンズオンを行いました</title>
-      <link>http://example.org/post/hands-on-for-beginners/</link>
+      <link>https://lc-tut.github.io/post/hands-on-for-beginners/</link>
       <pubDate>Sat, 03 Feb 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/post/hands-on-for-beginners/</guid>
+      <guid>https://lc-tut.github.io/post/hands-on-for-beginners/</guid>
       <description>次期会計らしいKoyamaです。
 11月から毎週火曜日に初心者/中級者を対象にそれぞれが得意とする分野のテーマでハンズオンを行いました。テーマはWeb(HTML/CSS), インフラ(WordPress), プログラミング(Python, C++)です。この記事では各回を担当したメンバーがハンズオンの概要について解説していきます。
 Web(HTML, CSS) Webを担当したhomirunです。 今回はHTML5とCSS3について説明しました。 以下のスライドを使用しました。   HTML_CSS  from homirun  
