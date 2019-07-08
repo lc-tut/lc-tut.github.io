@@ -57,7 +57,9 @@ $ docker run --rm -it -v $PWD:/src -u hugo jguyomard/hugo-builder hugo
 
 執筆中...
 
-PullRequestを投げてください.
+```
+$ git subtree push --prefix docs/ origin master
+```
 
 ## 構築環境
 
@@ -69,3 +71,6 @@ $ hugo version
 Hugo Static Site Generator v0.56.0-DEV/extended linux/amd64 BuildDate: unknown
 ```
 
+## 参考資料
+
+[GitHub PagesのUser Pagesでドキュメントルートを変更するにはmasterを殺す - Qiita](https://qiita.com/kwappa/items/03ffdeb89039a7249619)
