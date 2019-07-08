@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Python on LinuxClub BLOG</title>
+    <link>http://example.org/tags/python/</link>
+    <description>Recent content in Python on LinuxClub BLOG</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Wed, 20 Jun 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://example.org/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>スポーツ大会エントリサイトを支えた技術 2018</title>
+      <link>http://example.org/post/sports-fes-entry-site/</link>
+      <pubDate>Wed, 20 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/post/sports-fes-entry-site/</guid>
+      <description>はじめに LinuxClubではスポーツ大会のエントリーサイトを運営しています。今年も体育会からの要請があり運営を行いました。この記事では運用に際し改善、改良を行った点を紹介します。
+DNS 従来は www2.linux.it.teu.ac.jp/sports20xx/ の下に設置していました。今年度のサイトはサブドメイン sports.linux.it.teu.ac.jp に設置しました。
+Nginx 担当: panakuma
+ページ読み込みの高速化によるユーザビリティとセキュリティの向上のためHTTP/2とTLSv1.3に対応させました。
+TLSv1.3対応 TLSv1.3はまだドラフト段階の規格なので5月現在で最新であったdraft22/23に対応しました。
+使用したプログラム - Nginx 1.13.10 - OpenSSL 1.1.1-pre3
+それぞれソースを公式サイトからダウンロードし、OpenSSLを組み込んでNginxをmakeしました。
+レスポンスヘッダ/Cookie属性の変更 担当: koyama
+セキュリティを高めるためにレスポンスヘッダへ以下を付与しました。
+ strict-transport-security: max-age=15768000; includeSubdomains x-frame-options: SAMEORIGIN x-xss-protection: 1; mode=block x-content-type-options: nosniff cache-control: private, no-store pragma: no-cache  それぞれのヘッダの役割は以下です。
+ strict-transport-security はhttpsへ強制リダイレクトを実現しています。 x-frame-options はクリックジャッキング対策で付与しています。 xss-protection はブラウザのXSSフィルターを強制的にONに設定します。 x-content-type-options はContent-Typeの誤認識によるXSSを回避するために付与しています。 cache-control はプロキシサーバなどで機密情報が保存されないために付与しています。 program は古いブラウザでのキャッシュ保持を防ぎます。  ブラウザのCookieに secure 属性と httponly 属性を付与しました。 secure 属性はクッキーをhttpsでやり取りするために付与します。 httponly　属性はJavaScriptからのCookieへのアクセスを禁止します。
+セッションのタイムアウトを実装するためにCookieの expires 属性へセッション期限を設定しています。</description>
+    </item>
+    
+  </channel>
+</rss>

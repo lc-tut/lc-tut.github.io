@@ -6,13 +6,18 @@ GitHubアカウントをLinuxClubのOrganizationに追加する. (Adminへ依頼
 
 ### 1. GitHubからリポジトリをCloneする.
 
-```
+```shell
 $ git clone https://github.com/lc-tut/lc-tut.github.io
 $ cd lc-tut.github.io/
 ```
 
 ### 2. 記事を書く
 
+ブランチを切ってください.
+
+`blog/content/post/`の中に記事を作成してください.
+
+画像などのメディアファイルは`blog/static/post_media/`に配置してください.
 
 ### 3. 記事をビルドする
 
@@ -27,16 +32,34 @@ $ cd lc-tut.github.io/
 
 [Install Hugo | Hugo](https://gohugo.io/getting-started/installing/)
 
+記事のプレビューを確認:
+
+```shell
+$ cd blog
+$ hugo serve
+```
+
+記事をローカルでビルド:
+
+```shell
+$ cd blog
+$ hugo -d ../docs
+```
+
 #### 3-2. Dockerでビルド
 
-```
+```shell
 $ cd lc-tut.github.io/
 $ docker run --rm -it -v $PWD:/src -u hugo jguyomard/hugo-builder hugo
 ```
 
-## 環境
+#### 4. 
 
-```
+執筆中...
+
+## 構築環境
+
+```shell
 $ go version
 go version go1.11.10 linux/amd64
 
