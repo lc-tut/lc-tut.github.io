@@ -4,6 +4,13 @@
 
 GitHubアカウントをLinuxClubのOrganizationに追加する. (Adminへ依頼)
 
+### 0. ブランチの使い方
+
+- `master`: 公開するデータを配置する.
+- `source`
+  - hugoのプロジェクトを配置する.
+  - 記事を書く時はここからブランチを切る.
+
 ### 1. GitHubからリポジトリをCloneする.
 
 ```shell
