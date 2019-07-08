@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ThinkPad on LinuxClub BLOG</title>
-    <link>http://example.org/tags/thinkpad/</link>
+    <link>https://lc-tut.github.io/tags/thinkpad/</link>
     <description>Recent content in ThinkPad on LinuxClub BLOG</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Fri, 22 Dec 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://example.org/tags/thinkpad/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://lc-tut.github.io/tags/thinkpad/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>中古のThinkpad X230を買った</title>
-      <link>http://example.org/post/x230-us-keyboard/</link>
+      <link>https://lc-tut.github.io/post/x230-us-keyboard/</link>
       <pubDate>Fri, 22 Dec 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/post/x230-us-keyboard/</guid>
+      <guid>https://lc-tut.github.io/post/x230-us-keyboard/</guid>
       <description>次期会計のKoyamaです。マイニングしているマシンで温まりたい季節ですね。この記事はTUT 今年もTwitterしかしてません Advent Calendar 2017 - Adventarの22日目です。
 ちょうど1ヶ月前くらいになりますが秋葉原で中古のThinkpad X230を買いました。主なスペックはSSD 240GBでOSなし、メモリ8G、CPU Intel Core-i5(haswell)です。
 日本で流通しているラップトップのほとんどはキーボードが日本語配列ですが、個人的に好きなのは英字配列なのでキーボードを交換することにしました。Amazonに適合するキーボードが出品されていたの注文しました。出品者の所在地が中国だったので少し不安がありました..。

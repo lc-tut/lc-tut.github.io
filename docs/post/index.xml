@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on LinuxClub BLOG</title>
-    <link>http://example.org/post/</link>
+    <link>https://lc-tut.github.io/post/</link>
     <description>Recent content in Posts on LinuxClub BLOG</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Wed, 20 Jun 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://example.org/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://lc-tut.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>スポーツ大会エントリサイトを支えた技術 2018</title>
-      <link>http://example.org/post/sports-fes-entry-site/</link>
+      <link>https://lc-tut.github.io/post/sports-fes-entry-site/</link>
       <pubDate>Wed, 20 Jun 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/post/sports-fes-entry-site/</guid>
+      <guid>https://lc-tut.github.io/post/sports-fes-entry-site/</guid>
       <description>はじめに LinuxClubではスポーツ大会のエントリーサイトを運営しています。今年も体育会からの要請があり運営を行いました。この記事では運用に際し改善、改良を行った点を紹介します。
 DNS 従来は www2.linux.it.teu.ac.jp/sports20xx/ の下に設置していました。今年度のサイトはサブドメイン sports.linux.it.teu.ac.jp に設置しました。
 Nginx 担当: panakuma
@@ -33,10 +33,10 @@ TLSv1.3対応 TLSv1.3はまだドラフト段階の規格なので5月現在で�
     
     <item>
       <title>初心者向けハンズオンを行いました</title>
-      <link>http://example.org/post/hands-on-for-beginners/</link>
+      <link>https://lc-tut.github.io/post/hands-on-for-beginners/</link>
       <pubDate>Sat, 03 Feb 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/post/hands-on-for-beginners/</guid>
+      <guid>https://lc-tut.github.io/post/hands-on-for-beginners/</guid>
       <description>次期会計らしいKoyamaです。
 11月から毎週火曜日に初心者/中級者を対象にそれぞれが得意とする分野のテーマでハンズオンを行いました。テーマはWeb(HTML/CSS), インフラ(WordPress), プログラミング(Python, C++)です。この記事では各回を担当したメンバーがハンズオンの概要について解説していきます。
 Web(HTML, CSS) Webを担当したhomirunです。 今回はHTML5とCSS3について説明しました。 以下のスライドを使用しました。   HTML_CSS  from homirun  
@@ -53,10 +53,10 @@ tomoyk/ServerHandson
     
     <item>
       <title>中古のThinkpad X230を買った</title>
-      <link>http://example.org/post/x230-us-keyboard/</link>
+      <link>https://lc-tut.github.io/post/x230-us-keyboard/</link>
       <pubDate>Fri, 22 Dec 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/post/x230-us-keyboard/</guid>
+      <guid>https://lc-tut.github.io/post/x230-us-keyboard/</guid>
       <description>次期会計のKoyamaです。マイニングしているマシンで温まりたい季節ですね。この記事はTUT 今年もTwitterしかしてません Advent Calendar 2017 - Adventarの22日目です。
 ちょうど1ヶ月前くらいになりますが秋葉原で中古のThinkpad X230を買いました。主なスペックはSSD 240GBでOSなし、メモリ8G、CPU Intel Core-i5(haswell)です。
 日本で流通しているラップトップのほとんどはキーボードが日本語配列ですが、個人的に好きなのは英字配列なのでキーボードを交換することにしました。Amazonに適合するキーボードが出品されていたの注文しました。出品者の所在地が中国だったので少し不安がありました..。
@@ -72,10 +72,10 @@ OSのインストール 買った時にgentooのインストールをしかけ�
     
     <item>
       <title>VMware Workstation Pro 14がLinux Kernel4.13で動くようにする</title>
-      <link>http://example.org/post/vmware-on-kernal-413/</link>
+      <link>https://lc-tut.github.io/post/vmware-on-kernal-413/</link>
       <pubDate>Sat, 18 Nov 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/post/vmware-on-kernal-413/</guid>
+      <guid>https://lc-tut.github.io/post/vmware-on-kernal-413/</guid>
       <description>Author: panakuma
 Linux Kernal 4.13がやっと動いたが&amp;hellip; 私のマシンでは長らくLinux kernel 4.4系しか動かなかったのですが、Oracle VirtualBoxの関連コンポーネントを根こそぎ削除したところ4.13系が動作しました。ですが&amp;hellip;
 VMware Workstation Pro 14上の仮想マシンが起動しなくなりました
@@ -89,10 +89,10 @@ Arch Linux User Forums VMWare Workstation 14.0 - not enough physical memory</des
     
     <item>
       <title>紅華祭 2017を終えて</title>
-      <link>http://example.org/post/kokasai-matome-2017/</link>
+      <link>https://lc-tut.github.io/post/kokasai-matome-2017/</link>
       <pubDate>Fri, 20 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/post/kokasai-matome-2017/</guid>
+      <guid>https://lc-tut.github.io/post/kokasai-matome-2017/</guid>
       <description>LinuxClubの1年のKoyamaです。
 今後、このブログを通じてサークルの活動の様子を積極的に発信していきたいと思います。この記事では2017年度 紅華祭を振り返ってみたいと思います。まず、部長から全体を通したコメントです。
 全体を通じて 前日に完成している展示物がなくて焦ったものですがみなさんいいものを作ってきてくれて驚きました。普段コンソールに向かっているので見栄えのいいものと言われても困ったとは思いますが良い作品を展示できてよかったです。
@@ -107,10 +107,10 @@ while true do for foo in {1..3} do python3 origin.py $foo done done  実際に�
     
     <item>
       <title>LinuxClub Blogをはじめました.</title>
-      <link>http://example.org/post/hello-blog/</link>
+      <link>https://lc-tut.github.io/post/hello-blog/</link>
       <pubDate>Sat, 17 Jun 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/post/hello-blog/</guid>
+      <guid>https://lc-tut.github.io/post/hello-blog/</guid>
       <description>LinuxClubとは 詳しくは公式サイトをどうぞ.
 LinuxClub | TOP
 このブログについて 部員が気づいたことや取り組んだことを書く予定です.

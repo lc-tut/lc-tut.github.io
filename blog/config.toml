@@ -1,4 +1,4 @@
-baseURL = "http://example.org/"
+baseURL = "https://lc-tut.github.io/"
 languageCode = "ja-jp"
 title = "LinuxClub BLOG"
 theme = "hugo-bootstrap"

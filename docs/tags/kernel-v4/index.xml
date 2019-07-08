@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Kernel v4 on LinuxClub BLOG</title>
-    <link>http://example.org/tags/kernel-v4/</link>
+    <link>https://lc-tut.github.io/tags/kernel-v4/</link>
     <description>Recent content in Kernel v4 on LinuxClub BLOG</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Sat, 18 Nov 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://example.org/tags/kernel-v4/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://lc-tut.github.io/tags/kernel-v4/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>VMware Workstation Pro 14がLinux Kernel4.13で動くようにする</title>
-      <link>http://example.org/post/vmware-on-kernal-413/</link>
+      <link>https://lc-tut.github.io/post/vmware-on-kernal-413/</link>
       <pubDate>Sat, 18 Nov 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/post/vmware-on-kernal-413/</guid>
+      <guid>https://lc-tut.github.io/post/vmware-on-kernal-413/</guid>
       <description>Author: panakuma
 Linux Kernal 4.13がやっと動いたが&amp;hellip; 私のマシンでは長らくLinux kernel 4.4系しか動かなかったのですが、Oracle VirtualBoxの関連コンポーネントを根こそぎ削除したところ4.13系が動作しました。ですが&amp;hellip;
 VMware Workstation Pro 14上の仮想マシンが起動しなくなりました
