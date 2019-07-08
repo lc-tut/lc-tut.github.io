@@ -53,9 +53,11 @@ $ cd lc-tut.github.io/
 $ docker run --rm -it -v $PWD:/src -u hugo jguyomard/hugo-builder hugo
 ```
 
-#### 4. 
+#### 4. GitHubへPush
 
 執筆中...
+
+PullRequestを投げてください.
 
 ## 構築環境
 
