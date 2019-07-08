@@ -11,11 +11,47 @@ $ git clone https://github.com/lc-tut/lc-tut.github.io
 $ cd lc-tut.github.io/
 ```
 
+デフォルトブランチは`source`なので注意してください.
+
 ### 2. 記事を書く
 
 ブランチを切ってください.
 
+```shell
+$ git branch koya/add-post-hoge
+$ git checkout koya/add-post-hoge
+```
+
 `blog/content/post/`の中に記事を作成してください.
+
+```shell
+$ cd blog/content/post
+$ cp fuga.md hoge.md  # ファイルをコピーする
+$ vim blog/content/post/hoge.md
+```
+
+以下のテンプレートを使っても構いません.
+
+```
++++
+author = "koya"
+title = "LinuxClub Blogをはじめました."
+date = "2017-06-17"
+description = "LinuxClubのブログで情報を発信していきます."
+tags = [
+    "world",
+    "hello",
+    "linuxclub"
+]
+categories = [
+    "uncategorized",
+]
++++
+
+# ここにタイトル
+
+ここに本文
+```
 
 画像などのメディアファイルは`blog/static/post_media/`に配置してください.
 
@@ -36,6 +72,8 @@ $ cd lc-tut.github.io/
 
 ```shell
 $ cd blog
+$ pwd
+/path/to/lc-tut.github.io/blog
 $ hugo serve
 ```
 
@@ -43,10 +81,14 @@ $ hugo serve
 
 ```shell
 $ cd blog
+$ pwd
+/path/to/lc-tut.github.io/blog
 $ hugo -d ../docs
 ```
 
 #### 3-2. Dockerでビルド
+
+執筆中
 
 ```shell
 $ cd lc-tut.github.io/
@@ -55,15 +97,22 @@ $ docker run --rm -it -v $PWD:/src -u hugo jguyomard/hugo-builder hugo
 
 #### 4. GitHubへPush
 
-執筆中...
+`source`ブランチへビルドしたファイル郡と記事をPushする.
 
-```
+```shell
 $ git checkout source
 $ git add -A
 $ git commit -m 'YOUR MESSAGE'
 $ git push origin HEAD
+```
+
+`master`ブランチへ公開するファイルをPushする.
+
+```shell
 $ git subtree push --prefix docs/ origin master
 ```
+
+`git subtree`は古いgitには含まれないので追加を行う.
 
 ## 構築環境
 
