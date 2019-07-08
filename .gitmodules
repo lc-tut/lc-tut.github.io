@@ -1,12 +1,3 @@
-[submodule "themes/cayman-hugo-theme"]
-	path = themes/cayman-hugo-theme
-	url = https://github.com/zwbetz-gh/cayman-hugo-theme.git
-[submodule "blog/themes/cayman-hugo-theme"]
-	path = blog/themes/cayman-hugo-theme
-	url = https://github.com/zwbetz-gh/cayman-hugo-theme.git
-[submodule "blog/themes/blog/themes/hugo-bootstrap"]
+[submodule "blog/themes/hugo-bootstrap"]
 	path = blog/themes/blog/themes/hugo-bootstrap
-	url = https://github.com/mmrath/hugo-bootstrap.git
-[submodule "blog/blog/themes/hugo-bootstrap"]
-	path = blog/blog/themes/hugo-bootstrap
 	url = https://github.com/mmrath/hugo-bootstrap.git
