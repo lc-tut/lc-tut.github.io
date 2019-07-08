@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>uncategorized on LinuxClub BLOG</title>
+    <link>http://example.org/categories/uncategorized/</link>
+    <description>Recent content in uncategorized on LinuxClub BLOG</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Sat, 17 Jun 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://example.org/categories/uncategorized/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>LinuxClub Blogをはじめました.</title>
+      <link>http://example.org/post/hello-blog/</link>
+      <pubDate>Sat, 17 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/post/hello-blog/</guid>
+      <description>LinuxClubとは 詳しくは公式サイトをどうぞ.
+LinuxClub | TOP
+このブログについて 部員が気づいたことや取り組んだことを書く予定です.
+なお, ブログの構築に関しては別記事で書きたいと思います.</description>
+    </item>
+    
+  </channel>
+</rss>
