@@ -6,6 +6,7 @@
     <description>Recent content in 講習会 on LinuxClub BLOG</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
+    <copyright>Copyright (c) 2019, LinuxClub. All rights reserved.</copyright>
     <lastBuildDate>Sat, 03 Feb 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://lc-tut.github.io/tags/%E8%AC%9B%E7%BF%92%E4%BC%9A/index.xml" rel="self" type="application/rss+xml" />
@@ -28,7 +29,7 @@ tomoyk/ServerHandson
 プログラミング(Pyhon) 自己紹介 Pythonの初心者入門 および スクレイピングハンズオンを担当したパナくまです。 Pythonのコーディング経験は6ヶ月弱ぐらいですが、書きやすい言語なので簡単なことをサクッと書くくらいは出来るようにスライドを作りました。
 担当したテーマ  初心者入門  基本構文の使い方  スクレイピングハンズオン  beautifulsoup4を使った簡単なスクレイピング   テーマの内容 初心者入門 まずはプログラミング言語の要である変数やfor文 if文 ユーザー定義関数などを簡単に説明しました。
 スクレイピングハンズオン beautifulsoupライブラリを用いて妹さえいればいい。の新着情報のトピックスを拾うというプログラムを作りました。
-サンプルソース スクレイピングハンズオン from urllib import request from bs4 import BeautifulSoup as BS def main(): url = &amp;quot;http://imotosae.</description>
+サンプルソース スクレイピングハンズオン from urllib import request from bs4 import BeautifulSoup as BS def main(): url = &amp;#34;http://imotosae.</description>
     </item>
     
   </channel>

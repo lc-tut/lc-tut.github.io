@@ -6,6 +6,7 @@
     <description>Recent content in TLS on LinuxClub BLOG</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
+    <copyright>Copyright (c) 2019, LinuxClub. All rights reserved.</copyright>
     <lastBuildDate>Wed, 20 Jun 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://lc-tut.github.io/tags/tls/index.xml" rel="self" type="application/rss+xml" />
@@ -26,9 +27,7 @@ TLSv1.3対応 TLSv1.3はまだドラフト段階の規格なので5月現在で�
 それぞれソースを公式サイトからダウンロードし、OpenSSLを組み込んでNginxをmakeしました。
 レスポンスヘッダ/Cookie属性の変更 担当: koyama
 セキュリティを高めるためにレスポンスヘッダへ以下を付与しました。
- strict-transport-security: max-age=15768000; includeSubdomains x-frame-options: SAMEORIGIN x-xss-protection: 1; mode=block x-content-type-options: nosniff cache-control: private, no-store pragma: no-cache  それぞれのヘッダの役割は以下です。
- strict-transport-security はhttpsへ強制リダイレクトを実現しています。 x-frame-options はクリックジャッキング対策で付与しています。 xss-protection はブラウザのXSSフィルターを強制的にONに設定します。 x-content-type-options はContent-Typeの誤認識によるXSSを回避するために付与しています。 cache-control はプロキシサーバなどで機密情報が保存されないために付与しています。 program は古いブラウザでのキャッシュ保持を防ぎます。  ブラウザのCookieに secure 属性と httponly 属性を付与しました。 secure 属性はクッキーをhttpsでやり取りするために付与します。 httponly　属性はJavaScriptからのCookieへのアクセスを禁止します。
-セッションのタイムアウトを実装するためにCookieの expires 属性へセッション期限を設定しています。</description>
+ strict-transport-security: max-age=15768000; includeSubdomains x-frame-options: SAMEORIGIN x-xss-protection: 1; mode=block x-content-type-options: nosniff cache-control: private, no-store pragma: no-cache  $ curl -si https://sports.linux.it.teu.ac.jp/ | head -n 15 HTTP/2 200 server: nginx date: Wed, 13 Jun 2018 01:36:00 GMT content-type: text/html; charset=utf-8 content-length: 2413 strict-transport-security: max-age=15768000; includeSubDomains x-frame-options: SAMEORIGIN x-xss-protection: 1; mode=block x-content-type-options: nosniff cache-control: private, no-store pragma: no-cache &amp;lt;!</description>
     </item>
     
   </channel>
