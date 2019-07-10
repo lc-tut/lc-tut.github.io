@@ -1,4 +1,67 @@
-baseURL = "https://lc-tut.github.io/"
+baseurl = "https://lc-tut.github.io/"
 languageCode = "ja-jp"
+author = "東京工科大学 LinuxClub"
+copyright = "Copyright (c) 2019, LinuxClub. All rights reserved."
 title = "LinuxClub BLOG"
 theme = "hugo-bootstrap"
+canonifyurls = true
+# paginate = 1
+pygmentscodefences = true
+
+
+googleAnalytics = "UA-143514982-1"
+
+[[menu.main]]
+    name = "TAGS"
+    pre = "<i class='fa fa-tags'></i>"
+    weight = -110
+    identifier = "tags"
+    url = "/tags/"
+
+[[menu.main]]
+    name = "CATEGORIES"
+    pre = "<i class='fa fa-folder-open'></i>"
+    weight = -100
+    identifier = "categories"
+    url = "/categories/"
+
+[[menu.main]]
+    name = "ABOUT US"
+    pre = "<i class='fa fa-info-circle'></i>"
+    weight = -90
+    identifier = "about-us"
+    url = "https://www2.linux.it.teu.ac.jp/linux/?from=blog"
+
+[related]
+threshold = 80
+includeNewer = false
+toLower = false
+
+[[related.indices]]
+name = "keywords"
+weight = 150
+[[related.indices]]
+name  = "author"
+toLower = true
+weight = 30
+[[related.indices]]
+name  = "tags"
+weight = 100
+[[related.indices]]
+name  = "date"
+weight = 10
+pattern = "2006"
+
+# You can have link at the footer as below
+# [[menu.footer]]
+#     name = "DISCLAIMER"
+#     weight = -110
+#     identifier = "disclaimer"
+#     url = "/page/disclaimer/"
+# 
+# [[menu.footer]]
+#     name = "LICENSE"
+#     weight = -120
+#     identifier = "license"
+#     url = "/page/license/"
+#

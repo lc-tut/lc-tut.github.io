@@ -54,7 +54,28 @@ TLSv1.3はまだドラフト段階の規格なので5月現在で最新であっ
 - cache-control: private, no-store
 - pragma: no-cache
 
-<img src="/post_media/sportsfes2018/curl.png" width="500">
+<!--
+img src="/post_media/sportsfes2018/curl.png" width="500"
+-->
+
+```shell
+$ curl -si https://sports.linux.it.teu.ac.jp/ | head -n 15
+HTTP/2 200
+server: nginx
+date: Wed, 13 Jun 2018 01:36:00 GMT
+content-type: text/html; charset=utf-8
+content-length: 2413
+strict-transport-security: max-age=15768000; includeSubDomains
+x-frame-options: SAMEORIGIN
+x-xss-protection: 1; mode=block
+x-content-type-options: nosniff
+cache-control: private, no-store
+pragma: no-cache
+
+<!doctype html>
+
+<html>
+```
 
 それぞれのヘッダの役割は以下です。
 
@@ -86,6 +107,7 @@ TLSv1.3はまだドラフト段階の規格なので5月現在で最新であっ
 ### デザインの変更
 例年ページのテーマカラーが変わっていたため今年も気分で変えてみました。
 また競技のルールを表示するページをアコーディオンボタンで開けるようにしました。
+
 ```javascript
 let check = 0
 $('.expander').click(function() {
@@ -102,6 +124,7 @@ $('.expander').click(function() {
 	}
 });
 ```
+
 checkで現在のメニューの開閉状態を保持しています。
 checkが0のときはarticleの子要素を表示させ、1のときは非表示にさせてます。
 
@@ -187,6 +210,61 @@ fi
 
 Nginxのログ解析用のスクリプトをPythonで作成しました。
 
-<script src="https://gist.github.com/tomoyk/b7502d2f2a19e21291d8ad60eb2892b6.js"></script>
+```python
+#!/usr/bin/env python
+
+def log2dict(logfile):
+	with open(logfile, "r") as file:
+		file_content = file.read()
+
+	lines = [ file_content.split('\n') ][0]
+	formated_logs = []
+
+	for tmp in lines:
+		try:
+			ip_date = tmp.split('"')[0]
+			ipaddr = ip_date.split()[0]
+			date = ip_date.split()[3][1:]
+
+			method_path_ver = tmp.split('"')[1]
+			method = method_path_ver.split()[0]
+			path = method_path_ver.split()[1]
+			ver = method_path_ver.split()[2]
+
+			referer = tmp.split('"')[3]
+			useragent = tmp.split('"')[5]
+
+		except:
+			continue
+
+		formated_logs.append({
+			'ipaddr'   : ipaddr,
+			'date'     : date,
+			'method'   : method,
+			'path'     : path,
+			'version'  : ver,
+			'referer'  : referer,
+			'useragent': useragent
+		})
+
+	return formated_logs
+
+
+if __name__ == '__main__':
+	dict_logs = log2dict(logfile="sports-access.log")
+
+	# Get all ipaddrs
+	ipaddrs = [ log['ipaddr'] for log in dict_logs ]
+
+	# Get total
+	# Python3) often_ipaddrs = { ip: ipaddrs.count(ip) for ip in set(ipaddrs) }
+	often_ipaddrs = {}
+	for ip in set(ipaddrs):
+		often_ipaddrs[ip] = ipaddrs.count(ip)
+
+	# Print ranking
+	for k_ip, v_often in sorted(often_ipaddrs.items(), key=lambda x:x[1], reverse=True):
+		print  v_often, k_ip
+```
 
 <img src="/post_media/sportsfes2018/chart.png" width="500">

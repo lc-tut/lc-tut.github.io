@@ -36,17 +36,94 @@ Webカメラで取得した映像とあらかじめ用意した動画をクロ�
 
 ソースコードは以下です。
 
-<script src="https://gist.github.com/tomoyk/698c6294637b16b140da404854e37389.js"></script>
+```python
+#!/usr/bin/env python
+
+import numpy as np
+import cv2
+import sys
+
+argv = sys.argv
+
+try:
+    if argv[1] == "1":
+        param = "cloud.mp4"
+    elif argv[1] == "2":
+        param = "coastline.mp4"
+    elif argv[1] == "3":
+        param = "campus.mp4"
+except IndexError:
+    param = "campus.mp4"
+
+# Windows size Swttings
+winSize = ( 1300, 700 )
+
+# Sets color-range of mask
+# [memo] (Blue, Green, Red)
+lower = np.array([60/2, 50, 80])     # Min
+upper = np.array([250/2, 255, 255])  # Max
+
+# Camera Settings
+videoStr = cv2.VideoCapture(1)
+
+# Background Settings
+backVdo = cv2.VideoCapture('videos/' + param)
+
+while(True):
+    # Get each frame
+    ret, front = videoStr.read()
+    ret, back  = backVdo.read()
+
+    # Resize movies
+    front = cv2.resize(front, winSize)
+    back = cv2.resize(back, winSize)
+
+    # Convert BGR to HSR
+    hsvFront = cv2.cvtColor(front, cv2.COLOR_BGR2HSV)
+
+    # Make mask by 'hsvFront'
+    maskFront = cv2.inRange(hsvFront, lower, upper)
+
+    # Apply Gaussian-blur
+    # gMaskFront = cv2.GaussianBlur(maskFront, (5, 5), 0)
+
+    # Revrse Mask area
+    # rgMaskFront = cv2.bitwise_not(gMaskFront)
+    rgMaskFront = cv2.bitwise_not(maskFront)
+
+    # Attach mask
+    streamFront = cv2.bitwise_and(front, front, mask=rgMaskFront)
+    streamBack = cv2.bitwise_and(back, back, mask=maskFront)
+
+    # Catinate each mask
+    disp = cv2.bitwise_or(streamFront, streamBack, maskFront)
+
+    # Display windows
+    cv2.imshow('DEMO:disp',disp)
+    # cv2.imshow('DEMO:front',front)
+    # cv2.imshow('DEMO:back',back)
+
+    # Delay 10ms and Check keydown 'q' for exit
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
+
+# Release objects
+videoStr.release()
+backVdo.release()
+cv2.destroyAllWindows()
+```
 
 途中でOpenCVのエラーで終了してしまうのでシェル芸で回避しました。パラメータを変えることで背景の動画を変更できる機能も実装してうまく連携させました。
 
-	while true
-	do
-	  for foo in {1..3}
-	  do
-	    python3 origin.py $foo
-	  done
-	done
+```shell
+while true
+do
+  for foo in {1..3}
+  do
+    python3 origin.py $foo
+  done
+done
+```
 
 実際に動かすと以下のようになります。
 
@@ -64,23 +141,90 @@ Arduinoには次の回路を実装しました。
 
 次にArduinoへ以下のプログラムを書き込みます。このプログラムではdigital 7番ピンに接続されたセンサーの値を取得してシリアルに書き出す処理を行っています。`delay(100)`によって遅延処理を行っています。
 
-	#define SENSOR_PIN 7
+```c
+#define SENSOR_PIN 7
 
-	void setup(){
-	  Serial.begin(9600);
-	}
+void setup(){
+  Serial.begin(9600);
+}
 
-	void loop(){
-	  int val = digitalRead(SENSOR_PIN);
-	  Serial.write(val);
-	  delay(100);
-	}
+void loop(){
+  int val = digitalRead(SENSOR_PIN);
+  Serial.write(val);
+  delay(100);
+}
+```
 
 Arduinoにプログラムが書き込めているかシリアルモニタを使って確認します。
 
 次にProcessingを起動します。そして、以下のプログラムを入力します。
 
-<script src="https://gist.github.com/tomoyk/f67947c7f7913bde2ec0db272487e5e8.js"></script>
+```java
+import processing.sound.*;
+import processing.serial.*;
+
+/* Viewer */
+boolean status = false; // Now status
+boolean before = true; // Before status
+PImage closeImg, openImg;
+SoundFile hi, bye;
+
+/* Srial */
+Serial port;
+float val;
+
+void settings(){
+  size(1300, 700);
+}
+
+void setup(){
+  /* Serial */
+  frameRate(60);
+  String arduinoPort = Serial.list()[0];
+  port = new Serial(this, arduinoPort,9600);
+  
+  /* Image and Sounds */
+  noStroke();
+  setBack();
+  closeImg = loadImage("proc_testVisualizer/door_close.png");
+  openImg = loadImage("proc_testVisualizer/door_open.png");
+  hi = new SoundFile(this, "proc_testVisualizer/door_hello.wav");
+  bye = new SoundFile(this, "proc_testVisualizer/door_close.wav");
+}
+
+void setBack(){
+  background(#cccccc);
+}
+
+void draw(){
+  if(port.available() > 0){
+    val = port.read();
+    println("test: "+val);
+    
+    if( val == 1.0 ){
+      status = true;
+    }else{
+      status = false;
+    }
+    
+    if(status && !before){ // open
+      before=true;
+      setBack();
+      image(closeImg, 200, 0);
+      bye.play();      
+    }else if(!status && before){ // close
+      before=false;
+      setBack();
+      image(openImg, 200, 0);
+      hi.play();
+    }
+    
+  }
+  
+  stroke(120);
+  fill(255);
+}
+```
 
 プログラムの概要について説明します。
 
@@ -176,7 +320,43 @@ PyConの日に作りました。
 
 <img src="/post_media/kokasai2017/homirun_screenshot.png" width="500">
 
-<script src="https://gist.github.com/homirun/035f39415f9d976f9da86ffe2632519f.js"></script>
+```python
+import cv2
+import numpy
+from matplotlib import pyplot
+
+face_cascade = cv2.CascadeClassifier(
+    "/usr/local/Cellar/opencv/3.3.0_3/share/OpenCV/haarcascades/haarcascade_frontalface_default.xml")
+
+cap = cv2.VideoCapture(0)
+coverImg = cv2.imread('faces.png', cv2.IMREAD_UNCHANGED)
+
+while True:
+    ret, img = cap.read()
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    faces = face_cascade.detectMultiScale(gray, 1.3, 5)
+    #eyes = eyes_cascade.detectMultiScale(gray, 1.3, 5)
+    for(x,y,w,h) in faces:
+        #cv2.rectangle(img,(x,y),(x+w, y+h), (255, 0, 0), 2)
+        #cv2.rectangle(img,(x,y),(x+w, y+h), (255, 0, 0), 2)
+        if h >= 0 and w >= 0:
+            coverResize = cv2.resize(coverImg, (h,w), interpolation = cv2.INTER_AREA)
+            alpha = coverResize[:,:,3]
+            alphaArray = numpy.ones((w,h,3))
+            for i in range(len(alphaArray)):
+                for j in range(len(alphaArray[0])):
+                    alphaArray[i][j] = numpy.ones(3) * alpha[i][j]
+            alphaArray = alphaArray / 255.0
+            coverResize = coverResize.astype('float64')
+            coverResize = coverResize[:,:,:3]
+            img[y:(y+h), x:(x+w)] = img[y:(y+h), x:(x+w)] * (1 - alphaArray)
+            img[y:(y+h), x:(x+w)] = img[y:(y+h), x:(x+w)] + coverResize * alphaArray
+    cv2.imshow("img", img)
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
+cap.release()
+cv2.destroyAllWindows()
+```
 
 ### 5. 声でツイートできるプログラム [panakuma]
 

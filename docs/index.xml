@@ -6,6 +6,7 @@
     <description>Recent content on LinuxClub BLOG</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
+    <copyright>Copyright (c) 2019, LinuxClub. All rights reserved.</copyright>
     <lastBuildDate>Wed, 20 Jun 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://lc-tut.github.io/index.xml" rel="self" type="application/rss+xml" />
@@ -26,9 +27,7 @@ TLSv1.3対応 TLSv1.3はまだドラフト段階の規格なので5月現在で�
 それぞれソースを公式サイトからダウンロードし、OpenSSLを組み込んでNginxをmakeしました。
 レスポンスヘッダ/Cookie属性の変更 担当: koyama
 セキュリティを高めるためにレスポンスヘッダへ以下を付与しました。
- strict-transport-security: max-age=15768000; includeSubdomains x-frame-options: SAMEORIGIN x-xss-protection: 1; mode=block x-content-type-options: nosniff cache-control: private, no-store pragma: no-cache  それぞれのヘッダの役割は以下です。
- strict-transport-security はhttpsへ強制リダイレクトを実現しています。 x-frame-options はクリックジャッキング対策で付与しています。 xss-protection はブラウザのXSSフィルターを強制的にONに設定します。 x-content-type-options はContent-Typeの誤認識によるXSSを回避するために付与しています。 cache-control はプロキシサーバなどで機密情報が保存されないために付与しています。 program は古いブラウザでのキャッシュ保持を防ぎます。  ブラウザのCookieに secure 属性と httponly 属性を付与しました。 secure 属性はクッキーをhttpsでやり取りするために付与します。 httponly　属性はJavaScriptからのCookieへのアクセスを禁止します。
-セッションのタイムアウトを実装するためにCookieの expires 属性へセッション期限を設定しています。</description>
+ strict-transport-security: max-age=15768000; includeSubdomains x-frame-options: SAMEORIGIN x-xss-protection: 1; mode=block x-content-type-options: nosniff cache-control: private, no-store pragma: no-cache  $ curl -si https://sports.linux.it.teu.ac.jp/ | head -n 15 HTTP/2 200 server: nginx date: Wed, 13 Jun 2018 01:36:00 GMT content-type: text/html; charset=utf-8 content-length: 2413 strict-transport-security: max-age=15768000; includeSubDomains x-frame-options: SAMEORIGIN x-xss-protection: 1; mode=block x-content-type-options: nosniff cache-control: private, no-store pragma: no-cache &amp;lt;!</description>
     </item>
     
     <item>
@@ -48,7 +47,7 @@ tomoyk/ServerHandson
 プログラミング(Pyhon) 自己紹介 Pythonの初心者入門 および スクレイピングハンズオンを担当したパナくまです。 Pythonのコーディング経験は6ヶ月弱ぐらいですが、書きやすい言語なので簡単なことをサクッと書くくらいは出来るようにスライドを作りました。
 担当したテーマ  初心者入門  基本構文の使い方  スクレイピングハンズオン  beautifulsoup4を使った簡単なスクレイピング   テーマの内容 初心者入門 まずはプログラミング言語の要である変数やfor文 if文 ユーザー定義関数などを簡単に説明しました。
 スクレイピングハンズオン beautifulsoupライブラリを用いて妹さえいればいい。の新着情報のトピックスを拾うというプログラムを作りました。
-サンプルソース スクレイピングハンズオン from urllib import request from bs4 import BeautifulSoup as BS def main(): url = &amp;quot;http://imotosae.</description>
+サンプルソース スクレイピングハンズオン from urllib import request from bs4 import BeautifulSoup as BS def main(): url = &amp;#34;http://imotosae.</description>
     </item>
     
     <item>
@@ -82,7 +81,7 @@ VMware Workstation Pro 14上の仮想マシンが起動しなくなりました
 具体的には次のようなエラーメッセージが表示されます。
 VMware Workstation がkernel4.13に対応していないことが原因のようです。Kernelに対する命令であるglobal_page_stateが4.13以降でglobal_zone_page_stateに変わったことが原因です。有志の方がこれに対応するパッチを作成していたので、これを用いて対処していきます。
 次のコマンドでパッチを当てることができます。
- sudo -i cd /tmp cp /usr/lib/vmware/modules/source/vmmon.tar . tar xf vmmon.tar rm vmmon.tar wget https://raw.githubusercontent.com/mkubecek/vmware-host-modules/fadedd9c8a4dd23f74da2b448572df95666dfe12/vmmon-only/linux/hostif.c mv -f hostif.c vmmon-only/linux/hostif.c tar cf vmmon.tar vmmon-only rm -fr vmmon-only mv -f vmmon.tar /usr/lib/vmware/modules/source/vmmon.tar vmware-modconfig --console --install-all  コマンド実行後に再起動を行うことで、VMware Workstationが正常に動作します。
+sudo -i cd /tmp cp /usr/lib/vmware/modules/source/vmmon.tar . tar xf vmmon.tar rm vmmon.tar wget https://raw.githubusercontent.com/mkubecek/vmware-host-modules/fadedd9c8a4dd23f74da2b448572df95666dfe12/vmmon-only/linux/hostif.c mv -f hostif.c vmmon-only/linux/hostif.c tar cf vmmon.tar vmmon-only rm -fr vmmon-only mv -f vmmon.tar /usr/lib/vmware/modules/source/vmmon.tar vmware-modconfig --console --install-all コマンド実行後に再起動を行うことで、VMware Workstationが正常に動作します。
 参考文献
 Arch Linux User Forums VMWare Workstation 14.0 - not enough physical memory</description>
     </item>
@@ -99,10 +98,7 @@ Arch Linux User Forums VMWare Workstation 14.0 - not enough physical memory</des
 個人制作 1,2年生を中心に個人作品を制作しました。作品名 [作者]という形式で見出しをつけています。
 1. 空飛ぶ絨毯 [Koyama] Webカメラで取得した映像とあらかじめ用意した動画をクロマキー合成するプログラムを作成し、展示しました。使用した言語はPythonでライブラリはOpenCVを使用しました。以下の記事を参考にしながらコードを書きました。
  Python OpenCV3で画像の画素値を二値化して出力 | from umentu import stupid RPi + Python + OpenCV その３「クロマキー」 | OpenCV | kosakalab Getting Started with Videos — OpenCV-Python Tutorials 1 documentation  ソースコードは以下です。
- 途中でOpenCVのエラーで終了してしまうのでシェル芸で回避しました。パラメータを変えることで背景の動画を変更できる機能も実装してうまく連携させました。
-while true do for foo in {1..3} do python3 origin.py $foo done done  実際に動かすと以下のようになります。
-2. 移植版ドアセンサー [Koyama] サークルの部室にドアが開くと音が鳴る謎のシステム(Raspi + スピーカ)を作りました。その移植版をArduino UNOとProcessingを使って作成しました。センサーは秋月電子で販売されているドア用センサーを使いました。
-ケース入りリードスイッチ（磁石付セット）ＭＣ－１４ＡＧ: センサ一般 秋月電子通商 電子部品 ネット通販</description>
+#!/usr/bin/env python import numpy as np import cv2 import sys argv = sys.argv try: if argv[1] == &amp;#34;1&amp;#34;: param = &amp;#34;cloud.mp4&amp;#34; elif argv[1] == &amp;#34;2&amp;#34;: param = &amp;#34;coastline.mp4&amp;#34; elif argv[1] == &amp;#34;3&amp;#34;: param = &amp;#34;campus.</description>
     </item>
     
     <item>

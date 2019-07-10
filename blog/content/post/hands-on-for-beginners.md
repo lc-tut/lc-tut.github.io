@@ -54,6 +54,7 @@ Pythonのコーディング経験は6ヶ月弱ぐらいですが、書きやす�
 beautifulsoupライブラリを用いて[妹さえいればいい。の新着情報](http://imotosae.com/news/)のトピックスを拾うというプログラムを作りました。
 ### サンプルソース
 #### スクレイピングハンズオン
+
 ```python:imosae-soup.py
 
 from urllib import request
@@ -75,8 +76,11 @@ if __name__ == '__main__':
 ```
 ### 資料
 #### 初心者入門
+
 <script async class="speakerdeck-embed" data-id="4055177b0da94f1e9e7ce194cdd2e595" data-ratio="1.77777777777778" src="//speakerdeck.com/assets/embed.js"></script>
+
 #### スクレイピングハンズオン
+
 <script async class="speakerdeck-embed" data-id="b2fbd13d5ac94fb4bf38cf95cffebad4" data-ratio="1.77777777777778" src="//speakerdeck.com/assets/embed.js"></script>
 
 

@@ -6,6 +6,7 @@
     <description>Recent content in Kernel v4 on LinuxClub BLOG</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
+    <copyright>Copyright (c) 2019, LinuxClub. All rights reserved.</copyright>
     <lastBuildDate>Sat, 18 Nov 2017 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://lc-tut.github.io/tags/kernel-v4/index.xml" rel="self" type="application/rss+xml" />
@@ -23,7 +24,7 @@ VMware Workstation Pro 14上の仮想マシンが起動しなくなりました
 具体的には次のようなエラーメッセージが表示されます。
 VMware Workstation がkernel4.13に対応していないことが原因のようです。Kernelに対する命令であるglobal_page_stateが4.13以降でglobal_zone_page_stateに変わったことが原因です。有志の方がこれに対応するパッチを作成していたので、これを用いて対処していきます。
 次のコマンドでパッチを当てることができます。
- sudo -i cd /tmp cp /usr/lib/vmware/modules/source/vmmon.tar . tar xf vmmon.tar rm vmmon.tar wget https://raw.githubusercontent.com/mkubecek/vmware-host-modules/fadedd9c8a4dd23f74da2b448572df95666dfe12/vmmon-only/linux/hostif.c mv -f hostif.c vmmon-only/linux/hostif.c tar cf vmmon.tar vmmon-only rm -fr vmmon-only mv -f vmmon.tar /usr/lib/vmware/modules/source/vmmon.tar vmware-modconfig --console --install-all  コマンド実行後に再起動を行うことで、VMware Workstationが正常に動作します。
+sudo -i cd /tmp cp /usr/lib/vmware/modules/source/vmmon.tar . tar xf vmmon.tar rm vmmon.tar wget https://raw.githubusercontent.com/mkubecek/vmware-host-modules/fadedd9c8a4dd23f74da2b448572df95666dfe12/vmmon-only/linux/hostif.c mv -f hostif.c vmmon-only/linux/hostif.c tar cf vmmon.tar vmmon-only rm -fr vmmon-only mv -f vmmon.tar /usr/lib/vmware/modules/source/vmmon.tar vmware-modconfig --console --install-all コマンド実行後に再起動を行うことで、VMware Workstationが正常に動作します。
 参考文献
 Arch Linux User Forums VMWare Workstation 14.0 - not enough physical memory</description>
     </item>
