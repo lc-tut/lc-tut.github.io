@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>linux on LinuxClub BLOG</title>
-    <link>https://lc-tut.github.io/tags/linux/</link>
-    <description>Recent content in linux on LinuxClub BLOG</description>
+    <title>docker on LinuxClub BLOG</title>
+    <link>https://lc-tut.github.io/tags/docker/</link>
+    <description>Recent content in docker on LinuxClub BLOG</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <copyright>Copyright (c) 2019, LinuxClub. All rights reserved.</copyright>
     <lastBuildDate>Thu, 11 Jul 2019 11:30:00 +0900</lastBuildDate>
     
-	<atom:link href="https://lc-tut.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://lc-tut.github.io/tags/docker/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -30,23 +30,6 @@ Webサーバー これまでNginxで構築されてきたWebサーバーはこ�
 Webホスティング SSH経由でサーバーへファイルをアップロードできるシステムが従来から存在しました。従来はOpenSSHとchrootを使って構築されていました。新システムではDockerでSSHサーバーを構築することにしました。
 サーバー切り替え 今回の目標としてダウンタイム0で切り替えられることをあげました。既存のユーザーへ影響を与えずにサービス提供を継続することが大切であるという認識に基づいています。そのために以下の手順で切り替えを計画的におこないました。
  旧サーバー利用者へシステム移行を行うことを通知  メール, Twitterで周知 移行まで余裕をもたせて連絡  新サーバーの構築 切り替えを実施  DNSサーバーのみ新サーバーへ切り替え DNSサーバーから返すWebサーバーを新サーバーへ切り替え 旧サーバーへDNS, Webのアクセスが収束したことを確認   運用/監視 運用と監視は別の記事で紹介します。</description>
-    </item>
-    
-    <item>
-      <title>VMware Workstation Pro 14がLinux Kernel4.13で動くようにする</title>
-      <link>https://lc-tut.github.io/post/vmware-on-kernal-413/</link>
-      <pubDate>Sat, 18 Nov 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://lc-tut.github.io/post/vmware-on-kernal-413/</guid>
-      <description>Author: panakuma
-Linux Kernal 4.13がやっと動いたが&amp;hellip; 私のマシンでは長らくLinux kernel 4.4系しか動かなかったのですが、Oracle VirtualBoxの関連コンポーネントを根こそぎ削除したところ4.13系が動作しました。ですが&amp;hellip;
-VMware Workstation Pro 14上の仮想マシンが起動しなくなりました
-具体的には次のようなエラーメッセージが表示されます。
-VMware Workstation がkernel4.13に対応していないことが原因のようです。Kernelに対する命令であるglobal_page_stateが4.13以降でglobal_zone_page_stateに変わったことが原因です。有志の方がこれに対応するパッチを作成していたので、これを用いて対処していきます。
-次のコマンドでパッチを当てることができます。
-sudo -i cd /tmp cp /usr/lib/vmware/modules/source/vmmon.tar . tar xf vmmon.tar rm vmmon.tar wget https://raw.githubusercontent.com/mkubecek/vmware-host-modules/fadedd9c8a4dd23f74da2b448572df95666dfe12/vmmon-only/linux/hostif.c mv -f hostif.c vmmon-only/linux/hostif.c tar cf vmmon.tar vmmon-only rm -fr vmmon-only mv -f vmmon.tar /usr/lib/vmware/modules/source/vmmon.tar vmware-modconfig --console --install-all コマンド実行後に再起動を行うことで、VMware Workstationが正常に動作します。
-参考文献
-Arch Linux User Forums VMWare Workstation 14.0 - not enough physical memory</description>
     </item>
     
   </channel>
