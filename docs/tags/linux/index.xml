@@ -18,7 +18,7 @@
       <pubDate>Thu, 11 Jul 2019 11:30:00 +0900</pubDate>
       
       <guid>https://lc-tut.github.io/post/server-replace-2019/</guid>
-      <description>3年のKoyamaです。外部向けに公開している公式サイトやスポーツ大会エントリーサイトをホスティングしているサーバー(VPS)をリプレイスしました。この記事ではｍ昨年の12月から今年1月にかけて取り組んだことについて振り返ってみます。
+      <description>3年のKoyamaです。外部向けに公開している公式サイトやスポーツ大会エントリーサイトをホスティングしているサーバー(VPS)をリプレイスしました。この記事では昨年の12月から今年1月にかけて取り組んだことについて振り返ってみます。
 現状の把握 これまでのサーバーの構成を把握することからはじめました。具体的には、どのようなサービスが動作して、移行が必要かを洗い出しました。
 従来の構成:
  OS: CentOS 6.9 x86_64  GMO CloudのCentOS 6.2 Templateから導入  DNS(Bind) 9.8.2 Web(Nginx) 1.12.2 PHP 5.3.3 Python 2.6.6 uWSGI 2.0.10 MySQL Ver 14.14 Distrib 5.1.73 SQLite Ver 3.6.20 Postfix Ver 2.6.6  ミドルウェア(すべてパッケージからインストール)
