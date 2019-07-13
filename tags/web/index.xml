@@ -27,7 +27,8 @@ TLSv1.3対応 TLSv1.3はまだドラフト段階の規格なので5月現在で�
 それぞれソースを公式サイトからダウンロードし、OpenSSLを組み込んでNginxをmakeしました。
 レスポンスヘッダ/Cookie属性の変更 担当: koyama
 セキュリティを高めるためにレスポンスヘッダへ以下を付与しました。
- strict-transport-security: max-age=15768000; includeSubdomains x-frame-options: SAMEORIGIN x-xss-protection: 1; mode=block x-content-type-options: nosniff cache-control: private, no-store pragma: no-cache  $ curl -si https://sports.linux.it.teu.ac.jp/ | head -n 15 HTTP/2 200 server: nginx date: Wed, 13 Jun 2018 01:36:00 GMT content-type: text/html; charset=utf-8 content-length: 2413 strict-transport-security: max-age=15768000; includeSubDomains x-frame-options: SAMEORIGIN x-xss-protection: 1; mode=block x-content-type-options: nosniff cache-control: private, no-store pragma: no-cache &amp;lt;!</description>
+ strict-transport-security: max-age=15768000; includeSubdomains x-frame-options: SAMEORIGIN x-xss-protection: 1; mode=block x-content-type-options: nosniff cache-control: private, no-store pragma: no-cache
+$ curl -si https://sports.linux.it.teu.ac.jp/ | head -n 15 HTTP/2 200 server: nginx date: Wed, 13 Jun 2018 01:36:00 GMT content-type: text/html; charset=utf-8 content-length: 2413 strict-transport-security: max-age=15768000; includeSubDomains x-frame-options: SAMEORIGIN x-xss-protection: 1; mode=block x-content-type-options: nosniff cache-control: private, no-store pragma: no-cache &amp;lt;!</description>
     </item>
     
   </channel>

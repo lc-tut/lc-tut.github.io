@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Activity on LinuxClub BLOG</title>
+    <title>activity on LinuxClub BLOG</title>
     <link>https://lc-tut.github.io/categories/activity/</link>
-    <description>Recent content in Activity on LinuxClub BLOG</description>
+    <description>Recent content in activity on LinuxClub BLOG</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <copyright>Copyright (c) 2019, LinuxClub. All rights reserved.</copyright>
@@ -20,7 +20,8 @@
       <guid>https://lc-tut.github.io/post/hands-on-for-beginners/</guid>
       <description>次期会計らしいKoyamaです。
 11月から毎週火曜日に初心者/中級者を対象にそれぞれが得意とする分野のテーマでハンズオンを行いました。テーマはWeb(HTML/CSS), インフラ(WordPress), プログラミング(Python, C++)です。この記事では各回を担当したメンバーがハンズオンの概要について解説していきます。
-Web(HTML, CSS) Webを担当したhomirunです。 今回はHTML5とCSS3について説明しました。 以下のスライドを使用しました。   HTML_CSS  from homirun  
+Web(HTML, CSS) Webを担当したhomirunです。 今回はHTML5とCSS3について説明しました。 以下のスライドを使用しました。
+  HTML_CSS  from homirun  
 サーバ構築(WordPress) Koyamaとpanakumaが担当しました。Windows上に作成したVMを使ってWebサーバ(nginx)とDBサーバ(MySQL)を構築してWordPressを設置しました。VMの環境構築に時間がかかった為、2回に分けて行いました。
 サーバー構築のLT中！#LC勉強会 #LinuxClub pic.twitter.com/fuxVjW1d3A
 &amp;mdash; 東京工科大学 LinuxClub (@lc_tut) 2017年11月21日 

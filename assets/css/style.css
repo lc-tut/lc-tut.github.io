@@ -93,6 +93,11 @@ pre code {
   font-family: 'Inconsolata', monospace;
 }
 
+p img {
+  max-width: 600px;
+  width: 100%;
+}
+
 .card.no-border {
   border: 0px !important;
 }

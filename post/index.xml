@@ -18,7 +18,7 @@
       <pubDate>Thu, 11 Jul 2019 11:30:00 +0900</pubDate>
       
       <guid>https://lc-tut.github.io/post/server-replace-2019/</guid>
-      <description>3年のKoyamaです。外部向けに公開している公式サイトやスポーツ大会エントリーサイトをホスティングしているサーバー(VPS)をリプレイスしました。この記事ではｍ昨年の12月から今年1月にかけて取り組んだことについて振り返ってみます。
+      <description>3年のKoyamaです。外部向けに公開している公式サイトやスポーツ大会エントリーサイトをホスティングしているサーバー(VPS)をリプレイスしました。この記事では昨年の12月から今年1月にかけて取り組んだことについて振り返ってみます。
 現状の把握 これまでのサーバーの構成を把握することからはじめました。具体的には、どのようなサービスが動作して、移行が必要かを洗い出しました。
 従来の構成:
  OS: CentOS 6.9 x86_64  GMO CloudのCentOS 6.2 Templateから導入  DNS(Bind) 9.8.2 Web(Nginx) 1.12.2 PHP 5.3.3 Python 2.6.6 uWSGI 2.0.10 MySQL Ver 14.14 Distrib 5.1.73 SQLite Ver 3.6.20 Postfix Ver 2.6.6  ミドルウェア(すべてパッケージからインストール)
@@ -47,7 +47,8 @@ TLSv1.3対応 TLSv1.3はまだドラフト段階の規格なので5月現在で�
 それぞれソースを公式サイトからダウンロードし、OpenSSLを組み込んでNginxをmakeしました。
 レスポンスヘッダ/Cookie属性の変更 担当: koyama
 セキュリティを高めるためにレスポンスヘッダへ以下を付与しました。
- strict-transport-security: max-age=15768000; includeSubdomains x-frame-options: SAMEORIGIN x-xss-protection: 1; mode=block x-content-type-options: nosniff cache-control: private, no-store pragma: no-cache  $ curl -si https://sports.linux.it.teu.ac.jp/ | head -n 15 HTTP/2 200 server: nginx date: Wed, 13 Jun 2018 01:36:00 GMT content-type: text/html; charset=utf-8 content-length: 2413 strict-transport-security: max-age=15768000; includeSubDomains x-frame-options: SAMEORIGIN x-xss-protection: 1; mode=block x-content-type-options: nosniff cache-control: private, no-store pragma: no-cache &amp;lt;!</description>
+ strict-transport-security: max-age=15768000; includeSubdomains x-frame-options: SAMEORIGIN x-xss-protection: 1; mode=block x-content-type-options: nosniff cache-control: private, no-store pragma: no-cache
+$ curl -si https://sports.linux.it.teu.ac.jp/ | head -n 15 HTTP/2 200 server: nginx date: Wed, 13 Jun 2018 01:36:00 GMT content-type: text/html; charset=utf-8 content-length: 2413 strict-transport-security: max-age=15768000; includeSubDomains x-frame-options: SAMEORIGIN x-xss-protection: 1; mode=block x-content-type-options: nosniff cache-control: private, no-store pragma: no-cache &amp;lt;!</description>
     </item>
     
     <item>
@@ -58,7 +59,8 @@ TLSv1.3対応 TLSv1.3はまだドラフト段階の規格なので5月現在で�
       <guid>https://lc-tut.github.io/post/hands-on-for-beginners/</guid>
       <description>次期会計らしいKoyamaです。
 11月から毎週火曜日に初心者/中級者を対象にそれぞれが得意とする分野のテーマでハンズオンを行いました。テーマはWeb(HTML/CSS), インフラ(WordPress), プログラミング(Python, C++)です。この記事では各回を担当したメンバーがハンズオンの概要について解説していきます。
-Web(HTML, CSS) Webを担当したhomirunです。 今回はHTML5とCSS3について説明しました。 以下のスライドを使用しました。   HTML_CSS  from homirun  
+Web(HTML, CSS) Webを担当したhomirunです。 今回はHTML5とCSS3について説明しました。 以下のスライドを使用しました。
+  HTML_CSS  from homirun  
 サーバ構築(WordPress) Koyamaとpanakumaが担当しました。Windows上に作成したVMを使ってWebサーバ(nginx)とDBサーバ(MySQL)を構築してWordPressを設置しました。VMの環境構築に時間がかかった為、2回に分けて行いました。
 サーバー構築のLT中！#LC勉強会 #LinuxClub pic.twitter.com/fuxVjW1d3A
 &amp;mdash; 東京工科大学 LinuxClub (@lc_tut) 2017年11月21日 

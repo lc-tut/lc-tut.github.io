@@ -13,15 +13,6 @@
     
     
     <item>
-      <title>Server</title>
-      <link>https://lc-tut.github.io/tags/server/</link>
-      <pubDate>Thu, 11 Jul 2019 11:30:00 +0900</pubDate>
-      
-      <guid>https://lc-tut.github.io/tags/server/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>centos</title>
       <link>https://lc-tut.github.io/tags/centos/</link>
       <pubDate>Thu, 11 Jul 2019 11:30:00 +0900</pubDate>
@@ -45,6 +36,15 @@
       <pubDate>Thu, 11 Jul 2019 11:30:00 +0900</pubDate>
       
       <guid>https://lc-tut.github.io/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>server</title>
+      <link>https://lc-tut.github.io/tags/server/</link>
+      <pubDate>Thu, 11 Jul 2019 11:30:00 +0900</pubDate>
+      
+      <guid>https://lc-tut.github.io/tags/server/</guid>
       <description></description>
     </item>
     

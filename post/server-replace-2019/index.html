@@ -191,7 +191,7 @@
       <div class="article-body">
   
 
-<p>3年のKoyamaです。外部向けに公開している公式サイトやスポーツ大会エントリーサイトをホスティングしているサーバー(VPS)をリプレイスしました。この記事ではｍ昨年の12月から今年1月にかけて取り組んだことについて振り返ってみます。</p>
+<p>3年のKoyamaです。外部向けに公開している公式サイトやスポーツ大会エントリーサイトをホスティングしているサーバー(VPS)をリプレイスしました。この記事では昨年の12月から今年1月にかけて取り組んだことについて振り返ってみます。</p>
 
 <h2 id="現状の把握">現状の把握</h2>
 
@@ -232,7 +232,7 @@
 
 <p>次にサーバー構成の検討を行いました。既存サーバーは1台だけでメモリとCPUが豊富にありました。しかし、リソースの利用状況を見る限り、そのリソースが活用されていることが確認できません。そこで、台数を2台へ増やし1台あたりのスペックを下げることにしました。この構成にすることで費用面を抑えつつ冗長化が行えました。</p>
 
-<p><img src="https://lc-tut.github.io/post_media/server-replace-2019/server-architect.png" width="500"></p>
+<p><img src="https://lc-tut.github.io/post_media/server-replace-2019/server-architect.png"></p>
 
 <h3 id="os-ミドルウェアの選定">OS/ミドルウェアの選定</h3>
 
@@ -248,7 +248,7 @@
 
 <p>SSH経由でサーバーへファイルをアップロードできるシステムが従来から存在しました。従来はOpenSSHとchrootを使って構築されていました。新システムではDockerでSSHサーバーを構築することにしました。</p>
 
-<p><img src="https://lc-tut.github.io/post_media/server-replace-2019/ssh-hosting.png" width="500"></p>
+<p><img src="https://lc-tut.github.io/post_media/server-replace-2019/ssh-hosting.png"></p>
 
 <h3 id="サーバー切り替え">サーバー切り替え</h3>
 

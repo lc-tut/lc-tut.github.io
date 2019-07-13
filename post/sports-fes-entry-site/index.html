@@ -237,12 +237,8 @@
 <li>x-xss-protection: 1; mode=block</li>
 <li>x-content-type-options: nosniff</li>
 <li>cache-control: private, no-store</li>
-<li>pragma: no-cache</li>
-</ul>
 
-<!--
-img src="https://lc-tut.github.io/post_media/sportsfes2018/curl.png" width="500"
--->
+<li><p>pragma: no-cache</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ curl -si https://sports.linux.it.teu.ac.jp/ | head -n <span style="color:#ae81ff">15</span>
 HTTP/2 <span style="color:#ae81ff">200</span>
 server: nginx
@@ -258,7 +254,9 @@ pragma: no-cache
 
 &lt;!doctype html&gt;
 
-&lt;html&gt;</code></pre></div>
+&lt;html&gt;</code></pre></div></li>
+</ul>
+
 <p>それぞれのヘッダの役割は以下です。</p>
 
 <ul>
@@ -282,7 +280,7 @@ pragma: no-cache
 
 <p>既存のPythonコードを修正することで、チーム数制限を実装しました。従来はエントリー可能なチーム数の上限を設定していなかった為、上限なくエントリーできてしまいました。今年度のシステムはエントリー済みチーム数を取得することによって、エントリー上限に達するとエントリができなくなる仕組みを作りました。</p>
 
-<p><img src="https://lc-tut.github.io/post_media/sportsfes2018/basketball.png" width="500"></p>
+<p><img src="https://lc-tut.github.io/post_media/sportsfes2018/basketball.png"></p>
 
 <h2 id="ソースコードの修正-フロント">ソースコードの修正(フロント)</h2>
 
@@ -332,17 +330,17 @@ checkが0のときはarticleの子要素を表示させ、1のときは非表示
 
 <p>2.Proxyタブ内から<code>HTTP Proxy</code>を選ぶとリクエスト一覧が表示されます。</p>
 
-<p><img src="https://lc-tut.github.io/post_media/sportsfes2018/burp-httpHistory.png" width="500"></p>
+<p><img src="https://lc-tut.github.io/post_media/sportsfes2018/burp-httpHistory.png"></p>
 
 <p>3.リクエスト一覧から診断したいリクエストを見つけて、<code>右クリック -&gt; Send to Repeater</code> を実行します。</p>
 
 <p>4.Repeaterタブを開いてリクエストを書き換えて <code>Go</code> をクリックします。右側にレスポンス結果が表示されるので、この結果から脆弱性の有無を判断します。</p>
 
-<p><img src="https://lc-tut.github.io/post_media/sportsfes2018/burp-repeater.png" width="500"></p>
+<p><img src="https://lc-tut.github.io/post_media/sportsfes2018/burp-repeater.png"></p>
 
 <p>以下は診断過程の一部です。クロスサイトスクリプティングの脆弱性がないか確認をしています。</p>
 
-<p><img src="https://lc-tut.github.io/post_media/sportsfes2018/xss-check.png" width="500"></p>
+<p><img src="https://lc-tut.github.io/post_media/sportsfes2018/xss-check.png"></p>
 
 <h2 id="運用">運用</h2>
 
@@ -350,7 +348,7 @@ checkが0のときはarticleの子要素を表示させ、1のときは非表示
 
 <p>問い合わせ先はGoogle Formを使用しました。また、Google Formが送信されるとSlackへ通知されるようプラグインを設定しました。</p>
 
-<p><img src="https://lc-tut.github.io/post_media/sportsfes2018/google-form.png" width="500"></p>
+<p><img src="https://lc-tut.github.io/post_media/sportsfes2018/google-form.png"></p>
 
 <p>サイト監視用スクリプトを作成しました。スクリプトは実行されるとcurlコマンドを実行してステータスコードを確認します。ステータスコードが400未満であれば正常であると判断します。それ以外の場合は異常であると判断してSlackに通知を送信します。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shellscript" data-lang="shellscript"><span style="color:#75715e">#!/bin/bash
@@ -386,7 +384,7 @@ RESPONSE_CODE<span style="color:#f92672">=</span><span style="color:#66d9ef">$(<
 </span><span style="color:#ae81ff"></span>                 <span style="color:#e6db74">&#34;https://slack.com/api/chat.postMessage&#34;</span> <span style="color:#75715e"># &gt;&amp; /dev/null &amp;</span>
 
 <span style="color:#66d9ef">fi</span></code></pre></div>
-<p><img src="https://lc-tut.github.io/post_media/sportsfes2018/site-checker.png" width="500"></p>
+<p><img src="https://lc-tut.github.io/post_media/sportsfes2018/site-checker.png"></p>
 
 <p>Nginxのログ解析用のスクリプトをPythonで作成しました。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#!/usr/bin/env python</span>
@@ -443,7 +441,7 @@ RESPONSE_CODE<span style="color:#f92672">=</span><span style="color:#66d9ef">$(<
 	<span style="color:#75715e"># Print ranking</span>
 	<span style="color:#66d9ef">for</span> k_ip, v_often <span style="color:#f92672">in</span> sorted(often_ipaddrs<span style="color:#f92672">.</span>items(), key<span style="color:#f92672">=</span><span style="color:#66d9ef">lambda</span> x:x[<span style="color:#ae81ff">1</span>], reverse<span style="color:#f92672">=</span>True):
 		<span style="color:#66d9ef">print</span>  v_often, k_ip</code></pre></div>
-<p><img src="https://lc-tut.github.io/post_media/sportsfes2018/chart.png" width="500"></p>
+<p><img src="https://lc-tut.github.io/post_media/sportsfes2018/chart.png"></p>
 
 </div>
 
