@@ -17,7 +17,7 @@ categories = [
 
 ちょうど1ヶ月前くらいになりますが秋葉原で中古のThinkpad X230を買いました。主なスペックはSSD 240GBでOSなし、メモリ8G、CPU Intel Core-i5(haswell)です。
 
-<img src="/post_media/x230-keyboard/before-jis.jpg" width="500">
+<img src="/post_media/x230-keyboard/before-jis.jpg">
 
 日本で流通しているラップトップのほとんどはキーボードが日本語配列ですが、個人的に好きなのは英字配列なのでキーボードを交換することにしました。Amazonに適合するキーボードが出品されていたの注文しました。出品者の所在地が中国だったので少し不安がありました..。
 
@@ -25,7 +25,7 @@ categories = [
 
 2週間ほど経った頃に日本郵便からキーボードが配送され、開封してみるとキレイな英字キーボードが入っていました（歓喜）
 
-<img src="/post_media/x230-keyboard/before-us.jpg" width="500">
+<img src="/post_media/x230-keyboard/before-us.jpg">
 
 ### キーボードの交換
 
@@ -35,16 +35,16 @@ Thinkpadのキーボード交換は2箇所のネジを外すだけで行える�
 
 実際にキーボードを外してみます..。
 
-<img src="/post_media/x230-keyboard/working.jpg" width="500">
+<img src="/post_media/x230-keyboard/working.jpg">
 
 新しいキーボードを取り付けました。
 
-<img src="/post_media/x230-keyboard/after-us.jpg" width="500">
+<img src="/post_media/x230-keyboard/after-us.jpg">
 
 ### OSのインストール
 
 買った時にgentooのインストールをしかけて中断したので年末に再挑戦したいと思います。
 
-<img src="/post_media/x230-keyboard/gentoo.jpg" width="500">
+<img src="/post_media/x230-keyboard/gentoo.jpg">
 
 それではメリークリスマス && 良いお年を

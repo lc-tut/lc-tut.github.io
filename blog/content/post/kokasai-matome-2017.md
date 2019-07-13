@@ -127,7 +127,7 @@ done
 
 実際に動かすと以下のようになります。
 
-<img src="/post_media/kokasai2017/koyama_screenshot.jpg" width="300">
+<img src="/post_media/kokasai2017/koyama_screenshot.jpg">
 
 ### 2. 移植版ドアセンサー [Koyama]
 
@@ -137,7 +137,7 @@ done
 
 Arduinoには次の回路を実装しました。
 
-<img src="https://raw.githubusercontent.com/tomoyk/kokasai17/master/proc_testVisualizer/images/architecture.jpg" width="500">
+<img src="https://raw.githubusercontent.com/tomoyk/kokasai17/master/proc_testVisualizer/images/architecture.jpg">
 
 次にArduinoへ以下のプログラムを書き込みます。このプログラムではdigital 7番ピンに接続されたセンサーの値を取得してシリアルに書き出す処理を行っています。`delay(100)`によって遅延処理を行っています。
 
@@ -259,8 +259,8 @@ void draw(){
 
 うまく動作すればドアセンサーが離れたときに画面上にドアが開いている画像が表示され、「こんにちは」という音声が流れます。
 
-<img src="https://raw.githubusercontent.com/tomoyk/kokasai17/master/proc_testVisualizer/images/demoOpen.jpg" width="300">
-<img src="https://raw.githubusercontent.com/tomoyk/kokasai17/master/proc_testVisualizer/images/demoClose.jpg" width="300">
+<img src="https://raw.githubusercontent.com/tomoyk/kokasai17/master/proc_testVisualizer/images/demoOpen.jpg">
+<img src="https://raw.githubusercontent.com/tomoyk/kokasai17/master/proc_testVisualizer/images/demoClose.jpg">
 
 ### 3. 物体認識 [部長]
 DarkNetを使った物体認識ソフトウェアを作りました。
@@ -318,7 +318,7 @@ PyConの日に作りました。
 - numpy
 - pyplot
 
-<img src="/post_media/kokasai2017/homirun_screenshot.png" width="500">
+<img src="/post_media/kokasai2017/homirun_screenshot.png">
 
 ```python
 import cv2
@@ -387,19 +387,19 @@ Google Cloud APIから吐かれるjsonファイルの取り扱いで1日ほど�
 CPU使用率をリアルタイムで表示するGUIアプリ。16コアまで対応。使用ライブラリはQt5.0.0
 初めてのクラス設計に苦労しました。
 
-<img src="/post_media/kokasai2017/lapua_screenshot.png" width="500">
+<img src="/post_media/kokasai2017/lapua_screenshot.png">
 
 ### 7. 数当てゲーム [ayu]
 
 コンソールから入力された数字に対して当ってるだの当ってないだの評価して返す簡単なゲーム．Javaで書きました．GUI化させていきたい．
 
-<img src="/post_media/kokasai2017/ayu_screenshot.png" width="500">
+<img src="/post_media/kokasai2017/ayu_screenshot.png">
 
 ### 8. 目覚まし [uwdd]
 
 今回初めて~~まともな~~プログラミング作品を作りました。朝起きれなくて遅刻が増えてきたので今回は目覚まし時計を作りました。まだいくつか不具合があったりデザインが簡素すぎたりするので暇があれば直していきたい。
 
-<img src="/post_media/kokasai2017/uwdd_screenshot.png" width="500">
+<img src="/post_media/kokasai2017/uwdd_screenshot.png">
 
 ## 毎年恒例?のLC OB会
 

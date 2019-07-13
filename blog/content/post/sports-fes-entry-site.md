@@ -54,10 +54,6 @@ TLSv1.3はまだドラフト段階の規格なので5月現在で最新であっ
 - cache-control: private, no-store
 - pragma: no-cache
 
-<!--
-img src="/post_media/sportsfes2018/curl.png" width="500"
--->
-
 ```shell
 $ curl -si https://sports.linux.it.teu.ac.jp/ | head -n 15
 HTTP/2 200
@@ -98,7 +94,7 @@ pragma: no-cache
 
 既存のPythonコードを修正することで、チーム数制限を実装しました。従来はエントリー可能なチーム数の上限を設定していなかった為、上限なくエントリーできてしまいました。今年度のシステムはエントリー済みチーム数を取得することによって、エントリー上限に達するとエントリができなくなる仕組みを作りました。
 
-<img src="/post_media/sportsfes2018/basketball.png" width="500">
+<img src="/post_media/sportsfes2018/basketball.png">
 
 ## ソースコードの修正(フロント)
 
@@ -148,17 +144,17 @@ checkが0のときはarticleの子要素を表示させ、1のときは非表示
 
 2.Proxyタブ内から`HTTP Proxy`を選ぶとリクエスト一覧が表示されます。
 
-<img src="/post_media/sportsfes2018/burp-httpHistory.png" width="500">
+<img src="/post_media/sportsfes2018/burp-httpHistory.png">
 
 3.リクエスト一覧から診断したいリクエストを見つけて、`右クリック -> Send to Repeater` を実行します。
 
 4.Repeaterタブを開いてリクエストを書き換えて `Go` をクリックします。右側にレスポンス結果が表示されるので、この結果から脆弱性の有無を判断します。
 
-<img src="/post_media/sportsfes2018/burp-repeater.png" width="500">
+<img src="/post_media/sportsfes2018/burp-repeater.png">
 
 以下は診断過程の一部です。クロスサイトスクリプティングの脆弱性がないか確認をしています。
 
-<img src="/post_media/sportsfes2018/xss-check.png" width="500">
+<img src="/post_media/sportsfes2018/xss-check.png">
 
 ## 運用
 
@@ -166,7 +162,7 @@ checkが0のときはarticleの子要素を表示させ、1のときは非表示
 
 問い合わせ先はGoogle Formを使用しました。また、Google Formが送信されるとSlackへ通知されるようプラグインを設定しました。
 
-<img src="/post_media/sportsfes2018/google-form.png" width="500">
+<img src="/post_media/sportsfes2018/google-form.png">
 
 サイト監視用スクリプトを作成しました。スクリプトは実行されるとcurlコマンドを実行してステータスコードを確認します。ステータスコードが400未満であれば正常であると判断します。それ以外の場合は異常であると判断してSlackに通知を送信します。
 
@@ -206,7 +202,7 @@ else
 fi
 ```
 
-<img src="/post_media/sportsfes2018/site-checker.png" width="500">
+<img src="/post_media/sportsfes2018/site-checker.png">
 
 Nginxのログ解析用のスクリプトをPythonで作成しました。
 
@@ -267,4 +263,4 @@ if __name__ == '__main__':
 		print  v_often, k_ip
 ```
 
-<img src="/post_media/sportsfes2018/chart.png" width="500">
+<img src="/post_media/sportsfes2018/chart.png">

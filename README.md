@@ -60,6 +60,10 @@ categories = [
 ここに本文
 ```
 
+細かなフォーマットは以下に書かれています.
+
+[Front Matter | Hugo](https://gohugo.io/content-management/front-matter/)
+
 画像などのメディアファイルは`blog/static/post_media/`に配置してください.
 
 ### 3. 記事をビルドする
