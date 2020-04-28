@@ -1,4 +1,4 @@
-baseurl = "https://lc-tut.github.io/"
+baseurl = "https://blog.linux.it.teu.ac.jp/"
 languageCode = "ja-jp"
 author = "東京工科大学 LinuxClub"
 copyright = "Copyright (c) 2019, LinuxClub. All rights reserved."
