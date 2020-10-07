@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>GitHub Actions on LinuxClub BLOG</title>
+    <link>https://blog.linux.it.teu.ac.jp/tags/github-actions/</link>
+    <description>Recent content in GitHub Actions on LinuxClub BLOG</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <copyright>Copyright (c) 2019, LinuxClub. All rights reserved.</copyright>
+    <lastBuildDate>Wed, 07 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.linux.it.teu.ac.jp/tags/github-actions/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>記事を GitHub Actions を使ってデプロイするようにしました</title>
+      <link>https://blog.linux.it.teu.ac.jp/post/deploy-from-actions/</link>
+      <pubDate>Wed, 07 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.linux.it.teu.ac.jp/post/deploy-from-actions/</guid>
+      <description>この記事は, GitHub Actions のテストも兼ねた投稿です.
+何気に去年から部長やってます Forell (@F0rell) です. このブログが長らく更新されてなかったのと, 自分が何もやってないのもあったので動かしてみました.
+さて, URL からわかる通り, このブログは GitHub Pages を用いて公開されています (該当リポジトリ: https://github.com/lc-tut/lc-tut.github.io). サイトを構成するために Hugo を用いており, リポジトリでは source ブランチを Hugo を用いてビルドして master に向けて該当ディレクトリ (docs/) を git subtree を用いて push することによってページを公開できるようにしております.
+しかし, 手動でビルド, master に push するのははっきり言って面倒くさいです (初記事なのに何言ってるんだと思いますが, 大目に見てほしいです). 加えて, やり方が書いてあるといえども, git subtree という普段 (私が) 使わないコマンドも用いるため, 公開までのハードルが高いです.
+そのため, GitHub Actions を使って自動でビルド + デプロイをしたいと考えました.
+GitHub Actions とは かなり雑に言うと GitHub が提供している CI/CD ツールです.
+詳しいことはこことかここ見たらいいかと思います. 語れるほどやっているわけではないので URL 貼っつけになって申し訳ないです.</description>
+    </item>
+    
+  </channel>
+</rss>
