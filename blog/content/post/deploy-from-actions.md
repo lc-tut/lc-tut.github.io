@@ -1,11 +1,11 @@
 ---
 title: "記事を GitHub Actions を使ってデプロイするようにしました"
-date: "2020-10-08"
+date: 2020-10-07
 description: "今まで手動でビルドしデプロイしていたこのブログを GitHub Actions を使って自動でやってくれるようにしました."
 author: "Forell"
 tags:
 - GitHub Actions
-- 自動化
+- DevOps
 - CI/CD
 categories:
 - infra
