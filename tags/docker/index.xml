@@ -1,27 +1,23 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>docker on LinuxClub BLOG</title>
-    <link>https://lc-tut.github.io/tags/docker/</link>
+    <link>https://blog.linux.it.teu.ac.jp/tags/docker/</link>
     <description>Recent content in docker on LinuxClub BLOG</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <copyright>Copyright (c) 2019, LinuxClub. All rights reserved.</copyright>
-    <lastBuildDate>Thu, 11 Jul 2019 11:30:00 +0900</lastBuildDate>
-    
-	<atom:link href="https://lc-tut.github.io/tags/docker/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 11 Jul 2019 11:30:00 +0900</lastBuildDate><atom:link href="https://blog.linux.it.teu.ac.jp/tags/docker/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>外部向けサーバーのリプレイスを実施</title>
-      <link>https://lc-tut.github.io/post/server-replace-2019/</link>
+      <link>https://blog.linux.it.teu.ac.jp/post/server-replace-2019/</link>
       <pubDate>Thu, 11 Jul 2019 11:30:00 +0900</pubDate>
       
-      <guid>https://lc-tut.github.io/post/server-replace-2019/</guid>
+      <guid>https://blog.linux.it.teu.ac.jp/post/server-replace-2019/</guid>
       <description>3年のKoyamaです。外部向けに公開している公式サイトやスポーツ大会エントリーサイトをホスティングしているサーバー(VPS)をリプレイスしました。この記事では昨年の12月から今年1月にかけて取り組んだことについて振り返ってみます。
 現状の把握 これまでのサーバーの構成を把握することからはじめました。具体的には、どのようなサービスが動作して、移行が必要かを洗い出しました。
 従来の構成:
- OS: CentOS 6.9 x86_64  GMO CloudのCentOS 6.2 Templateから導入  DNS(Bind) 9.8.2 Web(Nginx) 1.12.2 PHP 5.3.3 Python 2.6.6 uWSGI 2.0.10 MySQL Ver 14.14 Distrib 5.1.73 SQLite Ver 3.6.20 Postfix Ver 2.6.6  ミドルウェア(すべてパッケージからインストール)
+ OS: CentOS 6.9 x86_64  GMO CloudのCentOS 6.2 Templateから導入   DNS(Bind) 9.8.2 Web(Nginx) 1.12.2 PHP 5.3.3 Python 2.6.6 uWSGI 2.0.10 MySQL Ver 14.14 Distrib 5.1.73 SQLite Ver 3.6.20 Postfix Ver 2.6.6  ミドルウェア(すべてパッケージからインストール)
 把握した結果、OSのバージョンが古く、構築資料が無いことから再構築を行う判断をしました。
 新たな構成の検討 提供する必要のあるサービスの洗い出しを行いました。その結果、以下のサービスが必要だと分かりました。
  DNS: 独自ドメインの管理 Web: Webサイトのホスティング SSL: WebのSSL対応 SSH: Webホスティング提供用  次にサーバー構成の検討を行いました。既存サーバーは1台だけでメモリとCPUが豊富にありました。しかし、リソースの利用状況を見る限り、そのリソースが活用されていることが確認できません。そこで、台数を2台へ増やし1台あたりのスペックを下げることにしました。この構成にすることで費用面を抑えつつ冗長化が行えました。
@@ -29,7 +25,7 @@ OS/ミドルウェアの選定 権威DNSサーバー DNSサーバーはこれま
 Webサーバー これまでNginxで構築されてきたWebサーバーはこれまで通りNginxを採用しました。これは運用で問題なく利用できたことから判断しました。
 Webホスティング SSH経由でサーバーへファイルをアップロードできるシステムが従来から存在しました。従来はOpenSSHとchrootを使って構築されていました。新システムではDockerでSSHサーバーを構築することにしました。
 サーバー切り替え 今回の目標としてダウンタイム0で切り替えられることをあげました。既存のユーザーへ影響を与えずにサービス提供を継続することが大切であるという認識に基づいています。そのために以下の手順で切り替えを計画的におこないました。
- 旧サーバー利用者へシステム移行を行うことを通知  メール, Twitterで周知 移行まで余裕をもたせて連絡  新サーバーの構築 切り替えを実施  DNSサーバーのみ新サーバーへ切り替え DNSサーバーから返すWebサーバーを新サーバーへ切り替え 旧サーバーへDNS, Webのアクセスが収束したことを確認   運用/監視 運用と監視は別の記事で紹介します。</description>
+ 旧サーバー利用者へシステム移行を行うことを通知  メール, Twitterで周知 移行まで余裕をもたせて連絡   新サーバーの構築 切り替えを実施  DNSサーバーのみ新サーバーへ切り替え DNSサーバーから返すWebサーバーを新サーバーへ切り替え 旧サーバーへDNS, Webのアクセスが収束したことを確認    運用/監視 運用と監視は別の記事で紹介します。</description>
     </item>
     
   </channel>

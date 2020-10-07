@@ -16,7 +16,7 @@
 
 <meta property="og:title" content="VMware Workstation Pro 14がLinux Kernel4.13で動くようにする  &middot; LinuxClub BLOG ">
 <meta property="og:site_name" content="LinuxClub BLOG"/>
-<meta property="og:url" content="https://lc-tut.github.io/post/vmware-on-kernal-413/" />
+<meta property="og:url" content="https://blog.linux.it.teu.ac.jp/post/vmware-on-kernal-413/" />
 <meta property="og:locale" content="ja-jp">
 
 
@@ -41,8 +41,8 @@
 <meta name="twitter:creator" content="@" />
 <meta name="twitter:title" content="VMware Workstation Pro 14がLinux Kernel4.13で動くようにする" />
 <meta name="twitter:description" content="VMware Workstation Pro 14をLinux Kernel v4.13で動かすためにやったことを紹介します。" />
-<meta name="twitter:url" content="https://lc-tut.github.io/post/vmware-on-kernal-413/" />
-<meta name="twitter:domain" content="https://lc-tut.github.io/">
+<meta name="twitter:url" content="https://blog.linux.it.teu.ac.jp/post/vmware-on-kernal-413/" />
+<meta name="twitter:domain" content="https://blog.linux.it.teu.ac.jp/">
   
 
 <script type="application/ld+json">
@@ -56,30 +56,30 @@
     },
     "datePublished": "2017-11-18",
     "description": "VMware Workstation Pro 14をLinux Kernel v4.13で動かすためにやったことを紹介します。",
-    "wordCount": 65
+    "wordCount":  65 
   }
 </script>
 
 
-<link rel="canonical" href="https://lc-tut.github.io/post/vmware-on-kernal-413/" />
+<link rel="canonical" href="https://blog.linux.it.teu.ac.jp/post/vmware-on-kernal-413/" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
-  <link rel="stylesheet" href="https://lc-tut.github.io/assets/css/style.css">
-  <link rel="stylesheet" href="https://lc-tut.github.io/assets/css/tomorrow-night.css">
+  <link rel="stylesheet" href="https://blog.linux.it.teu.ac.jp/assets/css/style.css">
+  <link rel="stylesheet" href="https://blog.linux.it.teu.ac.jp/assets/css/tomorrow-night.css">
 
-  <link rel="apple-touch-icon-precomposed" sizes="57x57" href="https://lc-tut.github.io/apple-touch-icon-57x57.png" />
-<link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://lc-tut.github.io/apple-touch-icon-114x114.png" />
-<link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://lc-tut.github.io/apple-touch-icon-72x72.png" />
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://lc-tut.github.io/apple-touch-icon-144x144.png" />
-<link rel="apple-touch-icon-precomposed" sizes="60x60" href="https://lc-tut.github.io/apple-touch-icon-60x60.png" />
-<link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://lc-tut.github.io/apple-touch-icon-120x120.png" />
-<link rel="apple-touch-icon-precomposed" sizes="76x76" href="https://lc-tut.github.io/apple-touch-icon-76x76.png" />
-<link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://lc-tut.github.io/apple-touch-icon-152x152.png" />
-<link rel="icon" type="image/png" href="https://lc-tut.github.io/favicon-196x196.png" sizes="196x196" />
-<link rel="icon" type="image/png" href="https://lc-tut.github.io/favicon-96x96.png" sizes="96x96" />
-<link rel="icon" type="image/png" href="https://lc-tut.github.io/favicon-32x32.png" sizes="32x32" />
-<link rel="icon" type="image/png" href="https://lc-tut.github.io/favicon-16x16.png" sizes="16x16" />
-<link rel="icon" type="image/png" href="https://lc-tut.github.io/favicon-128.png" sizes="128x128" />
+  <link rel="apple-touch-icon-precomposed" sizes="57x57" href="https://blog.linux.it.teu.ac.jp/apple-touch-icon-57x57.png" />
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://blog.linux.it.teu.ac.jp/apple-touch-icon-114x114.png" />
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://blog.linux.it.teu.ac.jp/apple-touch-icon-72x72.png" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://blog.linux.it.teu.ac.jp/apple-touch-icon-144x144.png" />
+<link rel="apple-touch-icon-precomposed" sizes="60x60" href="https://blog.linux.it.teu.ac.jp/apple-touch-icon-60x60.png" />
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://blog.linux.it.teu.ac.jp/apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon-precomposed" sizes="76x76" href="https://blog.linux.it.teu.ac.jp/apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://blog.linux.it.teu.ac.jp/apple-touch-icon-152x152.png" />
+<link rel="icon" type="image/png" href="https://blog.linux.it.teu.ac.jp/favicon-196x196.png" sizes="196x196" />
+<link rel="icon" type="image/png" href="https://blog.linux.it.teu.ac.jp/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/png" href="https://blog.linux.it.teu.ac.jp/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="https://blog.linux.it.teu.ac.jp/favicon-16x16.png" sizes="16x16" />
+<link rel="icon" type="image/png" href="https://blog.linux.it.teu.ac.jp/favicon-128.png" sizes="128x128" />
 <meta name="application-name" content="VMware Workstation Pro 14がLinux Kernel4.13で動くようにする"/>
 <meta name="msapplication-TileColor" content="#FFFFFF" />
 <meta name="msapplication-TileImage" content="/mstile-144x144.png" />
@@ -91,7 +91,7 @@
 </head>
 <body class="bg-light">
   <nav class="navbar navbar-expand-md site-navbar bg-info">
-    <a class="navbar-brand text-white" href="https://lc-tut.github.io/">LinuxClub BLOG</a>
+    <a class="navbar-brand text-white" href="https://blog.linux.it.teu.ac.jp/">LinuxClub BLOG</a>
   <button class="navbar-toggler" 
   type="button" data-toggle="collapse" data-target="#exCollapsingNavbar2" aria-controls="exCollapsingNavbar2"
     aria-expanded="false" aria-label="Toggle navigation">
@@ -101,14 +101,14 @@
     <ul class="nav navbar-nav ml-auto">
        
       <li class="nav-item">
-        <a class="nav-link menu-item  no-decoration text-white" href="https://lc-tut.github.io/tags/">
+        <a class="nav-link menu-item  no-decoration text-white" href="https://blog.linux.it.teu.ac.jp/tags/">
           <i class='fa fa-tags'></i>
           <span class="text-capitalize">TAGS</span>
         </a>
       </li>
       
       <li class="nav-item">
-        <a class="nav-link menu-item  no-decoration text-white" href="https://lc-tut.github.io/categories/">
+        <a class="nav-link menu-item  no-decoration text-white" href="https://blog.linux.it.teu.ac.jp/categories/">
           <i class='fa fa-folder-open'></i>
           <span class="text-capitalize">CATEGORIES</span>
         </a>
@@ -146,7 +146,7 @@
       <div class="post-meta-item">
           <i class="fa fa-folder-open-o"></i>
           
-          <a class="article-category-link" href="https://lc-tut.github.io/categories/linuxtips/">LinuxTips</a>
+          <a class="article-category-link" href="https://blog.linux.it.teu.ac.jp/categories/linuxtips/">LinuxTips</a>
           
           
       </div>
@@ -159,13 +159,13 @@
         <div class="post-meta-item">
           <i class="fa fa-tags"></i>
           
-          <a href="https://lc-tut.github.io/tags/kernel-v4/">Kernel v4</a>
+          <a href="https://blog.linux.it.teu.ac.jp/tags/kernel-v4/">Kernel v4</a>
           &middot;
           
-          <a href="https://lc-tut.github.io/tags/linux/">Linux</a>
+          <a href="https://blog.linux.it.teu.ac.jp/tags/linux/">Linux</a>
           &middot;
           
-          <a href="https://lc-tut.github.io/tags/vmware/">VMWare</a>
+          <a href="https://blog.linux.it.teu.ac.jp/tags/vmware/">VMWare</a>
           
           
         </div>
@@ -179,26 +179,15 @@
 </div>
 
       <div class="article-body">
-  
-
-<p>Author: <a href="https://github.com/kumapana/">panakuma</a></p>
-
-<h2 id="linux-kernal-4-13がやっと動いたが">Linux Kernal 4.13がやっと動いたが&hellip;</h2>
-
+  <p>Author: <a href="https://github.com/kumapana/">panakuma</a></p>
+<h2 id="linux-kernal-413がやっと動いたが">Linux Kernal 4.13がやっと動いたが&hellip;</h2>
 <p>私のマシンでは長らくLinux kernel 4.4系しか動かなかったのですが、Oracle VirtualBoxの関連コンポーネントを根こそぎ削除したところ4.13系が動作しました。ですが&hellip;</p>
-
 <p><strong>VMware Workstation Pro 14上の仮想マシンが起動しなくなりました</strong></p>
-
 <p>具体的には次のようなエラーメッセージが表示されます。</p>
-
-<p><img src="https://lc-tut.github.io/post_media/vmware/img01.png" alt="unable to reserve memory" /></p>
-
-<p><img src="https://lc-tut.github.io/post_media/vmware/img02.png" alt="could not lock memory" /></p>
-
-<p><img src="https://lc-tut.github.io/post_media/vmware/img03.png" alt="failed to switch to 64bit mode" /></p>
-
+<p><img src="https://blog.linux.it.teu.ac.jp/post_media/vmware/img01.png" alt="unable to reserve memory"></p>
+<p><img src="https://blog.linux.it.teu.ac.jp/post_media/vmware/img02.png" alt="could not lock memory"></p>
+<p><img src="https://blog.linux.it.teu.ac.jp/post_media/vmware/img03.png" alt="failed to switch to 64bit mode"></p>
 <p>VMware Workstation がkernel4.13に対応していないことが原因のようです。Kernelに対する命令である<code>global_page_state</code>が4.13以降で<code>global_zone_page_state</code>に変わったことが原因です。有志の方がこれに対応するパッチを作成していたので、これを用いて対処していきます。</p>
-
 <p>次のコマンドでパッチを当てることができます。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo -i
 cd /tmp
@@ -210,13 +199,10 @@ mv -f hostif.c vmmon-only/linux/hostif.c
 tar cf vmmon.tar vmmon-only
 rm -fr vmmon-only
 mv -f vmmon.tar /usr/lib/vmware/modules/source/vmmon.tar 
-vmware-modconfig --console --install-all</code></pre></div>
-<p>コマンド実行後に再起動を行うことで、VMware Workstationが正常に動作します。</p>
-
-<hr />
-
+vmware-modconfig --console --install-all
+</code></pre></div><p>コマンド実行後に再起動を行うことで、VMware Workstationが正常に動作します。</p>
+<hr>
 <p>参考文献</p>
-
 <p><a href="https://bbs.archlinux.org/viewtopic.php?id=230487">Arch Linux User Forums VMWare Workstation 14.0 - not enough physical memory</a></p>
 
 </div>
@@ -242,7 +228,7 @@ vmware-modconfig --console --install-all</code></pre></div>
     <div class="row">
       <div class="offset-lg-1 col-lg-10 col-xs-12">
         <p class="text-center mb-0 pa-0">
-          &copy; 2019 Copyright &copy; 2019, LinuxClub. All rights reserved.
+          &copy; 2020 Copyright (c) 2019, LinuxClub. All rights reserved.
         </p>
         
       </div>
@@ -256,7 +242,7 @@ vmware-modconfig --console --install-all</code></pre></div>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 
-<script src="https://lc-tut.github.io/assets/js/script.js"></script>
+<script src="https://blog.linux.it.teu.ac.jp/assets/js/script.js"></script>
 
 
 <script type="application/javascript">

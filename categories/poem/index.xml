@@ -1,23 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>poem on LinuxClub BLOG</title>
-    <link>https://lc-tut.github.io/categories/poem/</link>
+    <link>https://blog.linux.it.teu.ac.jp/categories/poem/</link>
     <description>Recent content in poem on LinuxClub BLOG</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <copyright>Copyright (c) 2019, LinuxClub. All rights reserved.</copyright>
-    <lastBuildDate>Fri, 20 Oct 2017 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://lc-tut.github.io/categories/poem/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 20 Oct 2017 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.linux.it.teu.ac.jp/categories/poem/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>紅華祭 2017を終えて</title>
-      <link>https://lc-tut.github.io/post/kokasai-matome-2017/</link>
+      <link>https://blog.linux.it.teu.ac.jp/post/kokasai-matome-2017/</link>
       <pubDate>Fri, 20 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://lc-tut.github.io/post/kokasai-matome-2017/</guid>
+      <guid>https://blog.linux.it.teu.ac.jp/post/kokasai-matome-2017/</guid>
       <description>LinuxClubの1年のKoyamaです。
 今後、このブログを通じてサークルの活動の様子を積極的に発信していきたいと思います。この記事では2017年度 紅華祭を振り返ってみたいと思います。まず、部長から全体を通したコメントです。
 全体を通じて 前日に完成している展示物がなくて焦ったものですがみなさんいいものを作ってきてくれて驚きました。普段コンソールに向かっているので見栄えのいいものと言われても困ったとは思いますが良い作品を展示できてよかったです。

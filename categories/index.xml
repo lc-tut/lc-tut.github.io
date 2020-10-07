@@ -1,68 +1,64 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on LinuxClub BLOG</title>
-    <link>https://lc-tut.github.io/categories/</link>
+    <link>https://blog.linux.it.teu.ac.jp/categories/</link>
     <description>Recent content in Categories on LinuxClub BLOG</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <copyright>Copyright (c) 2019, LinuxClub. All rights reserved.</copyright>
-    <lastBuildDate>Thu, 11 Jul 2019 11:30:00 +0900</lastBuildDate>
-    
-	<atom:link href="https://lc-tut.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 11 Jul 2019 11:30:00 +0900</lastBuildDate><atom:link href="https://blog.linux.it.teu.ac.jp/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>infra</title>
-      <link>https://lc-tut.github.io/categories/infra/</link>
+      <link>https://blog.linux.it.teu.ac.jp/categories/infra/</link>
       <pubDate>Thu, 11 Jul 2019 11:30:00 +0900</pubDate>
       
-      <guid>https://lc-tut.github.io/categories/infra/</guid>
+      <guid>https://blog.linux.it.teu.ac.jp/categories/infra/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>activity</title>
-      <link>https://lc-tut.github.io/categories/activity/</link>
+      <title>Activity</title>
+      <link>https://blog.linux.it.teu.ac.jp/categories/activity/</link>
       <pubDate>Sat, 03 Feb 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://lc-tut.github.io/categories/activity/</guid>
+      <guid>https://blog.linux.it.teu.ac.jp/categories/activity/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Hardware</title>
-      <link>https://lc-tut.github.io/categories/hardware/</link>
+      <link>https://blog.linux.it.teu.ac.jp/categories/hardware/</link>
       <pubDate>Fri, 22 Dec 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://lc-tut.github.io/categories/hardware/</guid>
+      <guid>https://blog.linux.it.teu.ac.jp/categories/hardware/</guid>
       <description></description>
     </item>
     
     <item>
       <title>LinuxTips</title>
-      <link>https://lc-tut.github.io/categories/linuxtips/</link>
+      <link>https://blog.linux.it.teu.ac.jp/categories/linuxtips/</link>
       <pubDate>Sat, 18 Nov 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://lc-tut.github.io/categories/linuxtips/</guid>
+      <guid>https://blog.linux.it.teu.ac.jp/categories/linuxtips/</guid>
       <description></description>
     </item>
     
     <item>
       <title>poem</title>
-      <link>https://lc-tut.github.io/categories/poem/</link>
+      <link>https://blog.linux.it.teu.ac.jp/categories/poem/</link>
       <pubDate>Fri, 20 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://lc-tut.github.io/categories/poem/</guid>
+      <guid>https://blog.linux.it.teu.ac.jp/categories/poem/</guid>
       <description></description>
     </item>
     
     <item>
       <title>uncategorized</title>
-      <link>https://lc-tut.github.io/categories/uncategorized/</link>
+      <link>https://blog.linux.it.teu.ac.jp/categories/uncategorized/</link>
       <pubDate>Sat, 17 Jun 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://lc-tut.github.io/categories/uncategorized/</guid>
+      <guid>https://blog.linux.it.teu.ac.jp/categories/uncategorized/</guid>
       <description></description>
     </item>
     

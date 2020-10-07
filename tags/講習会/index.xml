@@ -1,36 +1,29 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>講習会 on LinuxClub BLOG</title>
-    <link>https://lc-tut.github.io/tags/%E8%AC%9B%E7%BF%92%E4%BC%9A/</link>
+    <link>https://blog.linux.it.teu.ac.jp/tags/%E8%AC%9B%E7%BF%92%E4%BC%9A/</link>
     <description>Recent content in 講習会 on LinuxClub BLOG</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <copyright>Copyright (c) 2019, LinuxClub. All rights reserved.</copyright>
-    <lastBuildDate>Sat, 03 Feb 2018 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://lc-tut.github.io/tags/%E8%AC%9B%E7%BF%92%E4%BC%9A/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 03 Feb 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.linux.it.teu.ac.jp/tags/%E8%AC%9B%E7%BF%92%E4%BC%9A/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>初心者向けハンズオンを行いました</title>
-      <link>https://lc-tut.github.io/post/hands-on-for-beginners/</link>
+      <link>https://blog.linux.it.teu.ac.jp/post/hands-on-for-beginners/</link>
       <pubDate>Sat, 03 Feb 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://lc-tut.github.io/post/hands-on-for-beginners/</guid>
+      <guid>https://blog.linux.it.teu.ac.jp/post/hands-on-for-beginners/</guid>
       <description>次期会計らしいKoyamaです。
 11月から毎週火曜日に初心者/中級者を対象にそれぞれが得意とする分野のテーマでハンズオンを行いました。テーマはWeb(HTML/CSS), インフラ(WordPress), プログラミング(Python, C++)です。この記事では各回を担当したメンバーがハンズオンの概要について解説していきます。
 Web(HTML, CSS) Webを担当したhomirunです。 今回はHTML5とCSS3について説明しました。 以下のスライドを使用しました。
-  HTML_CSS  from homirun  
 サーバ構築(WordPress) Koyamaとpanakumaが担当しました。Windows上に作成したVMを使ってWebサーバ(nginx)とDBサーバ(MySQL)を構築してWordPressを設置しました。VMの環境構築に時間がかかった為、2回に分けて行いました。
-サーバー構築のLT中！#LC勉強会 #LinuxClub pic.twitter.com/fuxVjW1d3A
-&amp;mdash; 東京工科大学 LinuxClub (@lc_tut) 2017年11月21日 
 資料はGithubに公開しました。
 tomoyk/ServerHandson
 プログラミング(Pyhon) 自己紹介 Pythonの初心者入門 および スクレイピングハンズオンを担当したパナくまです。 Pythonのコーディング経験は6ヶ月弱ぐらいですが、書きやすい言語なので簡単なことをサクッと書くくらいは出来るようにスライドを作りました。
-担当したテーマ  初心者入門  基本構文の使い方  スクレイピングハンズオン  beautifulsoup4を使った簡単なスクレイピング   テーマの内容 初心者入門 まずはプログラミング言語の要である変数やfor文 if文 ユーザー定義関数などを簡単に説明しました。
+担当したテーマ  初心者入門  基本構文の使い方   スクレイピングハンズオン  beautifulsoup4を使った簡単なスクレイピング    テーマの内容 初心者入門 まずはプログラミング言語の要である変数やfor文 if文 ユーザー定義関数などを簡単に説明しました。
 スクレイピングハンズオン beautifulsoupライブラリを用いて妹さえいればいい。の新着情報のトピックスを拾うというプログラムを作りました。
-サンプルソース スクレイピングハンズオン from urllib import request from bs4 import BeautifulSoup as BS def main(): url = &amp;#34;http://imotosae.</description>
+サンプルソース スクレイピングハンズオン from urllib import request from bs4 import BeautifulSoup as BS def main(): url = &amp;#34;http://imotosae.com/news/&amp;#34; req = request.Request(url) res = request.urlopen(req) html = res.read() soup = BS(html, &amp;#34;lxml&amp;#34;) topics = soup.</description>
     </item>
     
   </channel>
