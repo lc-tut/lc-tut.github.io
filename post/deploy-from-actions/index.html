@@ -56,7 +56,7 @@
     },
     "datePublished": "2020-10-07",
     "description": "今まで手動でビルドしデプロイしていたこのブログを GitHub Actions を使って自動でやってくれるようにしました.",
-    "wordCount":  138 
+    "wordCount":  142 
   }
 </script>
 
@@ -137,7 +137,7 @@
   <div class="post-meta-item">
     <time datetime="10 Oct 7106">7 Oct, 2020</time>
     &middot; 1 min read
-    &middot; 138 Words
+    &middot; 142 Words
   </div>
 
   
@@ -229,6 +229,8 @@
         <span style="color:#f92672">with</span>:
           <span style="color:#f92672">github_token</span>: <span style="color:#ae81ff">${{ secrets.GITHUB_TOKEN }}</span>
           <span style="color:#f92672">publish_dir</span>: <span style="color:#ae81ff">./blog/public</span>
+          <span style="color:#f92672">publish_branch</span>: <span style="color:#ae81ff">master</span>
+          <span style="color:#f92672">cname</span>: <span style="color:#ae81ff">blog.linux.it.teu.ac.jp</span>
 </code></pre></div><p>ほぼ <code>peaceiris/actions-hugo@v2</code> にのっている例と同じです.</p>
 
 </div>
