@@ -70,6 +70,8 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./blog/public
+          publish_branch: master
+          cname: blog.linux.it.teu.ac.jp
 ```
 
 ほぼ `peaceiris/actions-hugo@v2` にのっている例と同じです.
