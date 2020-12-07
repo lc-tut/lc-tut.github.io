@@ -52,6 +52,11 @@ name  = "date"
 weight = 10
 pattern = "2006"
 
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
 # You can have link at the footer as below
 # [[menu.footer]]
 #     name = "DISCLAIMER"
