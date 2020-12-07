@@ -185,6 +185,7 @@ FROM scratch
 COPY --from=build-env /work/myhash /myhash
 ENTRYPOINT ["/myhash"]
 ```
+
 [参考](https://qiita.com/circus/items/450254c59d194cbf22d7)
 
 これによりイメージのファイルサイズが600kBまで落ちました。goのバイナリにupxをそのまま使うと実行できなくなるという話を聞いたのでチキってgoupxを使いましたが、オプションが使えないというデメリットがありました。upxの`-9`を試してみたかったなと思いました。
@@ -209,11 +210,12 @@ Mikanerは以下の手順で問題の回答に当たりました。
 
 <img src="/post_media/ictsc2020-qualify/mysql.png">
 
-
 #### SQLの結合
+
 SELECT句にて必要な情報を並べ，あとは結合するだけの簡単なお仕事でした。
 AS句を使えばもっと楽に書けたのですが，当時のMikanerさんはAS句の使い方をうろ覚えだったので，確実性を求めてメモにコピペをして済ませていました。
 楽だから使えばいいのにね。
+
 ```sql
 USE List;
 SELECT Equipment_list.ID, Equipment_list.Name, Order_company_list.Name, Manufacturing_company_list.Name, Equipment_list.Price
@@ -230,12 +232,14 @@ ENCLOSED BY '"'
 ESCAPED BY '"'
 LINES TERMINATED BY '\r\n';
 ```
+
 このあたりでKoyamaさんとPanakumaさんにSQLを見てもらったところ，INNER JOINはあまり使わないという意見を頂いたので，本番環境を意識してLEFT JOINに変更しました。
 
 ここで変更したファイルで意気揚々と出力させようとしたところ，submit.csvがすでにあるから書けないという問題が発生しました。
 /tmp内にアクセスして削除を試みましたが，権限がないため削除ができませんでした。sudo権限ください。
 面倒くさかったので出力名を'test1.csv'に変更して出力しました。
 このあとは実行した分だけ番号が増えていきます。
+
 ```sql
 USE List;
 SELECT Equipment_list.ID, Equipment_list.Name, Order_company_list.Name, Manufacturing_company_list.Name, Equipment_list.Price
@@ -252,11 +256,16 @@ ENCLOSED BY '"'
 ESCAPED BY '"'
 LINES TERMINATED BY '\r\n';
 ```
+
 #### 出力結果
+
 あとで追記。
+
 #### WHERE句とORDER BY句を追記
+
 あとは並び替えるだけと思って問題文よく読んだら，HQという場所にあるE社のPCだけを出力するっぽいことがわかったので，WHERE句とORDER BY句を追記しました。
 よく読まなかったら危なかった。
+
 ```sql
 USE List;
 SELECT Equipment_list.ID, Equipment_list.Name, Order_company_list.Name, Manufacturing_company_list.Name, Equipment_list.Price 
@@ -275,7 +284,9 @@ ENCLOSED BY '"'
 ESCAPED BY '"'
 LINES TERMINATED BY '\r\n';
 ```
+
 #### 不備の確認
+
 出力先ファイルをsubmit.csvに変更し，出力したCSVファイルの名前もsubmit.csvに変更し，提出しました。提出直前にLocation_listとEquipment_listをつないでいるON句でUse_placeのテーブル指定を忘れていたことに気付きましたが，修正面倒だしFROMの方だから問題ないやろってお気持ちで放置しました。
 
 公式の解説:[備品は何処へ | ICTSC Tech Blog](https://blog.icttoracon.net/2020/11/02/%e5%82%99%e5%93%81%e3%81%af%e4%bd%95%e5%87%a6%e3%81%b8/)
