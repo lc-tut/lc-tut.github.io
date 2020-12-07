@@ -7,7 +7,31 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <copyright>Copyright (c) 2019, LinuxClub. All rights reserved.</copyright>
-    <lastBuildDate>Wed, 07 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.linux.it.teu.ac.jp/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 09 Nov 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.linux.it.teu.ac.jp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ICTSC2020 予選を11位で通過しました</title>
+      <link>https://blog.linux.it.teu.ac.jp/post/ictsc2020-qualify/</link>
+      <pubDate>Mon, 09 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.linux.it.teu.ac.jp/post/ictsc2020-qualify/</guid>
+      <description>ICTSC(ICTトラブルシューティングコンテスト) 2020にチーム「インターネット」で参加しました．結果は40チーム中11位で予選を通過しました．
+「ICTトラブルシューティングコンテスト2020」予選結果発表 – ICTSC | ICT トラブルシューティングコンテスト
+チーム名の「インターネット」はkoyamaが適当につけました．インターネットは人権ですね．教科書にも書いてあるはずです．
+チームは以下のLinuxClubのメンバー4人です．
+ koyama panakuma Mikaner cl0wn  Write-up ルーティング Networkが作成できない？ [unknown] prefixがかぶっていることに気づいたタイミングで終了
+公式の解説：networkが作成できない？ | ICTSC Tech Blog
+経路を受け取れない [panakuma] 対象のルータにログインをし、journalctlでBGPのプロセスが出しているエラーを追っていると何らかの原因でプロセスが死んでいることが判明し、/var/logの中身を読んだりしているとメモリ不足が原因だと判明しました。 解決策としては、ルータに割り当てるメモリの量を増やすという単純な物でした。
+繋がらなくなっちゃった！ [panakuma] 以下の事象が原因でトラブルが発生していた
+ OSPFのルート交換をするインターフェースの指定が間違っていた OSPFのエリアの設定が間違っていた ルータIDが間違っていた  VyOSで動作していたため、とりあえずshow configurationを叩いてみたり、OSPFのステータスを確認しながらトラブルシューティングをしていきました。
+また、この問題ではなぜこのような事象が発生したかを問われていたので、問題文を参考にルータの設定をいじくっていたら間違えてしまったのだろうという仮説を元に回答をしました。
+またビルド失敗しちゃった～… [cl0wn] マルチステージビルドをしているDockerfileがあります。一つ目のイメージで実行ファイルを作って、もう一つのイメージでそれを動かすということをしています。
+エラーを見ると
+standard_init_linux.go:211: exec user process caused &amp;quot;no such file or directory&amp;quot; どうやら、一つ目のイメージにはあったファイルが2つ目のイメージにはなくてダイナミックリンクに失敗しているっぽいです。
+したがって、static linkにしてやれば解決します。
+RUN CGO_ENABLED=0 go build -o /app ./main.go公式の解説：またビルド失敗しちゃった～… | ICTSC Tech Blog
+ウェブ WEBページが見れない [cl0wn] この問題は「apacheサーバーのdocumentルートを/home/user/html/に変更したところ、そのディレクトリ以下のファイルhome.</description>
+    </item>
+    
     <item>
       <title>記事を GitHub Actions を使ってデプロイするようにしました</title>
       <link>https://blog.linux.it.teu.ac.jp/post/deploy-from-actions/</link>
