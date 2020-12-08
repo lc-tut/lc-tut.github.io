@@ -1,4 +1,4 @@
-# LinuxClub BLOG 
+# LinuxClub BLOG
 
 ## 記事の書き方
 
@@ -68,12 +68,9 @@ categories = [
 
 ### 3. 記事をビルドする
 
-ビルドには次の2つの方法があります.
-
-- ローカルにHugoをインストールしてビルド
-- DockerのHugoイメージでビルド
-
-#### 3-1. ローカルでビルド
+記事はGitHub Actionsで自動ビルドされ，公開されます．
+sourceブランチへ変更が加えられると自動で実行されます．
+PullRequestを作成してsourceブランチに変更をMergeするとよいです．
 
 以下の手順でローカルにHugoをインストールする.
 
@@ -88,42 +85,15 @@ $ pwd
 $ hugo serve
 ```
 
-記事をローカルでビルド:
-
-```shell
-$ cd blog
-$ pwd
-/path/to/lc-tut.github.io/blog
-$ hugo -d ../docs
-```
-
-#### 3-2. Dockerでビルド
-
-執筆中
-
-```shell
-$ cd lc-tut.github.io/
-$ docker run --rm -it -v $PWD:/src -u hugo jguyomard/hugo-builder hugo
-```
-
 #### 4. GitHubへPush
 
-`source`ブランチへビルドしたファイル郡と記事をPushする.
+`source`ブランチへファイル郡と記事をPushする.
 
 ```shell
-$ git checkout source
-$ git add -A
+$ git add -p
 $ git commit -m 'YOUR MESSAGE'
 $ git push origin HEAD
 ```
-
-`master`ブランチへ公開するファイルをPushする.
-
-```shell
-$ git subtree push --prefix docs/ origin master
-```
-
-`git subtree`は古いgitには含まれないので追加を行う.
 
 ## 構築環境
 
@@ -134,7 +104,3 @@ go version go1.11.10 linux/amd64
 $ hugo version
 Hugo Static Site Generator v0.56.0-DEV/extended linux/amd64 BuildDate: unknown
 ```
-
-## 参考資料
-
-[GitHub PagesのUser Pagesでドキュメントルートを変更するにはmasterを殺す - Qiita](https://qiita.com/kwappa/items/03ffdeb89039a7249619)
