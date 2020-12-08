@@ -1,5 +1,7 @@
 # LinuxClub BLOG
 
+![deploy gh-pages](https://github.com/lc-tut/lc-tut.github.io/workflows/deploy%20gh-pages/badge.svg)
+
 ## 記事の書き方
 
 GitHubアカウントをLinuxClubのOrganizationに追加する. (Adminへ依頼)
