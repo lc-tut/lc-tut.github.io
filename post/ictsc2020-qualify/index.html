@@ -56,7 +56,7 @@
     },
     "datePublished": "2020-11-09",
     "description": "ICTSC2020 予選のWriteUpと感想です．",
-    "wordCount":  551 
+    "wordCount":  685 
   }
 </script>
 
@@ -136,8 +136,8 @@
   <div class="post-meta">
   <div class="post-meta-item">
     <time datetime="11 Nov 9116">9 Nov, 2020</time>
-    &middot; 3 min read
-    &middot; 551 Words
+    &middot; 4 min read
+    &middot; 685 Words
   </div>
 
   
@@ -209,8 +209,8 @@
 <h3 id="またビルド失敗しちゃった-cl0wn">またビルド失敗しちゃった～… [cl0wn]</h3>
 <p>マルチステージビルドをしているDockerfileがあります。一つ目のイメージで実行ファイルを作って、もう一つのイメージでそれを動かすということをしています。</p>
 <p>エラーを見ると</p>
-<pre><code>standard_init_linux.go:211: exec user process caused &quot;no such file or directory&quot;
-</code></pre><p>どうやら、一つ目のイメージにはあったファイルが2つ目のイメージにはなくてダイナミックリンクに失敗しているっぽいです。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">standard_init_linux.go:211: exec user process caused <span style="color:#e6db74">&#34;no such file or directory&#34;</span>
+</code></pre></div><p>どうやら、一つ目のイメージにはあったファイルが2つ目のイメージにはなくてダイナミックリンクに失敗しているっぽいです。</p>
 <p>したがって、static linkにしてやれば解決します。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Dockerfile" data-lang="Dockerfile"><span style="color:#66d9ef">RUN</span> CGO_ENABLED<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span> go build -o /app ./main.go<span style="color:#960050;background-color:#1e0010">
 </span></code></pre></div><p>公式の解説：<a href="https://blog.icttoracon.net/2020/11/02/%e3%81%be%e3%81%9f%e3%83%93%e3%83%ab%e3%83%89%e5%a4%b1%e6%95%97%e3%81%97%e3%81%a1%e3%82%83%e3%81%a3%e3%81%9f%ef%bd%9e/">またビルド失敗しちゃった～…  |  ICTSC Tech Blog</a></p>
@@ -246,11 +246,70 @@ worker01 or worker02
 <h3 id="hostnameでつながらない-mikaner">hostnameでつながらない！！ [Mikaner]</h3>
 <p>docker-compose で立てたDatabaseサーバーのhostnameをdatabaseにしたところ，databaseで参照してもipが取れないという問題でした。</p>
 <p>hostnameを変更してもDockerのDNSに反映されないみたいなので，Dockerのコンテナ名を変更しました。</p>
-<p>変更前
-(あとで追記)</p>
-<p>変更後
-(あとで追記)</p>
-<h3 id="ダイエットしようぜ-koyama-cl0wn">ダイエットしようぜ！ [koyama, cl0wn]</h3>
+<p>変更前</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-docker-compose.yml" data-lang="docker-compose.yml"><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;3.3&#39;</span>
+ 
+<span style="color:#f92672">services</span>:
+   <span style="color:#f92672">db</span>: <span style="color:#75715e"># DO NOT CHANGE THIS LINE</span>
+     <span style="color:#f92672">image</span>: <span style="color:#ae81ff">mysql:5.7</span>
+     <span style="color:#f92672">hostname</span>: <span style="color:#ae81ff">database</span> <span style="color:#75715e"># DO NOT CHANGE THIS LINE</span>
+     <span style="color:#f92672">volumes</span>:
+       - <span style="color:#ae81ff">db_data:/var/lib/mysql</span>
+     <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">always</span>
+     <span style="color:#f92672">environment</span>:
+       <span style="color:#f92672">MYSQL_ROOT_PASSWORD</span>: <span style="color:#ae81ff">8MvAMcDAirP8</span>
+       <span style="color:#f92672">MYSQL_DATABASE</span>: <span style="color:#ae81ff">wordpress</span>
+       <span style="color:#f92672">MYSQL_USER</span>: <span style="color:#ae81ff">wordpress</span>
+       <span style="color:#f92672">MYSQL_PASSWORD</span>: <span style="color:#ae81ff">DDzk6ERU33Rc</span>
+ 
+   <span style="color:#f92672">wp</span>:
+     <span style="color:#f92672">depends_on</span>:
+       - <span style="color:#ae81ff">db</span>
+     <span style="color:#f92672">image</span>: <span style="color:#ae81ff">wordpress:latest</span>
+     <span style="color:#f92672">hostname</span>: <span style="color:#ae81ff">wordpress</span>
+     <span style="color:#f92672">ports</span>:
+       - <span style="color:#e6db74">&#34;8000:80&#34;</span>
+     <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">always</span>
+     <span style="color:#f92672">environment</span>:
+       <span style="color:#f92672">WORDPRESS_DB_HOST</span>: <span style="color:#ae81ff">database:3306</span> <span style="color:#75715e"># DO NOT CHANGE THIS LINE</span>
+       <span style="color:#f92672">WORDPRESS_DB_USER</span>: <span style="color:#ae81ff">wordpress</span>
+       <span style="color:#f92672">WORDPRESS_DB_PASSWORD</span>: <span style="color:#ae81ff">DDzk6ERU33Rc</span>
+       <span style="color:#f92672">WORDPRESS_DB_NAME</span>: <span style="color:#ae81ff">wordpress</span>
+<span style="color:#f92672">volumes</span>:
+    <span style="color:#f92672">db_data</span>:
+</code></pre></div><p>変更後</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-docker-compose.yml" data-lang="docker-compose.yml"><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;3.3&#39;</span>
+ 
+<span style="color:#f92672">services</span>:
+   <span style="color:#f92672">db</span>: <span style="color:#75715e"># DO NOT CHANGE THIS LINE</span>
+     <span style="color:#f92672">image</span>: <span style="color:#ae81ff">mysql:5.7</span>
+     <span style="color:#f92672">hostname</span>: <span style="color:#ae81ff">database</span> <span style="color:#75715e"># DO NOT CHANGE THIS LINE</span>
+     <span style="color:#f92672">container_name</span>: <span style="color:#ae81ff">database</span> <span style="color:#75715e"># 追記</span>
+     <span style="color:#f92672">volumes</span>:
+       - <span style="color:#ae81ff">db_data:/var/lib/mysql</span>
+     <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">always</span>
+     <span style="color:#f92672">environment</span>:
+       <span style="color:#f92672">MYSQL_ROOT_PASSWORD</span>: <span style="color:#ae81ff">8MvAMcDAirP8</span>
+       <span style="color:#f92672">MYSQL_DATABASE</span>: <span style="color:#ae81ff">wordpress</span>
+       <span style="color:#f92672">MYSQL_USER</span>: <span style="color:#ae81ff">wordpress</span>
+       <span style="color:#f92672">MYSQL_PASSWORD</span>: <span style="color:#ae81ff">DDzk6ERU33Rc</span>
+ 
+   <span style="color:#f92672">wp</span>:
+     <span style="color:#f92672">depends_on</span>:
+       - <span style="color:#ae81ff">db</span>
+     <span style="color:#f92672">image</span>: <span style="color:#ae81ff">wordpress:latest</span>
+     <span style="color:#f92672">hostname</span>: <span style="color:#ae81ff">wordpress</span>
+     <span style="color:#f92672">ports</span>:
+       - <span style="color:#e6db74">&#34;8000:80&#34;</span>
+     <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">always</span>
+     <span style="color:#f92672">environment</span>:
+       <span style="color:#f92672">WORDPRESS_DB_HOST</span>: <span style="color:#ae81ff">database:3306</span> <span style="color:#75715e"># DO NOT CHANGE THIS LINE</span>
+       <span style="color:#f92672">WORDPRESS_DB_USER</span>: <span style="color:#ae81ff">wordpress</span>
+       <span style="color:#f92672">WORDPRESS_DB_PASSWORD</span>: <span style="color:#ae81ff">DDzk6ERU33Rc</span>
+       <span style="color:#f92672">WORDPRESS_DB_NAME</span>: <span style="color:#ae81ff">wordpress</span>
+<span style="color:#f92672">volumes</span>:
+    <span style="color:#f92672">db_data</span>:
+</code></pre></div><h3 id="ダイエットしようぜ-koyama-cl0wn">ダイエットしようぜ！ [koyama, cl0wn]</h3>
 <p>GoでSHA256を計算するコードとDockerfileが渡されました．与えられたDockerfileにより作成したイメージはサイズが796MBでした．問題では，このイメージサイズを出来る限り削減することが求められました．</p>
 <p>koyamaは以下の方針でイメージサイズの削減に取り組みました．</p>
 <ul>
@@ -259,37 +318,37 @@ worker01 or worker02
 <li><a href="http://tdoc.info/blog/2016/03/01/go_diet.html">Goのビルドオプション <code>-w</code> と <code>-s</code> の付与 </a></li>
 </ul>
 <p>実際のDockerfileは以下です．</p>
-<pre><code>FROM golang:alpine AS build-env
-COPY hash.go /work/
-WORKDIR /work
-RUN go build -ldflags=&quot;-w -s&quot; -o myhash hash.go
-
-FROM scratch
-COPY --from=build-env /work/myhash /myhash
-ENTRYPOINT [&quot;/myhash&quot;]
-</code></pre><p>イメージサイズが<strong>1.49MB</strong>になりました．</p>
-<pre><code>$ docker images | grep ictsc-dit
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Dockerfile" data-lang="Dockerfile"><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> golang:alpine AS build-env</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> hash.go /work/<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">WORKDIR</span><span style="color:#e6db74"> /work</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> go build -ldflags<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;-w -s&#34;</span> -o myhash hash.go<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> scratch</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> --from<span style="color:#f92672">=</span>build-env /work/myhash /myhash<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENTRYPOINT</span> [<span style="color:#e6db74">&#34;/myhash&#34;</span>]<span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><p>イメージサイズが<strong>1.49MB</strong>になりました．</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ docker images | grep ictsc-dit
 REPOSITORY               TAG                 IMAGE ID            CREATED             SIZE
-ictsc-dit                latest              f74546496cca        8 minutes ago       1.49MB
-</code></pre><p>upxによるバイナリサイズの削減ができそうだったので，cl0wnにお願いしました．</p>
+ictsc-dit                latest              f74546496cca        <span style="color:#ae81ff">8</span> minutes ago       1.49MB
+</code></pre></div><p>upxによるバイナリサイズの削減ができそうだったので，cl0wnにお願いしました．</p>
 <p>goupxというツールを見つけたのでそれを利用しました。</p>
 <p>Dockerfileを以下のように変更しました。</p>
-<pre><code>FROM golang:alpine AS build-env
-RUN apk add --no-cache git upx binutils
-RUN mkdir /gobin
-ENV GOBIN /gobin
-ENV PATH $PATH:/gobin
-COPY hash.go /work/
-WORKDIR /work
-RUN go build -ldflags=&quot;-w -s&quot; -o myhash hash.go
-RUN strip myhash
-RUN go get github.com/pwaller/goupx
-RUN goupx myhash
-
-FROM scratch
-COPY --from=build-env /work/myhash /myhash
-ENTRYPOINT [&quot;/myhash&quot;]
-</code></pre><p><a href="https://qiita.com/circus/items/450254c59d194cbf22d7">参考</a></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Dockerfile" data-lang="Dockerfile"><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> golang:alpine AS build-env</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> apk add --no-cache git upx binutils<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> mkdir /gobin<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENV</span> GOBIN /gobin<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENV</span> PATH $PATH:/gobin<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> hash.go /work/<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">WORKDIR</span><span style="color:#e6db74"> /work</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> go build -ldflags<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;-w -s&#34;</span> -o myhash hash.go<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> strip myhash<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> go get github.com/pwaller/goupx<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> goupx myhash<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> scratch</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> --from<span style="color:#f92672">=</span>build-env /work/myhash /myhash<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENTRYPOINT</span> [<span style="color:#e6db74">&#34;/myhash&#34;</span>]<span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><p><a href="https://qiita.com/circus/items/450254c59d194cbf22d7">参考</a></p>
 <p>これによりイメージのファイルサイズが600kBまで落ちました。goのバイナリにupxをそのまま使うと実行できなくなるという話を聞いたのでチキってgoupxを使いましたが、オプションが使えないというデメリットがありました。upxの<code>-9</code>を試してみたかったなと思いました。</p>
 <p>公式の解説: <a href="https://blog.icttoracon.net/2020/11/02/%e3%83%80%e3%82%a4%e3%82%a8%e3%83%83%e3%83%88%e3%81%97%e3%82%88%e3%81%86%e3%81%9c%ef%bc%81/">ダイエットしようぜ！ | ICTSC Tech Blog</a></p>
 <h2 id="データベース">データベース</h2>
@@ -304,8 +363,8 @@ ENTRYPOINT [&quot;/myhash&quot;]
 <li>WHERE句とORDER BY句を追加し出力</li>
 <li>不備が無いかを確認し提出</li>
 </ol>
-<p>以下はコンテスト中に作成した図と提出したSQLのメモです。</p>
-<img src="https://blog.linux.it.teu.ac.jp/post_media/ictsc2020-qualify/mysql.png">
+<p>以下はコンテスト中に作成した図と提出したSQLのメモです。
+<img src="https://blog.linux.it.teu.ac.jp/post_media/ictsc2020-qualify/mysql.png"></p>
 <h4 id="sqlの結合">SQLの結合</h4>
 <p>SELECT句にて必要な情報を並べ，あとは結合するだけの簡単なお仕事でした。
 AS句を使えばもっと楽に書けたのですが，当時のMikanerさんはAS句の使い方をうろ覚えだったので，確実性を求めてメモにコピペをして済ませていました。
@@ -344,8 +403,33 @@ ENCLOSED <span style="color:#66d9ef">BY</span> <span style="color:#e6db74">&#39;
 ESCAPED <span style="color:#66d9ef">BY</span> <span style="color:#e6db74">&#39;&#34;&#39;</span>
 LINES TERMINATED <span style="color:#66d9ef">BY</span> <span style="color:#e6db74">&#39;\r\n&#39;</span>;
 </code></pre></div><h4 id="出力結果">出力結果</h4>
-<p>あとで追記。</p>
-<h4 id="where句とorder-by句を追記">WHERE句とORDER BY句を追記</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#e6db74">&#34;24&#34;</span>,<span style="color:#e6db74">&#34;pc_x&#34;</span>,<span style="color:#e6db74">&#34;Order_company_E&#34;</span>,<span style="color:#e6db74">&#34;Manufacturing_company_E&#34;</span>,<span style="color:#e6db74">&#34;1600&#34;</span>
+<span style="color:#e6db74">&#34;18&#34;</span>,<span style="color:#e6db74">&#34;pc_r&#34;</span>,<span style="color:#e6db74">&#34;Order_company_F&#34;</span>,<span style="color:#e6db74">&#34;Manufacturing_company_G&#34;</span>,<span style="color:#e6db74">&#34;1200&#34;</span>
+<span style="color:#e6db74">&#34;9&#34;</span>,<span style="color:#e6db74">&#34;pc_i&#34;</span>,<span style="color:#e6db74">&#34;Order_company_I&#34;</span>,<span style="color:#e6db74">&#34;Manufacturing_company_G&#34;</span>,<span style="color:#e6db74">&#34;1000&#34;</span>
+<span style="color:#e6db74">&#34;13&#34;</span>,<span style="color:#e6db74">&#34;pc_m&#34;</span>,<span style="color:#e6db74">&#34;Order_company_E&#34;</span>,<span style="color:#e6db74">&#34;Manufacturing_company_K&#34;</span>,<span style="color:#e6db74">&#34;900&#34;</span>
+<span style="color:#e6db74">&#34;17&#34;</span>,<span style="color:#e6db74">&#34;pc_q&#34;</span>,<span style="color:#e6db74">&#34;Order_company_J&#34;</span>,<span style="color:#e6db74">&#34;Manufacturing_company_E&#34;</span>,<span style="color:#e6db74">&#34;800&#34;</span>
+<span style="color:#e6db74">&#34;8&#34;</span>,<span style="color:#e6db74">&#34;pc_h&#34;</span>,<span style="color:#e6db74">&#34;Order_company_H&#34;</span>,<span style="color:#e6db74">&#34;Manufacturing_company_F&#34;</span>,<span style="color:#e6db74">&#34;700&#34;</span>
+<span style="color:#e6db74">&#34;19&#34;</span>,<span style="color:#e6db74">&#34;pc_s&#34;</span>,<span style="color:#e6db74">&#34;Order_company_D&#34;</span>,<span style="color:#e6db74">&#34;Manufacturing_company_I&#34;</span>,<span style="color:#e6db74">&#34;600&#34;</span>
+<span style="color:#e6db74">&#34;12&#34;</span>,<span style="color:#e6db74">&#34;pc_l&#34;</span>,<span style="color:#e6db74">&#34;Order_company_B&#34;</span>,<span style="color:#e6db74">&#34;Manufacturing_company_J&#34;</span>,<span style="color:#e6db74">&#34;600&#34;</span>
+<span style="color:#e6db74">&#34;1&#34;</span>,<span style="color:#e6db74">&#34;pc_a&#34;</span>,<span style="color:#e6db74">&#34;Order_company_A&#34;</span>,<span style="color:#e6db74">&#34;Manufacturing_company_A&#34;</span>,<span style="color:#e6db74">&#34;500&#34;</span>
+<span style="color:#e6db74">&#34;20&#34;</span>,<span style="color:#e6db74">&#34;pc_t&#34;</span>,<span style="color:#e6db74">&#34;Order_company_G&#34;</span>,<span style="color:#e6db74">&#34;Manufacturing_company_J&#34;</span>,<span style="color:#e6db74">&#34;500&#34;</span>
+<span style="color:#e6db74">&#34;7&#34;</span>,<span style="color:#e6db74">&#34;pc_g&#34;</span>,<span style="color:#e6db74">&#34;Order_company_G&#34;</span>,<span style="color:#e6db74">&#34;Manufacturing_company_E&#34;</span>,<span style="color:#e6db74">&#34;500&#34;</span>
+<span style="color:#e6db74">&#34;3&#34;</span>,<span style="color:#e6db74">&#34;pc_c&#34;</span>,<span style="color:#e6db74">&#34;Order_company_C&#34;</span>,<span style="color:#e6db74">&#34;Manufacturing_company_A&#34;</span>,<span style="color:#e6db74">&#34;300&#34;</span>
+<span style="color:#e6db74">&#34;2&#34;</span>,<span style="color:#e6db74">&#34;pc_b&#34;</span>,<span style="color:#e6db74">&#34;Order_company_B&#34;</span>,<span style="color:#e6db74">&#34;Manufacturing_company_A&#34;</span>,<span style="color:#e6db74">&#34;100&#34;</span>
+<span style="color:#e6db74">&#34;26&#34;</span>,<span style="color:#e6db74">&#34;pc_z&#34;</span>,<span style="color:#e6db74">&#34;Order_company_K&#34;</span>,<span style="color:#e6db74">&#34;Manufacturing_company_B&#34;</span>,<span style="color:#e6db74">&#34;100&#34;</span>
+<span style="color:#e6db74">&#34;6&#34;</span>,<span style="color:#e6db74">&#34;pc_f&#34;</span>,<span style="color:#e6db74">&#34;Order_company_F&#34;</span>,<span style="color:#e6db74">&#34;Manufacturing_company_D&#34;</span>,<span style="color:#e6db74">&#34;90&#34;</span>
+<span style="color:#e6db74">&#34;16&#34;</span>,<span style="color:#e6db74">&#34;pc_p&#34;</span>,<span style="color:#e6db74">&#34;Order_company_I&#34;</span>,<span style="color:#e6db74">&#34;Manufacturing_company_B&#34;</span>,<span style="color:#e6db74">&#34;65&#34;</span>
+<span style="color:#e6db74">&#34;15&#34;</span>,<span style="color:#e6db74">&#34;pc_o&#34;</span>,<span style="color:#e6db74">&#34;Order_company_A&#34;</span>,<span style="color:#e6db74">&#34;Manufacturing_company_C&#34;</span>,<span style="color:#e6db74">&#34;60&#34;</span>
+<span style="color:#e6db74">&#34;5&#34;</span>,<span style="color:#e6db74">&#34;pc_e&#34;</span>,<span style="color:#e6db74">&#34;Order_company_E&#34;</span>,<span style="color:#e6db74">&#34;Manufacturing_company_C&#34;</span>,<span style="color:#e6db74">&#34;60&#34;</span>
+<span style="color:#e6db74">&#34;21&#34;</span>,<span style="color:#e6db74">&#34;pc_u&#34;</span>,<span style="color:#e6db74">&#34;Order_company_A&#34;</span>,<span style="color:#e6db74">&#34;Manufacturing_company_K&#34;</span>,<span style="color:#e6db74">&#34;50&#34;</span>
+<span style="color:#e6db74">&#34;22&#34;</span>,<span style="color:#e6db74">&#34;pc_v&#34;</span>,<span style="color:#e6db74">&#34;Order_company_A&#34;</span>,<span style="color:#e6db74">&#34;Manufacturing_company_A&#34;</span>,<span style="color:#e6db74">&#34;50&#34;</span>
+<span style="color:#e6db74">&#34;23&#34;</span>,<span style="color:#e6db74">&#34;pc_w&#34;</span>,<span style="color:#e6db74">&#34;Order_company_B&#34;</span>,<span style="color:#e6db74">&#34;Manufacturing_company_F&#34;</span>,<span style="color:#e6db74">&#34;50&#34;</span>
+<span style="color:#e6db74">&#34;25&#34;</span>,<span style="color:#e6db74">&#34;pc_y&#34;</span>,<span style="color:#e6db74">&#34;Order_company_I&#34;</span>,<span style="color:#e6db74">&#34;Manufacturing_company_B&#34;</span>,<span style="color:#e6db74">&#34;50&#34;</span>
+<span style="color:#e6db74">&#34;4&#34;</span>,<span style="color:#e6db74">&#34;pc_d&#34;</span>,<span style="color:#e6db74">&#34;Order_company_D&#34;</span>,<span style="color:#e6db74">&#34;Manufacturing_company_B&#34;</span>,<span style="color:#e6db74">&#34;50&#34;</span>
+<span style="color:#e6db74">&#34;14&#34;</span>,<span style="color:#e6db74">&#34;pc_n&#34;</span>,<span style="color:#e6db74">&#34;Order_company_A&#34;</span>,<span style="color:#e6db74">&#34;Manufacturing_company_F&#34;</span>,<span style="color:#e6db74">&#34;20&#34;</span>
+<span style="color:#e6db74">&#34;10&#34;</span>,<span style="color:#e6db74">&#34;pc_j&#34;</span>,<span style="color:#e6db74">&#34;Order_company_J&#34;</span>,<span style="color:#e6db74">&#34;Manufacturing_company_H&#34;</span>,<span style="color:#e6db74">&#34;20&#34;</span>
+<span style="color:#e6db74">&#34;11&#34;</span>,<span style="color:#e6db74">&#34;pc_k&#34;</span>,<span style="color:#e6db74">&#34;Order_company_K&#34;</span>,<span style="color:#e6db74">&#34;Manufacturing_company_I&#34;</span>,<span style="color:#e6db74">&#34;10&#34;</span>
+</code></pre></div><h4 id="where句とorder-by句を追記">WHERE句とORDER BY句を追記</h4>
 <p>あとは並び替えるだけと思って問題文よく読んだら，HQという場所にあるE社のPCだけを出力するっぽいことがわかったので，WHERE句とORDER BY句を追記しました。
 よく読まなかったら危なかった。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">USE List;
@@ -366,28 +450,34 @@ ESCAPED <span style="color:#66d9ef">BY</span> <span style="color:#e6db74">&#39;&
 LINES TERMINATED <span style="color:#66d9ef">BY</span> <span style="color:#e6db74">&#39;\r\n&#39;</span>;
 </code></pre></div><h4 id="不備の確認">不備の確認</h4>
 <p>出力先ファイルをsubmit.csvに変更し，出力したCSVファイルの名前もsubmit.csvに変更し，提出しました。提出直前にLocation_listとEquipment_listをつないでいるON句でUse_placeのテーブル指定を忘れていたことに気付きましたが，修正面倒だしFROMの方だから問題ないやろってお気持ちで放置しました。</p>
-<p>公式の解説:<a href="https://blog.icttoracon.net/2020/11/02/%e5%82%99%e5%93%81%e3%81%af%e4%bd%95%e5%87%a6%e3%81%b8/">備品は何処へ | ICTSC Tech Blog</a></p>
+<h4 id="提出した出力結果">提出した出力結果</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#e6db74">&#34;24&#34;</span>,<span style="color:#e6db74">&#34;pc_x&#34;</span>,<span style="color:#e6db74">&#34;Order_company_E&#34;</span>,<span style="color:#e6db74">&#34;Manufacturing_company_E&#34;</span>,<span style="color:#e6db74">&#34;1600&#34;</span>
+<span style="color:#e6db74">&#34;17&#34;</span>,<span style="color:#e6db74">&#34;pc_q&#34;</span>,<span style="color:#e6db74">&#34;Order_company_J&#34;</span>,<span style="color:#e6db74">&#34;Manufacturing_company_E&#34;</span>,<span style="color:#e6db74">&#34;800&#34;</span>
+</code></pre></div><p>公式の解説:<a href="https://blog.icttoracon.net/2020/11/02/%e5%82%99%e5%93%81%e3%81%af%e4%bd%95%e5%87%a6%e3%81%b8/">備品は何処へ | ICTSC Tech Blog</a></p>
 <h2 id="プログラミング">プログラミング</h2>
 <h3 id="jsonが壊れた-koyama">jsonが壊れた！！ [koyama]</h3>
 <p>誤りのあるGoのソースコードが渡されるので，それを修正して正常な動作が確認できればOKな問題でした．</p>
 <p>構造体の記述に問題があり，ダブルクオートの欠落とJSONスキーマ指定に不備がありました．</p>
 <p>変更前</p>
-<pre><code>type User struct {
-        ID int32 `json=&quot;id&quot;`
-        Name string `json=&quot;name&quot;`
-        PasswordHash string `json=&quot;password_hash&quot;`
-        Count int32 `json=&quot;access_count`
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">User</span> <span style="color:#66d9ef">struct</span> {
+        <span style="color:#a6e22e">ID</span> <span style="color:#66d9ef">int32</span> <span style="color:#e6db74">`json=&#34;id&#34;`</span>
+        <span style="color:#a6e22e">Name</span> <span style="color:#66d9ef">string</span> <span style="color:#e6db74">`json=&#34;name&#34;`</span>
+        <span style="color:#a6e22e">PasswordHash</span> <span style="color:#66d9ef">string</span> <span style="color:#e6db74">`json=&#34;password_hash&#34;`</span>
+        <span style="color:#a6e22e">Count</span> <span style="color:#66d9ef">int32</span> <span style="color:#e6db74">`json=&#34;access_count`</span>
 }
-</code></pre><p>変更後</p>
-<pre><code>type User struct {
-        ID int32 `json:&quot;id&quot;`
-        Name string `json:&quot;name&quot;`
-        PasswordHash string `json:&quot;password_hash&quot;`
-        Count int32 `json:&quot;access_count&quot;`
+</code></pre></div><p>変更後</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">User</span> <span style="color:#66d9ef">struct</span> {
+        <span style="color:#a6e22e">ID</span> <span style="color:#66d9ef">int32</span> <span style="color:#e6db74">`json:&#34;id&#34;`</span>
+        <span style="color:#a6e22e">Name</span> <span style="color:#66d9ef">string</span> <span style="color:#e6db74">`json:&#34;name&#34;`</span>
+        <span style="color:#a6e22e">PasswordHash</span> <span style="color:#66d9ef">string</span> <span style="color:#e6db74">`json:&#34;password_hash&#34;`</span>
+        <span style="color:#a6e22e">Count</span> <span style="color:#66d9ef">int32</span> <span style="color:#e6db74">`json:&#34;access_count&#34;`</span>
 }
-</code></pre><p>公式の解説: <a href="https://blog.icttoracon.net/2020/11/02/json%e3%81%8c%e5%a3%8a%e3%82%8c%e3%81%9f%ef%bc%81%ef%bc%81/">jsonが壊れた！！ | ICTSC Tech Blog</a></p>
+</code></pre></div><p>公式の解説: <a href="https://blog.icttoracon.net/2020/11/02/json%e3%81%8c%e5%a3%8a%e3%82%8c%e3%81%9f%ef%bc%81%ef%bc%81/">jsonが壊れた！！ | ICTSC Tech Blog</a></p>
 <h1 id="感想">感想</h1>
 <h2 id="mikaner">Mikaner</h2>
+<p>コンテナネーム変えた後SQL書いてたら他の問題が終わってました。
+皆さんすごいですね。僕はKubernetes問やネットワーク問等、覗いてみて「なるほどわからん」を繰り返してました。
+精進したいですね。</p>
 <h2 id="cl0wn">cl0wn</h2>
 <ul>
 <li>エラーで調べれば対処が書かれていることが多く、筋道立っていてありがたかったです。</li>

@@ -26,7 +26,7 @@
 また、この問題ではなぜこのような事象が発生したかを問われていたので、問題文を参考にルータの設定をいじくっていたら間違えてしまったのだろうという仮説を元に回答をしました。
 またビルド失敗しちゃった～… [cl0wn] マルチステージビルドをしているDockerfileがあります。一つ目のイメージで実行ファイルを作って、もう一つのイメージでそれを動かすということをしています。
 エラーを見ると
-standard_init_linux.go:211: exec user process caused &amp;quot;no such file or directory&amp;quot; どうやら、一つ目のイメージにはあったファイルが2つ目のイメージにはなくてダイナミックリンクに失敗しているっぽいです。
+standard_init_linux.go:211: exec user process caused &amp;#34;no such file or directory&amp;#34; どうやら、一つ目のイメージにはあったファイルが2つ目のイメージにはなくてダイナミックリンクに失敗しているっぽいです。
 したがって、static linkにしてやれば解決します。
 RUN CGO_ENABLED=0 go build -o /app ./main.go公式の解説：またビルド失敗しちゃった～… | ICTSC Tech Blog
 ウェブ WEBページが見れない [cl0wn] この問題は「apacheサーバーのdocumentルートを/home/user/html/に変更したところ、そのディレクトリ以下のファイルhome.</description>
