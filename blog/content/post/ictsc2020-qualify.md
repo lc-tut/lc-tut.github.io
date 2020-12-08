@@ -26,7 +26,6 @@ ICTSC(ICTトラブルシューティングコンテスト) 2020にチーム「�
 - [Mikaner](https://twitter.com/MikanerExMachin)
 - [cl0wn](https://twitter.com/cl0wn65536)
 
-
 # Write-up
 
 ## ルーティング
@@ -56,7 +55,7 @@ VyOSで動作していたため、とりあえず`show configuration`を叩い�
 マルチステージビルドをしているDockerfileがあります。一つ目のイメージで実行ファイルを作って、もう一つのイメージでそれを動かすということをしています。
 
 エラーを見ると
-```
+```bash
 standard_init_linux.go:211: exec user process caused "no such file or directory"
 ```
 
@@ -126,10 +125,73 @@ docker-compose で立てたDatabaseサーバーのhostnameをdatabaseにした�
 hostnameを変更してもDockerのDNSに反映されないみたいなので，Dockerのコンテナ名を変更しました。
 
 変更前
-(あとで追記)
+```docker-compose.yml
+version: '3.3'
+ 
+services:
+   db: # DO NOT CHANGE THIS LINE
+     image: mysql:5.7
+     hostname: database # DO NOT CHANGE THIS LINE
+     volumes:
+       - db_data:/var/lib/mysql
+     restart: always
+     environment:
+       MYSQL_ROOT_PASSWORD: 8MvAMcDAirP8
+       MYSQL_DATABASE: wordpress
+       MYSQL_USER: wordpress
+       MYSQL_PASSWORD: DDzk6ERU33Rc
+ 
+   wp:
+     depends_on:
+       - db
+     image: wordpress:latest
+     hostname: wordpress
+     ports:
+       - "8000:80"
+     restart: always
+     environment:
+       WORDPRESS_DB_HOST: database:3306 # DO NOT CHANGE THIS LINE
+       WORDPRESS_DB_USER: wordpress
+       WORDPRESS_DB_PASSWORD: DDzk6ERU33Rc
+       WORDPRESS_DB_NAME: wordpress
+volumes:
+    db_data:
+```
 
 変更後
-(あとで追記)
+```docker-compose.yml
+version: '3.3'
+ 
+services:
+   db: # DO NOT CHANGE THIS LINE
+     image: mysql:5.7
+     hostname: database # DO NOT CHANGE THIS LINE
+     container_name: database # 追記
+     volumes:
+       - db_data:/var/lib/mysql
+     restart: always
+     environment:
+       MYSQL_ROOT_PASSWORD: 8MvAMcDAirP8
+       MYSQL_DATABASE: wordpress
+       MYSQL_USER: wordpress
+       MYSQL_PASSWORD: DDzk6ERU33Rc
+ 
+   wp:
+     depends_on:
+       - db
+     image: wordpress:latest
+     hostname: wordpress
+     ports:
+       - "8000:80"
+     restart: always
+     environment:
+       WORDPRESS_DB_HOST: database:3306 # DO NOT CHANGE THIS LINE
+       WORDPRESS_DB_USER: wordpress
+       WORDPRESS_DB_PASSWORD: DDzk6ERU33Rc
+       WORDPRESS_DB_NAME: wordpress
+volumes:
+    db_data:
+```
 
 ### ダイエットしようぜ！ [koyama, cl0wn]
 
@@ -143,7 +205,7 @@ koyamaは以下の方針でイメージサイズの削減に取り組みまし�
 
 実際のDockerfileは以下です．
 
-```
+```Dockerfile
 FROM golang:alpine AS build-env
 COPY hash.go /work/
 WORKDIR /work
@@ -156,7 +218,7 @@ ENTRYPOINT ["/myhash"]
 
 イメージサイズが**1.49MB**になりました．
 
-```
+```bash
 $ docker images | grep ictsc-dit
 REPOSITORY               TAG                 IMAGE ID            CREATED             SIZE
 ictsc-dit                latest              f74546496cca        8 minutes ago       1.49MB
@@ -168,7 +230,7 @@ goupxというツールを見つけたのでそれを利用しました。
 
 Dockerfileを以下のように変更しました。
 
-```
+```Dockerfile
 FROM golang:alpine AS build-env
 RUN apk add --no-cache git upx binutils
 RUN mkdir /gobin
@@ -185,7 +247,6 @@ FROM scratch
 COPY --from=build-env /work/myhash /myhash
 ENTRYPOINT ["/myhash"]
 ```
-
 [参考](https://qiita.com/circus/items/450254c59d194cbf22d7)
 
 これによりイメージのファイルサイズが600kBまで落ちました。goのバイナリにupxをそのまま使うと実行できなくなるという話を聞いたのでチキってgoupxを使いましたが、オプションが使えないというデメリットがありました。upxの`-9`を試してみたかったなと思いました。
@@ -207,15 +268,12 @@ Mikanerは以下の手順で問題の回答に当たりました。
 5. 不備が無いかを確認し提出
 
 以下はコンテスト中に作成した図と提出したSQLのメモです。
-
 <img src="/post_media/ictsc2020-qualify/mysql.png">
 
 #### SQLの結合
-
 SELECT句にて必要な情報を並べ，あとは結合するだけの簡単なお仕事でした。
 AS句を使えばもっと楽に書けたのですが，当時のMikanerさんはAS句の使い方をうろ覚えだったので，確実性を求めてメモにコピペをして済ませていました。
 楽だから使えばいいのにね。
-
 ```sql
 USE List;
 SELECT Equipment_list.ID, Equipment_list.Name, Order_company_list.Name, Manufacturing_company_list.Name, Equipment_list.Price
@@ -232,14 +290,12 @@ ENCLOSED BY '"'
 ESCAPED BY '"'
 LINES TERMINATED BY '\r\n';
 ```
-
 このあたりでKoyamaさんとPanakumaさんにSQLを見てもらったところ，INNER JOINはあまり使わないという意見を頂いたので，本番環境を意識してLEFT JOINに変更しました。
 
 ここで変更したファイルで意気揚々と出力させようとしたところ，submit.csvがすでにあるから書けないという問題が発生しました。
 /tmp内にアクセスして削除を試みましたが，権限がないため削除ができませんでした。sudo権限ください。
 面倒くさかったので出力名を'test1.csv'に変更して出力しました。
 このあとは実行した分だけ番号が増えていきます。
-
 ```sql
 USE List;
 SELECT Equipment_list.ID, Equipment_list.Name, Order_company_list.Name, Manufacturing_company_list.Name, Equipment_list.Price
@@ -256,16 +312,38 @@ ENCLOSED BY '"'
 ESCAPED BY '"'
 LINES TERMINATED BY '\r\n';
 ```
-
 #### 出力結果
-
-あとで追記。
-
+```bash
+"24","pc_x","Order_company_E","Manufacturing_company_E","1600"
+"18","pc_r","Order_company_F","Manufacturing_company_G","1200"
+"9","pc_i","Order_company_I","Manufacturing_company_G","1000"
+"13","pc_m","Order_company_E","Manufacturing_company_K","900"
+"17","pc_q","Order_company_J","Manufacturing_company_E","800"
+"8","pc_h","Order_company_H","Manufacturing_company_F","700"
+"19","pc_s","Order_company_D","Manufacturing_company_I","600"
+"12","pc_l","Order_company_B","Manufacturing_company_J","600"
+"1","pc_a","Order_company_A","Manufacturing_company_A","500"
+"20","pc_t","Order_company_G","Manufacturing_company_J","500"
+"7","pc_g","Order_company_G","Manufacturing_company_E","500"
+"3","pc_c","Order_company_C","Manufacturing_company_A","300"
+"2","pc_b","Order_company_B","Manufacturing_company_A","100"
+"26","pc_z","Order_company_K","Manufacturing_company_B","100"
+"6","pc_f","Order_company_F","Manufacturing_company_D","90"
+"16","pc_p","Order_company_I","Manufacturing_company_B","65"
+"15","pc_o","Order_company_A","Manufacturing_company_C","60"
+"5","pc_e","Order_company_E","Manufacturing_company_C","60"
+"21","pc_u","Order_company_A","Manufacturing_company_K","50"
+"22","pc_v","Order_company_A","Manufacturing_company_A","50"
+"23","pc_w","Order_company_B","Manufacturing_company_F","50"
+"25","pc_y","Order_company_I","Manufacturing_company_B","50"
+"4","pc_d","Order_company_D","Manufacturing_company_B","50"
+"14","pc_n","Order_company_A","Manufacturing_company_F","20"
+"10","pc_j","Order_company_J","Manufacturing_company_H","20"
+"11","pc_k","Order_company_K","Manufacturing_company_I","10"
+```
 #### WHERE句とORDER BY句を追記
-
 あとは並び替えるだけと思って問題文よく読んだら，HQという場所にあるE社のPCだけを出力するっぽいことがわかったので，WHERE句とORDER BY句を追記しました。
 よく読まなかったら危なかった。
-
 ```sql
 USE List;
 SELECT Equipment_list.ID, Equipment_list.Name, Order_company_list.Name, Manufacturing_company_list.Name, Equipment_list.Price 
@@ -284,10 +362,14 @@ ENCLOSED BY '"'
 ESCAPED BY '"'
 LINES TERMINATED BY '\r\n';
 ```
-
 #### 不備の確認
-
 出力先ファイルをsubmit.csvに変更し，出力したCSVファイルの名前もsubmit.csvに変更し，提出しました。提出直前にLocation_listとEquipment_listをつないでいるON句でUse_placeのテーブル指定を忘れていたことに気付きましたが，修正面倒だしFROMの方だから問題ないやろってお気持ちで放置しました。
+
+#### 提出した出力結果
+```bash
+"24","pc_x","Order_company_E","Manufacturing_company_E","1600"
+"17","pc_q","Order_company_J","Manufacturing_company_E","800"
+```
 
 公式の解説:[備品は何処へ | ICTSC Tech Blog](https://blog.icttoracon.net/2020/11/02/%e5%82%99%e5%93%81%e3%81%af%e4%bd%95%e5%87%a6%e3%81%b8/)
 
@@ -301,7 +383,7 @@ LINES TERMINATED BY '\r\n';
 
 変更前
 
-```
+```go
 type User struct {
         ID int32 `json="id"`
         Name string `json="name"`
@@ -312,7 +394,7 @@ type User struct {
 
 変更後
 
-```
+```go
 type User struct {
         ID int32 `json:"id"`
         Name string `json:"name"`
@@ -326,6 +408,9 @@ type User struct {
 # 感想
 
 ## Mikaner
+コンテナネーム変えた後SQL書いてたら他の問題が終わってました。
+皆さんすごいですね。僕はKubernetes問やネットワーク問等、覗いてみて「なるほどわからん」を繰り返してました。
+精進したいですね。
 
 ## cl0wn
 
@@ -340,3 +425,4 @@ type User struct {
 ## koyama
 
 簡単な問題で確実に得点できたのが良かったです．cl0wnとMikanerの2人が活躍してくれたおかげだと思います．ダイエット問は自身があったものの，Twitterで300KB程度のチームを見つけて悲しくなりました．Kubernetes問をやりながらLBでアクセス制御しちゃダメなのが納得できない気持ちでした．本戦に向けて精進したいと思います．
+
