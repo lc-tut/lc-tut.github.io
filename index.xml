@@ -7,7 +7,22 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <copyright>Copyright (c) 2019, LinuxClub. All rights reserved.</copyright>
-    <lastBuildDate>Mon, 09 Nov 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.linux.it.teu.ac.jp/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 15 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.linux.it.teu.ac.jp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>サイトをワイルドカード証明書を使って暗号化する</title>
+      <link>https://blog.linux.it.teu.ac.jp/post/lets-encrypt-wildcard/</link>
+      <pubDate>Thu, 15 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.linux.it.teu.ac.jp/post/lets-encrypt-wildcard/</guid>
+      <description>お久しぶりです, 今年も部長の Forell (@F0rell) です. 名前が違う？まあそこは察してください.
+Let&amp;rsquo;s Encrypt がワイルドカード証明書を発行するようになってからずいぶん経ちますが, LinuxClub が運用するサイトでは今までワイルドカード証明書を使わないでサイトを HTTPS 対応してきました. そのようにしなかった理由として以下のことがあげられます.
+ 運用するドメインが少なかったこと 上記に加えて増やす予定も今までなかったこと ワイルドカード証明書の発行までが面倒なこと  特に, 1 と 3 の理由が大きく, 自動化含めてメリットがあんまりありませんでした.  しかし, 課外活動 HP1 の再作成にあたり, ステージング環境などを整えたいことと個人的に興味があったという理由からワイルドカード証明書の発行をすることといたしました. 一部サイトはサーバが分離されている都合上まだ証明書の更新はされていませんが, じきに更新したいと考えております.
+ワイルドカード証明書の発行にあたり, 実際に行ったことや苦労した点をまとめたいと思います.
+やったこと (ワイルドカード証明書の仕組みについては省略して説明いたします)
+LinuxClub では ConoHa 上で VPS を 3 台借りており, そのうち 2 台は DNS を運用するためのソフトウェアである NSD を導入しております. 詳しい構成や zone ファイル等は都合上明かすことはできませんが, linux.it.teu.ac.jp の名前解決をマスター, スレーブ合わせてこの 2 台で行っています.2
+まず, 以下のように zone ファイルを書き換えて更新するスクリプトを書きました. 最後の sleep 600 はキャッシュによって DNS-01 チャレンジが失敗する可能性があるため 10 分ほどしてから DNS-01 チャレンジをするために挿入した感じです.</description>
+    </item>
+    
     <item>
       <title>ICTSC2020 予選を11位で通過しました</title>
       <link>https://blog.linux.it.teu.ac.jp/post/ictsc2020-qualify/</link>

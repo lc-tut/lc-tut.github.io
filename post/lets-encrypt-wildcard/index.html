@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>サイトをワイルドカード証明書を使って暗号化する</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="description" content="サイトをワイルドカード証明書を使って暗号化することで, ドメインが増えても HTTPS 対応ができるようにしました." />
+
+<meta name="keywords" content="DNS, Security, ">
+
+
+<meta property="og:title" content="サイトをワイルドカード証明書を使って暗号化する  &middot; LinuxClub BLOG ">
+<meta property="og:site_name" content="LinuxClub BLOG"/>
+<meta property="og:url" content="https://blog.linux.it.teu.ac.jp/post/lets-encrypt-wildcard/" />
+<meta property="og:locale" content="ja-jp">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content="サイトをワイルドカード証明書を使って暗号化することで, ドメインが増えても HTTPS 対応ができるようにしました."/>
+<meta property="og:article:published_time" content="2021-07-15T00:00:00Z" />
+<meta property="og:article:modified_time" content="2021-07-15T00:00:00Z" />
+
+  
+    
+<meta property="og:article:tag" content="DNS">
+    
+<meta property="og:article:tag" content="Security">
+    
+  
+
+  
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@" />
+<meta name="twitter:creator" content="@" />
+<meta name="twitter:title" content="サイトをワイルドカード証明書を使って暗号化する" />
+<meta name="twitter:description" content="サイトをワイルドカード証明書を使って暗号化することで, ドメインが増えても HTTPS 対応ができるようにしました." />
+<meta name="twitter:url" content="https://blog.linux.it.teu.ac.jp/post/lets-encrypt-wildcard/" />
+<meta name="twitter:domain" content="https://blog.linux.it.teu.ac.jp/">
+  
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "headline": "サイトをワイルドカード証明書を使って暗号化する",
+    "author": {
+      "@type": "Person",
+      "name": "http://profiles.google.com/+?rel=author"
+    },
+    "datePublished": "2021-07-15",
+    "description": "サイトをワイルドカード証明書を使って暗号化することで, ドメインが増えても HTTPS 対応ができるようにしました.",
+    "wordCount":  235 
+  }
+</script>
+
+
+<link rel="canonical" href="https://blog.linux.it.teu.ac.jp/post/lets-encrypt-wildcard/" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://blog.linux.it.teu.ac.jp/assets/css/style.css">
+  <link rel="stylesheet" href="https://blog.linux.it.teu.ac.jp/assets/css/tomorrow-night.css">
+
+  <link rel="apple-touch-icon-precomposed" sizes="57x57" href="https://blog.linux.it.teu.ac.jp/apple-touch-icon-57x57.png" />
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://blog.linux.it.teu.ac.jp/apple-touch-icon-114x114.png" />
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://blog.linux.it.teu.ac.jp/apple-touch-icon-72x72.png" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://blog.linux.it.teu.ac.jp/apple-touch-icon-144x144.png" />
+<link rel="apple-touch-icon-precomposed" sizes="60x60" href="https://blog.linux.it.teu.ac.jp/apple-touch-icon-60x60.png" />
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://blog.linux.it.teu.ac.jp/apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon-precomposed" sizes="76x76" href="https://blog.linux.it.teu.ac.jp/apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://blog.linux.it.teu.ac.jp/apple-touch-icon-152x152.png" />
+<link rel="icon" type="image/png" href="https://blog.linux.it.teu.ac.jp/favicon-196x196.png" sizes="196x196" />
+<link rel="icon" type="image/png" href="https://blog.linux.it.teu.ac.jp/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/png" href="https://blog.linux.it.teu.ac.jp/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="https://blog.linux.it.teu.ac.jp/favicon-16x16.png" sizes="16x16" />
+<link rel="icon" type="image/png" href="https://blog.linux.it.teu.ac.jp/favicon-128.png" sizes="128x128" />
+<meta name="application-name" content="サイトをワイルドカード証明書を使って暗号化する"/>
+<meta name="msapplication-TileColor" content="#FFFFFF" />
+<meta name="msapplication-TileImage" content="/mstile-144x144.png" />
+<meta name="msapplication-square70x70logo" content="/mstile-70x70.png" />
+<meta name="msapplication-square150x150logo" content="/mstile-150x150.png" />
+<meta name="msapplication-wide310x150logo" content="/mstile-310x150.png" />
+<meta name="msapplication-square310x310logo" content="/mstile-310x310.png" />
+
+</head>
+<body class="bg-light">
+  <nav class="navbar navbar-expand-md site-navbar bg-info">
+    <a class="navbar-brand text-white" href="https://blog.linux.it.teu.ac.jp/">LinuxClub BLOG</a>
+  <button class="navbar-toggler" 
+  type="button" data-toggle="collapse" data-target="#exCollapsingNavbar2" aria-controls="exCollapsingNavbar2"
+    aria-expanded="false" aria-label="Toggle navigation">
+    &#9776;
+  </button>
+  <div class="collapse navbar-collapse" id="exCollapsingNavbar2">
+    <ul class="nav navbar-nav ml-auto">
+       
+      <li class="nav-item">
+        <a class="nav-link menu-item  no-decoration text-white" href="https://blog.linux.it.teu.ac.jp/tags/">
+          <i class='fa fa-tags'></i>
+          <span class="text-capitalize">TAGS</span>
+        </a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link menu-item  no-decoration text-white" href="https://blog.linux.it.teu.ac.jp/categories/">
+          <i class='fa fa-folder-open'></i>
+          <span class="text-capitalize">CATEGORIES</span>
+        </a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link menu-item  no-decoration text-white" href="https://www2.linux.it.teu.ac.jp/linux/?from=blog">
+          <i class='fa fa-info-circle'></i>
+          <span class="text-capitalize">ABOUT US</span>
+        </a>
+      </li>
+      
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+    
+      <div>
+  <h1 class="post-title">サイトをワイルドカード証明書を使って暗号化する
+</h1>
+
+  <div class="post-meta">
+  <div class="post-meta-item">
+    <time datetime="07 Jul 15076">15 Jul, 2021</time>
+    &middot; 2 min read
+    &middot; 235 Words
+  </div>
+
+  
+      
+      
+      <div class="post-meta-item">
+          <i class="fa fa-folder-open-o"></i>
+          
+          <a class="article-category-link" href="https://blog.linux.it.teu.ac.jp/categories/infra/">infra</a>
+          
+          
+      </div>
+      
+  
+
+  
+      
+      
+        <div class="post-meta-item">
+          <i class="fa fa-tags"></i>
+          
+          <a href="https://blog.linux.it.teu.ac.jp/tags/dns/">DNS</a>
+          &middot;
+          
+          <a href="https://blog.linux.it.teu.ac.jp/tags/security/">Security</a>
+          
+          
+        </div>
+      
+  
+
+</div>
+
+  
+
+</div>
+
+      <div class="article-body">
+  <p>お久しぶりです, 今年も部長の Forell (<a href="https://twitter.com/F0rell">@F0rell</a>) です.<br/>
+<del>名前が違う？まあそこは察してください.</del></p>
+<p>Let&rsquo;s Encrypt がワイルドカード証明書を発行するようになってからずいぶん経ちますが, LinuxClub が運用するサイトでは今までワイルドカード証明書を使わないでサイトを HTTPS 対応してきました.<br/>
+そのようにしなかった理由として以下のことがあげられます.</p>
+<ol>
+<li>運用するドメインが少なかったこと</li>
+<li>上記に加えて増やす予定も今までなかったこと</li>
+<li>ワイルドカード証明書の発行までが面倒なこと</li>
+</ol>
+<p>特に, 1 と 3 の理由が大きく, 自動化含めてメリットがあんまりありませんでした. <br/>
+しかし, 課外活動 HP<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> の再作成にあたり, ステージング環境などを整えたいことと個人的に興味があったという理由からワイルドカード証明書の発行をすることといたしました.
+一部サイトはサーバが分離されている都合上まだ証明書の更新はされていませんが, じきに更新したいと考えております.</p>
+<p>ワイルドカード証明書の発行にあたり, 実際に行ったことや苦労した点をまとめたいと思います.</p>
+<h2 id="やったこと">やったこと</h2>
+<p>(ワイルドカード証明書の仕組みについては省略して説明いたします)</p>
+<p>LinuxClub では ConoHa 上で VPS を 3 台借りており, そのうち 2 台は DNS を運用するためのソフトウェアである NSD を導入しております. <br />
+詳しい構成や zone ファイル等は都合上明かすことはできませんが, linux.it.teu.ac.jp の名前解決をマスター, スレーブ合わせてこの 2 台で行っています.<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></p>
+<p>まず, 以下のように zone ファイルを書き換えて更新するスクリプトを書きました. 最後の <code>sleep 600</code> はキャッシュによって DNS-01 チャレンジが失敗する可能性があるため 10 分ほどしてから DNS-01 チャレンジをするために挿入した感じです.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e">#!/bin/sh
+</span><span style="color:#75715e"></span>
+FILENAME<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/etc/nsd/linux.it.teu.ac.jp.zone&#34;</span>
+BACKUPFOLDER<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/etc/nsd/backups/&#34;</span>
+OldSerial<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>grep <span style="color:#e6db74">&#34;Serial&#34;</span> $FILENAME | awk <span style="color:#e6db74">&#39;{ print $1 }&#39;</span><span style="color:#e6db74">`</span>
+OldDate<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>echo $OldSerial | cut -c 1-8<span style="color:#e6db74">`</span>
+OldPostfix<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>echo $OldSerial | cut -c 9-10<span style="color:#e6db74">`</span>
+NewDate<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>date +<span style="color:#e6db74">&#34;%Y%m%d&#34;</span><span style="color:#e6db74">`</span>
+NewPostfix<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;01&#34;</span>
+
+<span style="color:#75715e"># backup old zone file</span>
+cp -rp $FILENAME <span style="color:#e6db74">${</span>BACKUPFOLDER<span style="color:#e6db74">}</span>linux.it.teu.ac.jp_<span style="color:#e6db74">${</span>OldSerial<span style="color:#e6db74">}</span>
+
+<span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> <span style="color:#e6db74">&#34;</span>$NewDate<span style="color:#e6db74">&#34;</span> -eq <span style="color:#e6db74">&#34;</span>$OldDate<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]</span>
+<span style="color:#66d9ef">then</span>
+    NewPostfix<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0`expr </span>$OldPostfix<span style="color:#e6db74"> + 1`&#34;</span>
+<span style="color:#66d9ef">fi</span>
+
+<span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> <span style="color:#e6db74">&#34;</span>$NewPostfix<span style="color:#e6db74">&#34;</span> -ge <span style="color:#e6db74">&#34;10&#34;</span> <span style="color:#f92672">]</span>
+<span style="color:#66d9ef">then</span>
+    NewPostfix<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>echo $NewPostfix | cut -c 2-3<span style="color:#e6db74">`</span>
+<span style="color:#66d9ef">fi</span>
+
+NewSerial<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span>$NewDate$NewPostfix<span style="color:#e6db74">&#34;</span>
+OldToken<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>grep <span style="color:#e6db74">&#34;_acme-challenge&#34;</span> $FILENAME | awk <span style="color:#e6db74">&#39;{ print $5 }&#39;</span><span style="color:#e6db74">`</span>
+
+sed -i -e <span style="color:#e6db74">&#39;s/&#39;</span>$OldSerial<span style="color:#e6db74">&#39;/&#39;</span>$NewSerial<span style="color:#e6db74">&#39;/&#39;</span> $FILENAME
+
+sed -i -e <span style="color:#e6db74">&#39;s/&#39;</span>$OldToken<span style="color:#e6db74">&#39;/&#39;</span>$CERTBOT_VALIDATION<span style="color:#e6db74">&#39;/&#39;</span> $FILENAME
+
+nsd-control reload
+
+sleep <span style="color:#ae81ff">600</span>
+</code></pre></div><p>次に, 実際にワイルドカード証明書を発行できるかどうか試すために dry-run モードで certbot を実行します. (v オプションは詳細を見るために念のためつけました) <br/>
+<code>certbot certonly --manual --server https://acme-v02.api.letsencrypt.org/directory -d '*.linux.it.teu.ac.jp --manual-auth-hook &lt;上記スクリプトファイル&gt;' --dry-run -v</code></p>
+<p>これで, エラーが発生しなければ <code>--dry-run</code> オプションを外して実際に実行して, ワイルドカード証明書を発行します. たまに, キャッシュ残って失敗することがありますが, その場合は sleep の時間を増やすなりしてキャッシュが消えるまで待つことをおすすめします.</p>
+<p>証明書を手に入れたあとは, nginx などの web サーバでその証明書を指定し, <code>systemctl restart nginx</code> することで更新が完了いたします. <br/>
+実際に, ワイルドカード証明書が反映されている例が以下になります.</p>
+<p><img src="https://blog.linux.it.teu.ac.jp/post_media/lets-encrypt-wildcard/image.png" alt="ワイルドカード証明書の反映"></p>
+<h2 id="苦労した点">苦労した点</h2>
+<p>今回の作業において, 苦労した部分は DNS-01 チャレンジが失敗してしまう部分にありました. というのも, キャッシュによって認証に必要なトークンが zone ファイルに書かれているのにも関わり実際に返されるトークンが違い, 何度も認証に失敗してしまいました. (dry-run モードで試しておいてよかったです) <br/>
+とりあえず, sleep を使うという力技で解決させましたが, ここらへんはどうにかしたいところです.</p>
+<p>また, 最初に書いたようにいまのところは一部サイトしかワイルドカード証明書は使われてない (それぞれの VPS に web サーバがある) ので, LinuxClub が保有する全てのサイトでワイルドカード証明書が使われるようにしたいですね.</p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p><a href="https://github.com/lc-tut/club-portal">https://github.com/lc-tut/club-portal</a> <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p>補足: 実際には VPS 外, つまり LinuxClub が管理していないサーバにスレーブサーバが 1 つありますが, ここでは割愛させていただきます. <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+
+</div>
+
+      </div>
+  </div>
+  <div class="row">  
+   
+  
+          
+           
+      <div class="col-sm-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="pt-4" id="comment-section">
+          
+        </div>
+      </div>
+   
+  </div>
+  
+</div>
+      <footer class="footer text-white bg-info">
+  <div class="container">
+    <div class="row">
+      <div class="offset-lg-1 col-lg-10 col-xs-12">
+        <p class="text-center mb-0 pa-0">
+          &copy; 2021 Copyright (c) 2019, LinuxClub. All rights reserved.
+        </p>
+        
+      </div>
+    </div>
+  </div>
+</footer>
+
+    
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+<script src="https://blog.linux.it.teu.ac.jp/assets/js/script.js"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-143514982-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+  </body>
+</html>
+
